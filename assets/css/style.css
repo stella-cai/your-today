@@ -51,13 +51,9 @@ form {
 
 
 @media (min-width: 785px) {
-	.option {
-		display: auto;
-		width: auto;
-	}
 	
 	.mainContent {
-		width: 25%;
+		width: 30%;
 	}
 }
 
@@ -87,4 +83,29 @@ form {
 
 #login-page {
     margin-top: 30px;
+}
+
+#login-button {
+    background-color: #B5CAA0;
+    border-color: #B5CAA0;
+}
+
+
+a:link {
+    color: #005CAF;
+}
+  
+a:visited {
+    color: #1E88A8;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: #1E88A8;
+    text-decoration: underline;
+}
+  
+a:active {
+    color: #1E88A8;
+    text-decoration: underline;
 }
