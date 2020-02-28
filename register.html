@@ -18,52 +18,33 @@
         <h2 id = "page-title">Register</h2>
         <form>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="register-form-firstname" placeholder="First Name">
-              </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="register-form-lastname" placeholder="Last Name">
+            <div class="form-group, form-inline">
+                <input type="text" class="form-control mb-3" id="register-form-firstname" placeholder="First Name">
+                <input type="text" class="form-control ml-4 mb-3" id="register-form-lastname" placeholder="Last Name">
             </div>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="register-form-username" placeholder="Username">
+            <div class="form-group, form-inline">
+                <input type="text" class="form-control mb-3" id="register-form-username" placeholder="Username">
+                <input type="text" class="form-control ml-4 mb-3" id="register-form-birthday" placeholder="Birthday" onfocus="(this.type='date')">
             </div>
 
-            <div class="form-group">
-                <select class="form-control" id = "register-form-gender">
+            <div class="form-group, form-inline">
+                <input type="text" class="form-control mb-3" id="register-form-password" placeholder="Password">
+                <input type="text" class="form-control ml-4 mb-3" id="register-form-verify-password" placeholder="Verify password">
+            </div>
+
+            <div class="form-group, form-inline">
+                <input type="text" class="form-control mb-3" id="register-form-email" placeholder="Email">
+                <select class="form-control ml-4 mb-3" id = "register-form-gender" style="width: 190px">
                     <option value="" selected disabled>Gender</option>
                     <option>Female</option>
                     <option>Male</option>
-                  </select>
+                    <option>Other</option>
+                </select>    
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" id="register-form-birthday" placeholder="Birthday" onfocus="(this.type='date')">
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="register-form-password" placeholder="Password">
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="register-form-verify-password" placeholder="Verify password">
-            </div>
-
-
-            <div class="form-group">
-                <select class="form-control" id = "register-form-gender">
-                    <option value="" selected disabled>Gender</option>
-                    <option>Female</option>
-                    <option>Male</option>
-                  </select>
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="register-form-birthday" placeholder="Birthday" onfocus="(this.type='date')">
-            </div>
-
-            <div class="form-group">
+                <h4>Security Questions</h4>
                 <select class="form-control" id = "register-form-security-question-1">
                     <option value="" selected disabled>Security question 1</option>
                     <option>Question 1</option>
