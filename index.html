@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="/assets/icomoon/style.css" defer>
+    <link rel="stylesheet" href="assets/icomoon/style.css" defer>
 </head>
 
 <style>
@@ -24,9 +24,176 @@
     .weather-number {
         font-size: 20px;
     }
+    #time {
+        margin: 0 auto;
+        text-align: center;
+    }
+    #time-value {
+        font-size: 50px;
+    }
+
+    .topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.main-content {
+    width: 70%;
+    display: inline-block;
+}
+.sidebar {
+    width: 25%;
+    display: inline-block;
+}
+
+#info {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+}
+
+.site-header {
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+}
+#user-profile {
+    font-size: 20px;
+}
+#user-logo,
+#user-status {
+    display: inline-block;
+}
+
+.search-container {
+  float: right;
+}
+
+input[type=text] {
+  padding: 6px;
+  margin-top: 0px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button {
+  float: left;
+  padding: 6px 10px;
+  margin-top: 0px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+#user-profile,
+#search-container,
+#settings {
+    display: inline-block;
+    position: absolute;
+    font-size: 20px;
+}
+
+#settings {
+    right: 5px;
+}
+
+.main-content {
+    top: 250px;
+    position: absolute;
+    width: 70%;
+    display: inline-block;
+}
+
+.sidebar {
+    display: inline-block;
+    position: absolute;
+    top: 250px;
+}
+
+/*** Timeline styles below ***/
+
+#timeline {
+	border-radius: 10px;
+	background-color: white;
+
+	/* Add properties below */
+	margin-top: 20px;
+	width: 100%;
+    border-style: solid;
+}
+
+.timelineHeader {
+	border-bottom: 1px solid grey;
+    background-color: aliceblue;
+    text-align: center;
+}
+
+.timelineHeader ul {
+	margin: 0px;
+	list-style: none;
+}
+
+.timelineHeader ul li {
+	padding: 10px;
+	margin-right: 20px;
+	font-size: 150%;
+	font-weight: bold;
+
+	/* Add properties below */
+	display: inline-block;
+
+}
+
+
+/*** Tweet styles below ***/
+
+.tweet {
+	background-color: white;
+	
+	/* Add properties below */
+	border-bottom: 1px solid grey;
+	min-height: 50px;
+	overflow: auto;
+}
+
+
+.timelineHeader ul{
+    padding-left: 0px;
+}
+
+.tweetContent {
+	margin: 0px;
+
+    margin-top: 20px;
+
+	/* Add properties below */
+	margin-left: 20px;
+}
+
+
+
+.sidebar {
+    width: 30%;
+    float: right;
+    position: absolute;
+    right: 0px;
+    top: 80px;
+    padding: 20px;
+}
+
+
 </style>
-<body>
-    <div id = "home-page" class="main-content">
+<body id = "home-page">
+    <div id = "info">
+
         <h2 id = "welcome"></h2>
         <div id = "weather">
             <span class = "weather-icon">
@@ -34,7 +201,171 @@
             </span>
             <span class = "weather-number">-1&#8451</span>
         </div>
+
+        <div id = "time">
+            <div id = "time-value">15:32</div>
+        </div>
     </div>
+    <header class = "site-header">
+        <div id = "user-profile">
+            <div id = "user-logo"><span class = "icon-sun"></span></div>
+            <div id = "user-status"> Status <span class = "icon-sun"></span></div>
+        </div>
+        <div class="search-container">
+            <form>
+                <button type="submit"><span class = "icon-sun"></span></button>
+                <input type="text" placeholder="Search.." name="search">
+            </form>
+        </div>
+        <div id = "settings"><span class = "icon-sun"></span></div>
+
+    </header>
+    <div class ="wrapper">
+        <div class = "main-content">
+
+            <div class = "schedule">
+                <div id="timeline">
+
+                    <div class="timelineHeader">
+                        <ul>
+                            <li>My Schedule</li>
+                        </ul>
+                    </div>
+        
+                    <!-- First tweet -->
+                    <div class="tweet">
+                        <div class="tweetContent">
+                        <p>Event Time Location</p>
+                        </div>
+                    </div>
+        
+                    <!-- Second tweet -->
+                    <div class="tweet">
+                        <div class="tweetContent">
+                        <p>Event Time Location</p>
+                        </div>
+                    </div>
+        
+                <!-- Add your own tweet below -->
+        
+                <div class="tweet">
+                    <div class="tweetContent">
+                    <p>Event Time Location</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class = "todo-list">
+                <div id="timeline">
+
+                    <div class="timelineHeader">
+                        <ul>
+                            <li>To-do List</li>
+                        </ul>
+                    </div>
+        
+                    <!-- First tweet -->
+                    <div class="tweet">
+                        <div class="tweetContent">
+                        <p>Event Time Location</p>
+                        </div>
+                    </div>
+        
+                    <!-- Second tweet -->
+                    <div class="tweet">
+                        <div class="tweetContent">
+                        <p>Event Time Location</p>
+                        </div>
+                    </div>
+        
+                <!-- Add your own tweet below -->
+        
+                <div class="tweet">
+                    <div class="tweetContent">
+                    <p>Event Time Location</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <style>
+            .wrapper {
+                position: relative;
+            }
+            .sidebar {
+                text-align: right;
+                margin-right: 50px;
+                width: 25%;
+                top: 250px;
+            }
+
+            #song-player {
+                padding: 6px;
+                padding-bottom: 0px;
+                font-size: 30px;
+                background-color: azure;
+                margin-top: 20px;
+            }
+
+            #song-player p{
+                font-size: 18px;
+            }
+
+            .tweet {
+                text-align: left;
+            }
+        </style>
+
+        <div class = "sidebar">
+            <div id = "song-player">
+                <span class = "icon-sun"></span> <span class = "icon-sun"></span> <span class = "icon-sun"></span> <span class = "icon-sun"></span>
+                <p>Last Dance Wu Bai</p>
+            </div>
+                        
+            <div class = "schedule">
+                <div id="timeline">
+
+                    <div class="timelineHeader">
+                        <ul>
+                            <li>My Links</li>
+                        </ul>
+                    </div>
+        
+                    <!-- First tweet -->
+                    <div class="tweet">
+                        <div class="tweetContent">
+                        <p>UofT</p>
+                        </div>
+                    </div>
+        
+                    <!-- Second tweet -->
+                    <div class="tweet">
+                        <div class="tweetContent">
+                        <p>Google</p>
+                        </div>
+                    </div>
+        
+                <!-- Add your own tweet below -->
+        
+                <div class="tweet">
+                    <div class="tweetContent">
+                    <p>Reddit</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    <style>
+
+        
+    </style>
+
+    <footer id = "page-footer">
+        sdgsggs
+    </footer>
     <script type="text/javascript" src="/assets/js/functions.js"></script>
     <script>
         window.onload = function() {
