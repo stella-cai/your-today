@@ -1,7 +1,7 @@
 'use strict'
 
 const loginSubmit = document.querySelector('#login-button')
-loginSubmit.addEventListener('click', login)
+loginSubmit.addEventListener("click", login)
 
 function login(e) {
     e.preventDefault()
