@@ -1,0 +1,281 @@
+/*For big screen*/
+@media (min-width: 785px) {
+	/*For some common components*/
+  	p {
+		word-wrap: break-word;
+  	}
+	
+	a:link, a:visited, a:active {
+		text-decoration: none;
+		color: #212121;
+	}
+	
+	a:hover {
+		text-decoration: none;
+		color: hsl(0, 0%, 13%);
+	}
+
+	#main {
+		height: 100vh;
+	}
+	
+	.popup-reminder a {
+	    color: #dcb879;
+	    text-decoration: none;
+	}
+
+	.displayOnMobile {
+		display: none;
+	}
+	
+	.topnav a:nth-child(2) {
+		margin-left: 50px;
+	}
+	
+	/*Header*/
+
+
+	.topnav .icon {
+		display: none;
+	}
+	
+	.topnav.responsive .icon {
+		display: none;
+	}
+	
+	.topnav a.icon {
+		display: none;
+	}
+	
+	.topnav.responsive a {
+		display: none;
+	}
+	
+	.topnav a {
+		display: block;
+	}
+	
+  	.main a{
+      	color: #FFFFFF;
+  	}
+	
+	#weather {
+		display:block;
+		margin-top: 80px;
+		text-align: center;
+		font-size: 50px;
+    }
+    
+	
+	#features {
+		display:block;
+		margin-bottom: 50px;
+		margin-top: -25px;
+	}
+	
+	#features a {
+		position: relative;
+		padding-right: 20px;
+		padding-left: 20px;
+		font-size: 20px;
+	}
+	
+	
+	/*(Main) Content*/
+	.content{
+		font-size: 3vw;
+	}
+	
+	.main-section {
+		font-size: 25px;
+	}
+	
+	/*Introduction*/
+	#introduction {
+		font-size: 3vw;
+	}
+	
+	
+	/*Footer*/
+	#footer {
+	    display: block;
+	    padding-top: 60px;
+		font-size: 20px;
+		clear:both;
+	}
+	
+	
+	/*Cookie consent*/
+	#cookie_consent {
+		padding: 10px;
+	}
+	
+
+	.seen_cookie {
+		display: inline-block;
+		width: auto;
+		height: auto;
+		margin-right: 20px;
+		background-color: #dcb879;
+	}
+	
+
+	#visitorNumber {
+		font-size: 14px;
+	}
+	#footer-logo {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+	}
+	#vultr-logo {
+		width: 16px;
+		height: 16px;
+		border-radius: auto;
+	}
+	#cloudflare-logo {
+		width: auto;
+		height: 16px;
+		border-radius: auto;
+	}
+	
+}
+
+
+
+
+.topnav .search-container {
+    float: right;
+  }
+  
+  .topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .topnav .search-container button:hover {
+    background: #ccc;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .topnav input[type=text] {
+      border: 1px solid #ccc;  
+    }
+  }
+
+.topnav {
+    margin-right: 20px;
+}
+
+#setting-button {
+    display: inline-block;
+    padding-top: 10px;
+    font-size: 36px;
+}
+
+.left-panel {
+    display: inline-block;
+    width: 60%;
+    margin-left: 20px;
+    margin-right: 10px;
+    float: left;
+    padding-right: 40px;
+}
+
+.left-panel .my-schedule {
+    width: 80%;
+}
+
+.right-panel {
+    display: inline-block;
+    width: 30%;
+    margin-right: 20px;
+}
+
+.music-player {
+    font-size: 20px;
+}
+
+.link-list {
+    margin-top: 20px;
+}
+
+.site-link {
+    margin: 15px 0;
+}
+
+.right-panel #notepad {
+    width: 95%;
+    height: 300px;
+    opacity: 0.8;
+}
+
+
+
+
+
+
+#select-date {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+.my-schedule-buttons {
+    text-align: center;
+}
+
+
+
+
+
+#form-go-next {
+    float: right;
+}
+
+#form-go-previous {
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
