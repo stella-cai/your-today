@@ -1,4 +1,9 @@
 'use strict'
+
+/**
+ * Submit button
+ */
+
 const registerFormSubmit = document.querySelector("#register-form-submit");
 registerFormSubmit.addEventListener("click", submit);
 
@@ -47,4 +52,26 @@ function checkPassword(){
 function redirect(){
     console.log("redirecting");
     window.location = "login.html";
+}
+
+/**
+ * Toggle Passwords with a checkbox
+ */
+
+const passwordToggle = document.querySelector("#passwordToggle");
+passwordToggle.addEventListener("click", togglePasswordText);
+
+function togglePasswordText(e){
+    console.log("toggling password text")
+    const registerFormPassword = document.querySelector("#register-form-password");
+    const registerFormVerifyPassword = document.querySelector("#register-form-verify-password");
+
+    if (passwordToggle.checked === true) {
+        registerFormPassword.setAttribute("type", "text");
+        registerFormVerifyPassword.setAttribute("type", "text");
+    }
+    else if (passwordToggle.checked === false){
+        registerFormPassword.setAttribute("type", "password");
+        registerFormVerifyPassword.setAttribute("type", "password");
+    }
 }
