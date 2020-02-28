@@ -114,7 +114,7 @@ ul {
   left: 0;
   right: 0;
   vertical-align: middle;
-  color: #dcb879;
+  color: white;
 }
 
 .signature {
@@ -170,16 +170,16 @@ ul {
 
 
 #main {
-  background-image: url("https://www.chenpan.xyz/assets/uploads/toronto.jpg");
+  background-image: url("https://source.unsplash.com/bNXKVT35O58/5184×3456");
   background-repeat: no-repeat;
   background-position:center center;
   background-size: cover;
   width: 100%;
   height: 100vh;
-  color: #DCB879;
+  color: white;
 }
 #main a {
-    color: #DCB879;
+    color: white;
 }
 
 #main a:hover {
