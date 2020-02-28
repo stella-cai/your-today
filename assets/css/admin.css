@@ -1,0 +1,11 @@
+#admin-logout {
+	float: right;
+}
+
+.admin-logo {
+    font-size: 32px;
+}
+
+.admin-section {
+    display: none;
+}

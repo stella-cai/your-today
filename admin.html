@@ -14,34 +14,14 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 
-<style>
-#admin-logout {
-	float: right;
-}
-
-.admin-logo {
-    font-size: 32px;
-}
-
-.admin-section {
-    display: none;
-}
-</style>
 <link rel="stylesheet" href="assets/icomoon/style.css" defer>
 <body>
-    <span class="admin-logo icon-evil"></span>
+    <div id = "admin-page" class="main-content" style="width:100%; max-width: 850px;">
+        <span class="admin-logo icon-evil"></span>
 
-    <button class="btn btn-secondary mb-2" id = "admin-logout">Logout</button>
-    <div id = "register-page" class="main-content" style="width:100%; max-width: 850px;">
+        <button class="btn btn-secondary mb-2" id = "admin-logout">Logout</button>
 
 
-    <script>
-        function showAdminTab(tabType) {
-            if (tabType == 5) {
-                document.getElementById("user-feedback-section").style.display = "block";
-            }
-        }
-    </script>
         <div class="row">
             <button id = "rencent-account-creation" onclick = "showAdminTab(1)" class="admin-tab col-sm">Recent Account Creations</button>
             <button id = "account-request" onclick = "showAdminTab(2)" class="admin-tab col-sm">Account Requests</button>
@@ -49,12 +29,80 @@
             <button id = "all-account" onclick = "showAdminTab(4)" class="admin-tab col-sm">All Accounts</button>
             <button id = "user-feedback" onclick = "showAdminTab(5)" class="admin-tab col-sm">User Feedbacks</button>
         </div>
+        <div id = "all-account-section" class="admin-section row">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Account ID</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Register Date</th>
+                  <th scope="col">Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>2020-02-27</td>
+                  <td><button id = "all-account-management">Manage</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Sam</td>
+                  <td>2020-02-27</td>
+                  <td><button id = "all-account-management">Manage</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>2020-02-26</td>
+                  <td><button id = "all-account-management">Manage</button></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+
         <div id = "user-feedback-section" class="admin-section row">
-            sdsfsf
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Feedback ID</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Feedback</th>
+                    <th scope="col">Date</th>
+                    <th scope = "col">Manage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Good website!</td>
+                    <td>2020-02-27</td>
+                    <td><button id = "user-feedback-management">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Sam</td>
+                    <td>......</td>
+                    <td>2020-02-27</td>
+                    <td><button id = "user-feedback-management">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>I will use your service.</td>
+                    <td>2020-02-26</td>
+                    <td><button id = "user-feedback-management">Manage</button></td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
         
 
     </div>    
     <script type="text/javascript" src="assets/js/functions.js"></script>
+    <script type="text/javascript" src="assets/js/admin.js"></script>
+    <link rel="stylesheet" href="assets/css/admin.css" defer>
 </body>
 </html>
