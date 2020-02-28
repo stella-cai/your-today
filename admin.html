@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Your Today</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="theme-color" content="#fffffb">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<style>
+#admin-logout {
+	float: right;
+}
+
+.admin-logo {
+    font-size: 32px;
+}
+
+.admin-section {
+    display: none;
+}
+</style>
+<link rel="stylesheet" href="assets/icomoon/style.css" defer>
+<body>
+    <span class="admin-logo icon-evil"></span>
+
+    <button class="btn btn-secondary mb-2" id = "admin-logout">Logout</button>
+    <div id = "register-page" class="main-content" style="width:100%; max-width: 850px;">
+
+
+    <script>
+        function showAdminTab(tabType) {
+            if (tabType == 5) {
+                document.getElementById("user-feedback-section").style.display = "block";
+            }
+        }
+    </script>
+        <div class="row">
+            <button id = "rencent-account-creation" onclick = "showAdminTab(1)" class="admin-tab col-sm">Recent Account Creations</button>
+            <button id = "account-request" onclick = "showAdminTab(2)" class="admin-tab col-sm">Account Requests</button>
+            <button id = "frozen-account" onclick = "showAdminTab(3)" class="admin-tab col-sm">Frozen Accounts</button>
+            <button id = "all-account" onclick = "showAdminTab(4)" class="admin-tab col-sm">All Accounts</button>
+            <button id = "user-feedback" onclick = "showAdminTab(5)" class="admin-tab col-sm">User Feedbacks</button>
+        </div>
+        <div id = "user-feedback-section" class="admin-section row">
+            sdsfsf
+        </div>
+        
+
+    </div>    
+    <script type="text/javascript" src="assets/js/functions.js"></script>
+</body>
+</html>
