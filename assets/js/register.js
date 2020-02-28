@@ -75,3 +75,13 @@ function togglePasswordText(e){
         registerFormVerifyPassword.setAttribute("type", "password");
     }
 }
+
+/**
+ * Back button links to login.
+ */
+
+const backButton = document.querySelector("#register-form-back");
+backButton.addEventListener("click", function (){
+    console.log("redirecting");
+    window.location = "login.html";
+});
