@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Register | Your Today</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <meta name="theme-color" content="#fffffb">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
@@ -38,12 +38,22 @@
 
             <div class="form-group row">
                 <div class="col">
-                    <input type="text" class="form-control" id="register-form-password" placeholder="Password">               
+                    <input type="password" class="form-control" id="register-form-password" placeholder="Password">               
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="register-form-verify-password" placeholder="Verify password">
+                    <input type="password" class="form-control" id="register-form-verify-password" placeholder="Verify password">
                 </div>
-                
+            </div>
+
+            <div class="form-group row">
+                <div class = "col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="passwordToggle">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Show password
+                        </label>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group row">
@@ -96,11 +106,18 @@
                 <input type="text" class="form-control" id="register-form-security-question-3-answer" placeholder="Answer">
             </div>
 
-            <button type="submit" class="btn btn-secondary mb-2" id = "register-form-submit">Back</button>
+            <div class="form-group">
+                <div id="form-alerts">
+                    <!-- alerts go here -->
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary mb-2" id = "register-form-back">Back</button>
             <button type="submit" class="btn btn-primary mb-2 ml-2" id = "register-form-submit">Submit</button>
 
           </form>
-    </div>    
-    <script type="text/javascript" src="/assets/js/functions.js"></script>
+    </div>
+    <script type="text/javascript" src="./assets/js/register.js"></script>    
+    <script type="text/javascript" src="./assets/js/functions.js"></script>
 </body>
 </html>
