@@ -6,6 +6,33 @@ function submit(e){
     e.preventDefault();
     console.log("pressed the submit button!");
 
+    if (checkPassword()){
+        console.log("registration success")
+        const successAlert = document.createElement("div");
+        successAlert.setAttribute("class", "alert alert-success");
+        successAlert.setAttribute("role", "alert");
+        successAlert.appendChild(document.createTextNode("Registration success! Redirecting you to the login page..."));
+        const alerts = document.querySelector("#form-alerts");
+        if (alerts.lastElementChild){
+            alerts.removeChild(alerts.lastElementChild);
+        }
+        alerts.appendChild(successAlert);
+        setTimeout(redirect, 2500);
+    }
+    else{
+        const failureAlert = document.createElement("div");
+        failureAlert.setAttribute("class", "alert alert-danger");
+        failureAlert.setAttribute("role", "alert");
+        failureAlert.appendChild(document.createTextNode("Error! Passwords must match!"));
+        const alerts = document.querySelector("#form-alerts");
+        if (alerts.lastElementChild){
+            alerts.removeChild(alerts.lastElementChild);
+        }
+        alerts.appendChild(failureAlert);
+    }
+}
+
+function checkPassword(){
     const registerFormPassword = document.querySelector("#register-form-password");
     const registerFormVerifyPassword = document.querySelector("#register-form-verify-password");
 
@@ -13,6 +40,11 @@ function submit(e){
     console.log(registerFormVerifyPassword.value);
 
     if (registerFormPassword.value === registerFormVerifyPassword.value){
-        console.log("registration success")
+        return true;
     }
+}
+
+function redirect(){
+    console.log("redirecting");
+    window.location = "login.html";
 }
