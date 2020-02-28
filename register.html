@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Your Today</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <meta name="theme-color" content="#fffffb">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <div id = "register-page" class="main-content">
+        <h2 id = "page-title">Register</h2>
+        <form>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-firstname" placeholder="First Name">
+              </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-lastname" placeholder="Last Name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-username" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+                <select class="form-control" id = "register-form-gender">
+                    <option value="" selected disabled>Gender</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-birthday" placeholder="Birthday" onfocus="(this.type='date')">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-verify-password" placeholder="Verify password">
+            </div>
+
+
+            <div class="form-group">
+                <select class="form-control" id = "register-form-gender">
+                    <option value="" selected disabled>Gender</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-birthday" placeholder="Birthday" onfocus="(this.type='date')">
+            </div>
+
+            <div class="form-group">
+                <select class="form-control" id = "register-form-security-question-1">
+                    <option value="" selected disabled>Security question 1</option>
+                    <option>Question 1</option>
+                    <option>Question 2</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-security-question-1-answer" placeholder="Answer">
+            </div>
+            <div class="form-group">
+                <select class="form-control" id = "register-form-security-question-2">
+                    <option value="" selected disabled>Security question 2</option>
+                    <option>Question 1</option>
+                    <option>Question 2</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-security-question-2-answer" placeholder="Answer">
+            </div>
+
+            <div class="form-group">
+                <select class="form-control" id = "register-form-security-question-3">
+                    <option value="" selected disabled>Security question 3</option>
+                    <option>Question 1</option>
+                    <option>Question 2</option>
+                  </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="register-form-security-question-3-answer" placeholder="Answer">
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2" id = "register-form-submit">Submit</button>
+
+            
+          </form>
+    </div>    
+    <script type="text/javascript" src="/assets/js/functions.js"></script>
+</body>
+</html>

@@ -37,7 +37,7 @@ footer {
 }
 
 
-.mainContent{ 
+.main-content{ 
 	padding: 20px; 
 	margin-left: auto;
 	margin-right: auto;
@@ -52,13 +52,14 @@ form {
 
 @media (min-width: 785px) {
 	
-	.mainContent {
+	.main-content {
 		width: 30%;
 	}
 }
 
 #login-button-container {
     text-align: center;
+    clear: both;
 }
 
 #signup-recover-link-container {
@@ -70,13 +71,11 @@ form {
 
 #signup-link {
     display: inline-block;
-    margin-bottom: 1rem;
     position: absolute;
     left: 0px;
 }
 #recover-link {
     display: inline-block;
-    margin-bottom: 1rem;
     position: absolute;
     right: 0px;
 }
@@ -109,3 +108,42 @@ a:active {
     color: #1E88A8;
     text-decoration: underline;
 }
+
+
+/* #register-form input,
+#register-form select{
+	width: 100%;
+} */
+select:required:invalid {
+	color: #666;
+}
+option[value=""][disabled] {
+	display: none;
+}
+option {
+	color: #000;
+}
+
+#sex-list {
+	left: 0;
+}
+
+select option {
+	color: black;
+}
+select option:first-child {
+	color: grey;
+}
+select.empty {
+	color: grey;
+}
+/* Hidden placeholder */
+select option[disabled]:first-child {
+	display: none;
+}
+
+#register-form-gender {
+	color: #666;
+}
+
+
