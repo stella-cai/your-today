@@ -14,10 +14,26 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="/assets/icomoon/style.css" defer>
 </head>
+
+<style>
+    #weather {
+        font-size: 50px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .weather-number {
+        font-size: 20px;
+    }
+</style>
 <body>
     <div id = "home-page" class="main-content">
         <h2 id = "welcome"></h2>
-        <div id = "weather"><span class="icon-sun"></span></div>
+        <div id = "weather">
+            <span class = "weather-icon">
+                <span class = "icon-sun"></span>
+            </span>
+            <span class = "weather-number">-1&#8451</span>
+        </div>
     </div>
     <script type="text/javascript" src="/assets/js/functions.js"></script>
     <script>
