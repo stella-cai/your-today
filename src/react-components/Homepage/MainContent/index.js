@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TimeWeather from "./TimeWeather";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -18,8 +19,8 @@ export default function MainContent() {
 
 
   return (
-  <div class="headerSearch">
-    zdfdsf
+  <div className="mainContent">
+    <TimeWeather></TimeWeather>
   </div>
   );
 }

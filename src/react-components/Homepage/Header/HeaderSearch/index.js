@@ -44,7 +44,7 @@ export default function HeaderSearch() {
   }
 
   return (
-  <div class="headerSearch">
+  <div className="headerSearch">
     <Paper component="form" className={classes.root}>
       <TextField
       className={classes.input}
