@@ -43,8 +43,16 @@ export default function TimeWeather() {
     setInterval(
       function(){
         let date = new Date();
-        setHour(date.getHours())
-        setMinute(date.getMinutes())
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        if (hh < 10) {
+          hh = '0' + hh;
+        }
+        if (mm < 10) {
+          mm = '0' + mm;
+        }
+        setHour(hh)
+        setMinute(mm)
       }, 1000
     )
   } 

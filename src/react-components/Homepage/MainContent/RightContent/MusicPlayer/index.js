@@ -40,6 +40,7 @@ export default function MediaControlCard() {
   const theme = useTheme();
 
   return (
+    <>
     <Card className={classes.root}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
@@ -68,5 +69,6 @@ export default function MediaControlCard() {
         title="Live from space album cover"
       />
     </Card>
+    </>
   );
 }
