@@ -14,7 +14,13 @@ const useStyles = makeStyles(theme => ({
   }));
 
 export default function TodoList(props) {
-    const [todos, setTodos] = useState(props.todos);
+    //const [todos, setTodos] = useState(props.todos);
+
+    const todos = props.todos
+    const setTodos = props.setTodos
+
+
+
     const classes = useStyles();
 
     const complete = index => {

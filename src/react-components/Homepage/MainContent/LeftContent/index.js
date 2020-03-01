@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import TodoList from "./TodoList";
+
+import Schedule from "./Schedule";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,19 +19,10 @@ const useStyles = makeStyles(theme => ({
 export default function LeftContent() {
     //const { todos, deleteTodo } = useTodoState([]);
     const classes = useStyles();
-    const [todos, setTodos] = useState(
-        [
-            {what:"csc309", when:"2020-03-02"},
-            {what:"csc301", when:"2020-03-08"},
-        ]
-    );
     return(
         <div class = {classes.root}>
             <div class={classes.leftContent}>
-                <TodoList
-                todos = {todos}
-                >
-                </TodoList>
+                <Schedule></Schedule>
             </div>
         </div>
     )
