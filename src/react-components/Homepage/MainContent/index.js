@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TimeWeather from "./TimeWeather";
+import LeftContent from "./LeftContent"
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -21,6 +22,8 @@ export default function MainContent() {
   return (
   <div className="mainContent">
     <TimeWeather></TimeWeather>
+    <LeftContent>
+    </LeftContent>
   </div>
   );
 }
