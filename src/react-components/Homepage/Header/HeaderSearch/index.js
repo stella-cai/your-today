@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactDOM from 'react-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -7,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import RightBar from "./RightBar";
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +34,7 @@ const useStyles = makeStyles(theme => ({
 export default function HeaderSearch() {
   const classes = useStyles();
   const [searchKey, setSearchKey] = useState('');
+  const [isRightBarShown, setIsRightBarShown] = useState(false)
 
   const searchButtonClickHandler = (e) => {
     e.preventDefault();
@@ -43,8 +46,15 @@ export default function HeaderSearch() {
     setSearchKey(e.target.value)
   }
 
+  const showRightBar = (e) => {
+    setIsRightBarShown(!isRightBarShown)
+  }
+
+
+
   return (
   <div className="headerSearch">
+    <RightBar isRightBarShown = {isRightBarShown}/>
     <Paper component="form" className={classes.root}>
       <TextField
       className={classes.input}
@@ -59,6 +69,7 @@ export default function HeaderSearch() {
       <IconButton 
       className={classes.iconButton} 
       aria-label="menu"
+      onClick={showRightBar}
       >
         <MenuIcon />
       </IconButton>
