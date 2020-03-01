@@ -8,6 +8,7 @@ import './App.css';
 // Importing the Queue and our simple Home Page
 import Homepage from './react-components/Homepage';
 import Loading from './react-components/Loading';
+import Login from './react-components/Login';
 
 class App extends React.Component {
 
@@ -27,6 +28,8 @@ class App extends React.Component {
                             (<Loading state={this.state}/>)}/>
             <Route exact path='/homepage' render={() => 
                             (<Homepage state={this.state}/>)}/>
+            <Route exact path='/login' render={() => 
+                            (<Login state={this.state}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
