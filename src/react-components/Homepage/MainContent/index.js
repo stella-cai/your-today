@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import TimeWeather from "./TimeWeather";
 import LeftContent from "./LeftContent"
+import RightContent from "./RightContent"
 
 import { makeStyles } from '@material-ui/core/styles';
+import Grid  from '@material-ui/core/Grid';
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,10 +22,10 @@ export default function MainContent() {
 
 
   return (
-  <div className="mainContent">
+  <Grid className="mainContent">
     <TimeWeather></TimeWeather>
-    <LeftContent>
-    </LeftContent>
-  </div>
+    <LeftContent></LeftContent>
+    <RightContent></RightContent>
+  </Grid>
   );
 }

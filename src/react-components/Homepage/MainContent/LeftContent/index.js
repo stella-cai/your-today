@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import { uid } from "react-uid";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
+import { makeStyles } from '@material-ui/core/styles';
 import TodoList from "./TodoList";
-import TodoForm from "./TodoForm";
 
-
-
+const useStyles = makeStyles(theme => ({
+    root: {
+        width: "70%",
+        display: "inline-block",
+        margin: "0",
+        padding: "0"
+    },
+    leftContent: {
+        marginRight: "25px",
+    },
+  }));
 
 
 export default function LeftContent() {
     //const { todos, deleteTodo } = useTodoState([]);
+    const classes = useStyles();
     const [todos, setTodos] = useState(
         [
             {what:"csc309", when:"2020-03-02"},
@@ -18,13 +25,13 @@ export default function LeftContent() {
         ]
     );
     return(
-        <>
-            <div class="todoListContainer">
+        <div class = {classes.root}>
+            <div class={classes.leftContent}>
                 <TodoList
                 todos = {todos}
                 >
                 </TodoList>
             </div>
-        </>
+        </div>
     )
 }

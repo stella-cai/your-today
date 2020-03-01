@@ -29,6 +29,11 @@ const useStyles = makeStyles({
       marginLeft: 20,
       marginRight: 20,
   },
+  signature: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    margin: "5px"
+  },
 });
 
 export default function TemporaryDrawer(props) {
@@ -44,6 +49,7 @@ export default function TemporaryDrawer(props) {
     >
       <List>
         <Avatar className={classes.leftDrawerAvatar}>H</Avatar>
+        <div className={classes.signature}>The purpose of our lives is to be happy.</div>
         <div className={classes.links}>
           
           <ListItem

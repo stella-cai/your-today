@@ -4,9 +4,18 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import Todo from "./Todo";
 import TodoForm from "../TodoForm";
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles(theme => ({
+    todoForm: {
+      padding: '0',
+      margin: '0',
+      display: 'none',
+    },
+  }));
 
 export default function TodoList(props) {
     const [todos, setTodos] = useState(props.todos);
+    const classes = useStyles();
 
     const complete = index => {
         const newTodos = [...todos];
@@ -20,28 +29,13 @@ export default function TodoList(props) {
         
     };
 
-
-    // const handleChange = event => {
-        
-    //     const target = event.target;
-    //     const value = target.value;
-    //     const name = target.name;
-    //     if (name === 'todoWhat') {
-    //         setNewWhat(value)
-    //     }
-    //     else if (name === 'todoWhen') {
-    //         setNewWhen(value)
-    //         console.log(newWhen)
-    //     }
-        
-    //   };
-
     return (
         <>
         <TodoForm
+            className={classes.todoForm}
             todos = {todos}
             add = {add}
-        ></TodoForm>
+        />
         <Table className="todoList">
 
             <TableBody className="todoList">
