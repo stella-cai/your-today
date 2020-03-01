@@ -1,44 +1,44 @@
-// Methods in this file modifies the Queue component state
+// // Methods in this file modifies the Queue component state
 
-const log = console.log;
+// const log = console.log;
 
-// Function to add a student, needs to be exported
-export const addStudent = queue => {
-  log("adding student");
-  const studentList = queue.state.students;
+// // Function to add a student, needs to be exported
+// export const addStudent = queue => {
+//   log("adding student");
+//   const studentList = queue.state.students;
 
-  const student = {
-    name: queue.state.studentName,
-    course: queue.state.studentCourse
-  };
+//   const student = {
+//     name: queue.state.studentName,
+//     course: queue.state.studentCourse
+//   };
 
-  // Adding at a particular position
-  const position = parseInt(queue.state.position);
+//   // Adding at a particular position
+//   const position = parseInt(queue.state.position);
 
-  if (position > studentList.length || !position) {
-    log("here");
-    studentList.push(student);
-  } else {
-    log("here2");
-    studentList.splice(position - 1, 0, student);
-  }
+//   if (position > studentList.length || !position) {
+//     log("here");
+//     studentList.push(student);
+//   } else {
+//     log("here2");
+//     studentList.splice(position - 1, 0, student);
+//   }
 
-  queue.setState({
-    students: studentList
-  });
-};
+//   queue.setState({
+//     students: studentList
+//   });
+// };
 
-export const removeStudent = (queue, student) => {
-  //log(student)
+// export const removeStudent = (queue, student) => {
+//   //log(student)
 
-  // filters out the student we don't want.
-  const filteredStudents = queue.state.students.filter(s => {
-    return s !== student;
-  });
+//   // filters out the student we don't want.
+//   const filteredStudents = queue.state.students.filter(s => {
+//     return s !== student;
+//   });
 
-  //log(filteredStudents)
+//   //log(filteredStudents)
 
-  queue.setState({
-    students: filteredStudents
-  });
-};
+//   queue.setState({
+//     students: filteredStudents
+//   });
+// };

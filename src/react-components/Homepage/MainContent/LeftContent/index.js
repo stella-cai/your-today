@@ -19,10 +19,12 @@ export default function LeftContent() {
     );
     return(
         <>
-        <TodoList
-        todos = {todos}
-        >
-        </TodoList>
+            <div class="todoListContainer">
+                <TodoList
+                todos = {todos}
+                >
+                </TodoList>
+            </div>
         </>
     )
 }

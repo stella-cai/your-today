@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./styles.css";
 import HeaderUserProfile from './HeaderUserProfile';
 import HeaderSearch from './HeaderSearch';
+import LeftDrawer from './LeftDrawer';
 
 /* The Header Component */
-class Header extends React.Component {
-  render() {
-    const { userename } = this.props;
+export default function Header(props) {
+  const username = props.username;
+  const [state, setState] = useState({
+    left: false,
+  });
 
-    return (
-      <div className="header">
-        <HeaderUserProfile userename={ userename }/>
-        <HeaderSearch />
-      </div>
-    );
-  }
+  return(
+    <div className="header">
+      <LeftDrawer state = {state} setState={ setState }></LeftDrawer>
+      <HeaderUserProfile username={ username } state={ state } setState={ setState }/>
+      <HeaderSearch />
+    </div>
+  );
 }
-
-export default Header;

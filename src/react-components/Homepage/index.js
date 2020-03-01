@@ -40,7 +40,7 @@ class Homepage extends React.Component {
       <div className="App">
         {/* Header component with text props. */}
         <Header
-          userename="Pan Chen"
+          username="Pan Chen"
         />
         <MainContent></MainContent>
       </div>
