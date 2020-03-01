@@ -41,7 +41,6 @@ export default function MediaControlCard() {
 
   return (
     <>
-<iframe src="https://open.spotify.com/embed/playlist/2tMdrDqjSshtYRvAWu1vHY" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     <Card className={classes.root}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
