@@ -31,11 +31,6 @@ export default function TodoList(props) {
 
     return (
         <>
-        <TodoForm
-            className={classes.todoForm}
-            todos = {todos}
-            add = {add}
-        />
         <Table className="todoList">
 
             <TableBody className="todoList">
@@ -51,6 +46,11 @@ export default function TodoList(props) {
                 ))}
             </TableBody>
         </Table>
+        <TodoForm
+            className={classes.todoForm}
+            todos = {todos}
+            add = {add}
+        />
         </>
     )
 }

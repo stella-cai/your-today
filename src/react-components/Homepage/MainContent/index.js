@@ -10,8 +10,10 @@ import Grid  from '@material-ui/core/Grid';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: '2px 4px',
-    display: 'flex',
     alignItems: 'center'
+  },
+  content: {
+    display: 'flex',
   },
 }));
 
@@ -22,10 +24,12 @@ export default function MainContent() {
 
 
   return (
-  <Grid className="mainContent">
+  <Grid className={classes.root}>
     <TimeWeather></TimeWeather>
-    <LeftContent></LeftContent>
-    <RightContent></RightContent>
+    <div className={classes.content}>
+      <LeftContent></LeftContent>
+      <RightContent></RightContent>
+    </div>
   </Grid>
   );
 }

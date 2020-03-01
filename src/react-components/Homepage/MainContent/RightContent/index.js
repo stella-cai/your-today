@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import MusicPlayer from './MusicPlayer';
+import MostVisitedLinks from './MostVisitedLinks'
 const useStyles = makeStyles(theme => ({
     root: {
         width: "30%",
@@ -14,6 +15,7 @@ export default function RightContent() {
     return(
         <div class={classes.root}>
             <MusicPlayer></MusicPlayer>
+            <MostVisitedLinks></MostVisitedLinks>
         </div>
     );
 }
