@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import RightBar from "./RightBar";
+import {toggleDrawer} from '../../../../actions/drawers'
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,10 +30,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function HeaderSearch() {
+export default function HeaderSearch(props) {
   const classes = useStyles();
   const [searchKey, setSearchKey] = useState('');
-  const [isRightBarShown, setIsRightBarShown] = useState(false)
+  const state = props.state;
+  const setState = props.setState;
 
   const searchButtonClickHandler = (e) => {
     e.preventDefault();
@@ -45,15 +46,10 @@ export default function HeaderSearch() {
     setSearchKey(e.target.value)
   }
 
-  const showRightBar = (e) => {
-    setIsRightBarShown(!isRightBarShown)
-  }
-
 
 
   return (
   <div className="headerSearch">
-    <RightBar isRightBarShown = {isRightBarShown}/>
     <Paper component="form" className={classes.root}>
       <TextField
       className={classes.input}
@@ -68,7 +64,7 @@ export default function HeaderSearch() {
       <IconButton 
       className={classes.iconButton} 
       aria-label="menu"
-      onClick={showRightBar}
+      onClick={()=>toggleDrawer('right', state, setState, true)}
       >
         <MenuIcon />
       </IconButton>
