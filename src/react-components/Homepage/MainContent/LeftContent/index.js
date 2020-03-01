@@ -20,8 +20,8 @@ export default function LeftContent() {
     //const { todos, deleteTodo } = useTodoState([]);
     const classes = useStyles();
     return(
-        <div class = {classes.root}>
-            <div class={classes.leftContent}>
+        <div className = {classes.root}>
+            <div className ={classes.leftContent}>
                 <Schedule></Schedule>
             </div>
         </div>

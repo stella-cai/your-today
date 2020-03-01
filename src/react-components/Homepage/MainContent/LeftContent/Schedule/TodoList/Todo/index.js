@@ -2,25 +2,41 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+import {makeStyles} from '@material-ui/core/styles';
 
-const log = console.log
+
+const useStyles = makeStyles(theme => ({
+    what: {
+      width: "70%",
+      wordBreak: "break-all",
+    },
+    when: {
+        width: "20%",
+        wordBreak: "break-all",
+    },
+    finish: {
+        width: "10%",
+    },
+
+}));
+
 export default function Todo({todo, index, complete}) {
+    const classes = useStyles();
     return (
-        <TableRow className="todo" key={todo.what}>
-            <TableCell component="th" scope="row">
+        <TableRow className= {classes.todo} key={todo.what}>
+            <TableCell className = {classes.what} component="th" scope="row">
                 {todo.what}
             </TableCell>
-            <TableCell component="th" scope="row">
+            <TableCell className = {classes.when} component="th" scope="row">
                 {todo.when}
             </TableCell>
-            <TableCell component="th" scope="row">
+            <TableCell className = {classes.finish} component="th" scope="row">
                 <Button
                 variant="contained"
                 color="secondary"
                 onClick={
                     () => complete(index)
                 }
-                //() => this.removeStudent(student) // this also works
                 >
                 Finish
             </Button>
