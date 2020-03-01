@@ -52,6 +52,9 @@ export default function DatePickers() {
         ]
       )
     }
+    else {
+      setTodos([])
+    }
   }
 
   return (

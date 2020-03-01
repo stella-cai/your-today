@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 export default function RightContent() {
     const classes = useStyles();
     return(
-        <div class={classes.root}>
+        <div className={classes.root}>
             <MusicPlayer></MusicPlayer>
             <MostVisitedLinks></MostVisitedLinks>
         </div>

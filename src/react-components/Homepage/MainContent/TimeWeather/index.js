@@ -34,10 +34,20 @@ const useStyles = makeStyles(theme => ({
 
 export default function TimeWeather() {
   const classes = useStyles();
-  const [hour, setHour] = useState('05');
-  const [minute, setMinute] = useState('23');
+  const [hour, setHour] = useState()
+  const [minute, setMinute] = useState()
 
   const [temp, setTemp] = useState('');
+
+  const updateTime = () => {
+    setInterval(
+      function(){
+        let date = new Date();
+        setHour(date.getHours())
+        setMinute(date.getMinutes())
+      }, 1000
+    )
+  } 
   
   
   const getWeatherInfo = (cityID) => {
@@ -55,6 +65,7 @@ export default function TimeWeather() {
 
   //For know, we will pase the city id of Toronto. Later, we will fetch the city id dependong on where the user is located.
   getWeatherInfo(6167865)
+  updateTime()
   return (
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
