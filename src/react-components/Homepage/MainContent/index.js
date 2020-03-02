@@ -25,8 +25,8 @@ export default function MainContent() {
 
   return (
   <Grid className={classes.root}>
-    <TimeWeather></TimeWeather>
-    <div className={classes.content}>
+      <TimeWeather></TimeWeather>
+      <div className={classes.content}>
       <LeftContent></LeftContent>
       <RightContent></RightContent>
     </div>
