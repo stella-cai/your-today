@@ -9,6 +9,7 @@ import './App.css';
 import Homepage from './react-components/Homepage';
 import Loading from './react-components/Loading';
 import Login from './react-components/Login';
+import Register from './react-components/Register'
 
 class App extends React.Component {
 
@@ -30,6 +31,8 @@ class App extends React.Component {
                             (<Homepage state={this.state}/>)}/>
             <Route exact path='/login' render={() => 
                             (<Login state={this.state}/>)}/>
+            <Route exact path='/register' render={() => 
+                            (<Register state={this.state}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
