@@ -7,8 +7,15 @@ import Link from '@material-ui/core/Link';
 import { spacing } from '@material-ui/system';
 import { browserHistory } from 'react-router';
 import "./styles.css"
+import Alert from '@material-ui/lab/Alert';
 
 class LoginRight extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {redirectCountDown: 3};
+    }
+
+    
     paperStyle = () => {
         return {
             display: 'flex',
@@ -35,16 +42,34 @@ class LoginRight extends React.Component {
         }
     }
 
+
+
+
     submitLogin = event => {
         event.preventDefault();
         console.log("clicked")
         if( document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
             console.log("logging in");
-            window.location.replace(".././homepage");
+            document.querySelector("#wrongPassword").style.display = "none"
+            document.querySelector("#loginSuccess").style.display = "block"
+            for(let k = 1; k <=3; k++) {
+                setTimeout(() => {
+                    this.setState({redirectCountDown: 3-k});
+                    if(k == 3) {
+                        window.location.replace(".././homepage");
+                    }
+                  }, 1000*k)
+            }
+        }
+        else{
+            console.log("wrongPassword")
+            document.querySelector("#wrongPassword").style.display = "block"
         }
     }
 
     render() {
+
+
         return (
             <div style={this.paperStyle()}>
                 <Typography component="h1" variant="h5">
@@ -73,6 +98,12 @@ class LoginRight extends React.Component {
                             </Link>
                         </Grid>
                     </Grid>
+                    <Alert id = "loginSuccess" variant="filled" severity="success">
+                        Login success! Redirecting in {this.state.redirectCountDown} seconds ... 
+                    </Alert>
+                    <Alert id = "wrongPassword" variant="filled" severity="error">
+                        The Username and Password don't Match. Try again!
+                    </Alert>
                 </form>
             </div>
         )

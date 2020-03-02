@@ -15,3 +15,11 @@
     align-items: center;
     justify-content: center;
 }
+
+#wrongPassword {
+    display: none;
+}
+
+#loginSuccess {
+    display: none;
+}
