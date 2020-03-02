@@ -1,5 +1,4 @@
 import React from 'react';
-
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -8,53 +7,54 @@ import Link from '@material-ui/core/Link';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 class LoginRight extends React.Component {
+    paperStyle = () => {
+        return {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            margin: '20px',
+            marginTop: '40px'    
+        }
+    }
 
-    // state = {
+    formStyle = () => {
+        return {
+            marginTop: '10px',
+        }
+    }
 
-    // }
+    buttonStyle = () => {
+        return {
+            justifyContent: 'center',
+            margin: '20px',
+        }
+    }
+
     render() {
         return (
-            <div id="login-right">
-                
-                <div id="login-tab" className="main-content">
-                    <Typography component = "h2" variant="h5"> Welcome back!</Typography>
-                    
-                    <form>
-                        <div className="form-input">
-                            <TextField id="login-username" type="text" name="username" margin="normal" 
-                                variant="outlined" placeholder="Username" required fullWidth/>
-                            <span className="help-block"></span>
-                        </div>
-
-                        <div className="form-input">
-                            <TextField id="login-password" type="password" name="password" margin="normal" 
-                                variant="outlined" placeholder="Password" required fullWidth/>
-                            <span className="help-block"></span>
-                        </div>
-
-                        <div id="login-button-container" className="form-group">
-                            <Button id="login-button" variant="outlined" color="primary" required fullWidth> 
-                                Start Your Today Here 
-                            </Button>
-                        </div>
-
-                        <Grid container >
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    Don't have an account? Sign Up
-                                </Link>
-                            </Grid>
+            <div style={this.paperStyle()}>
+                <Typography component="h1" variant="h5">
+                    Welcome Back!
+                </Typography>
+                <form noValidate style={this.formStyle()}>
+                    <TextField id="username" variant="outlined" margin="normal" label="Username" required fullWidth />
+                    <TextField id="password" variant="outlined" margin="normal" label="Password" required fullWidth />
+                    <Button type="submit" variant="contained" color="primary" style={this.buttonStyle()}>
+                        Start Your Day Here
+                    </Button>
+                    <Grid container>
+                        <Grid item xs>
+                            <Link href="#" variant="body2">
+                                Forgot password?
+                            </Link>
                         </Grid>
-
-                    </form>
-                </div>
-                
-                
+                        <Grid item>
+                            <Link href="#" variant="body2">
+                                {"Register"}
+                            </Link>
+                        </Grid>
+                    </Grid>
+                </form>
             </div>
         )
     }
