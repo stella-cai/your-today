@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import { spacing } from '@material-ui/system';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { browserHistory } from 'react-router';
 import "./styles.css"
 
 class LoginRight extends React.Component {
@@ -35,6 +35,15 @@ class LoginRight extends React.Component {
         }
     }
 
+    submitLogin = event => {
+        event.preventDefault();
+        console.log("clicked")
+        if( document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
+            console.log("logging in");
+            window.location.replace(".././homepage");
+        }
+    }
+
     render() {
         return (
             <div style={this.paperStyle()}>
@@ -46,7 +55,8 @@ class LoginRight extends React.Component {
                     <TextField id="password" variant="outlined" margin="normal" label="Password" required fullWidth />
                     
                     <span id='button-container'>
-                        <Button id='login-button' type="submit" variant="contained" color="primary" style={this.buttonStyle()}>
+                        <Button id='login-button' type="submit" variant="contained" color="primary" 
+                            style={this.buttonStyle()} onClick={this.submitLogin}>
                             Start Your Day Here
                         </Button>
                     </span>
