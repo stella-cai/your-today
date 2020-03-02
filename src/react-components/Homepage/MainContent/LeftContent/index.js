@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 
-import Schedule from "./Schedule";
+import Todos from "./Todos";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,7 +22,7 @@ export default function LeftContent() {
     return(
         <div className = {classes.root}>
             <div className ={classes.leftContent}>
-                <Schedule></Schedule>
+                <Todos></Todos>
             </div>
         </div>
     )
