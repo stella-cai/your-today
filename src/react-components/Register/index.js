@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 
@@ -80,10 +81,10 @@ class Register extends React.Component {
                                     <br />
                                 </Grid>
                             </Grid>
-                            <Button ype="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }}>Go Back</Button>
+                            <Button ype="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }} href="./../Login">Go Back</Button>
                             <Button type="submit" variant="contained" color="primary" id="signup-button" style={{ float: "right", marginBottom: "20px" }}>
                                 Sign Up
-                    </Button>
+                            </Button>
                         </form>
                     </Container>    
                 </Grid>
