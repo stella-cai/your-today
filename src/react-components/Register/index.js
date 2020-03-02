@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 
 import SecurityQuestion from "./SecurityQuestion";
 
@@ -70,13 +71,13 @@ class Register extends React.Component {
                     <Button type="submit" fullWidth variant="contained" color="primary" id="submit-button">
                         Sign Up
                     </Button>
-                    {/* <Grid container justify="flex-end">
+                    <Grid container justify="flex-end">
                         <Grid item>
-                        <Link href="#" variant="body2">
-                            Already have an account? Sign in
-                        </Link>
+                            <Link href="./../Login" variant="body2">
+                                Already have an account? Sign in
+                            </Link>
                         </Grid>
-                    </Grid> */}
+                    </Grid>
                 </form>
             </Container>
         )
