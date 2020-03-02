@@ -9,7 +9,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home__bg-image center">
-        <Link className="home__button-link center" to={"./../Homepage"}>
+        <Link className="home__button-link center" to={"./../Login"}>
           <Button className="home__button">Start Your Today {this.props.state.abc}</Button>
         </Link> 
       </div>
