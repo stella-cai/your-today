@@ -1,0 +1,20 @@
+
+#input{
+    top: 0px;
+    position: relative;
+    width: 210px;
+    height: 20px;
+    border: thin 1px black;
+}
+
+#spotify{
+    right:0px;
+    margin: 10px, 10px, 10px, 10px;
+}
+
+#button{
+    top: 0px;
+    position: relative;
+    width: 90px;
+    height: 20px;
+}
