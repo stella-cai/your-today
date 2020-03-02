@@ -5,7 +5,7 @@ import Todos from "./Todos";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "70%",
+        width: "50%",
         display: "inline-block",
         margin: "0",
         padding: "0",
