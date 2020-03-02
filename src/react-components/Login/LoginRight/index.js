@@ -40,13 +40,13 @@ class LoginRight extends React.Component {
         console.log("clicked")
         if( document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
             console.log("logging in");
-            window.location.replace(".././homepage");
+            setTimeout(() => {window.location.replace(".././homepage")}, 3000)
         }
     }
 
     render() {
         return (
-            <div style={this.paperStyle()}>
+            <div style={this.paperStyle()} id="loginRight">
                 <Typography component="h1" variant="h5">
                     Welcome Back!
                 </Typography>
