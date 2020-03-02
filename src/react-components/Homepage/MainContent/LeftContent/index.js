@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
         width: "70%",
         display: "inline-block",
         margin: "0",
-        padding: "0"
+        padding: "0",
     },
     leftContent: {
         marginRight: "25px",

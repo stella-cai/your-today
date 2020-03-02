@@ -7,7 +7,10 @@ const useStyles = makeStyles(theme => ({
         width: "30%",
         display: "inline-block",
         margin: "0",
-        padding: "0"
+        padding: "0",
+        position: "absolute",
+        top: "80px",
+        right: "0px"
     }
 }));
 export default function RightContent() {

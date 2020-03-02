@@ -11,6 +11,12 @@ const useStyles = makeStyles(theme => ({
       margin: '0',
       display: 'none',
     },
+    todoList: {
+        display: "block",
+        overflowY: "scroll",
+        overflowX: "hidden",
+        maxHeight: "260px",//need to do a more careful calculation
+    },
   }));
 
 export default function TodoList(props) {
@@ -37,7 +43,7 @@ export default function TodoList(props) {
 
     return (
         <>
-        <Table className="todoList">
+        <Table className={classes.todoList}>
 
             <TableBody className="todoList">
                 {todos.map((todo, index) => (
