@@ -2,9 +2,13 @@
 #input{
     top: 0px;
     position: relative;
-    width: 210px;
+    width: 70%;
     height: 20px;
     border: thin 1px black;
+}
+
+#playlistInputContainer {
+    margin-bottom: 10px;
 }
 
 #spotify{
@@ -15,6 +19,6 @@
 #button{
     top: 0px;
     position: relative;
-    width: 90px;
+    width: 30%;
     height: 20px;
 }

@@ -6,7 +6,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import LinkIcon from '@material-ui/icons/Link';
 const useStyles = makeStyles(theme => ({
-
+  list: {
+    display: "block",
+    maxHeight: "200px",
+    overflowY: "scroll",
+    overflowX: "hidden",
+  }
 }));
 export default function MediaControlCard() {
     const classes = useStyles();

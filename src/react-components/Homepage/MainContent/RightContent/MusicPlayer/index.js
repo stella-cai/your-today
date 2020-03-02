@@ -21,10 +21,11 @@ export default function MediaControlCard() {
   }
   return (
     <div id="spotify">
-      <div>
+      <div id = "playlistInputContainer">
         <TextField id="input"
-            placeholder="your spotify playlist url"
-            onChange={searchTextChangeHandler}>
+            placeholder="Your Spotify Playlist url"
+            onChange={searchTextChangeHandler}
+        >
          </TextField>
          <IconButton id="button"
          type="submit" 
@@ -34,7 +35,7 @@ export default function MediaControlCard() {
         </IconButton>
       </div>
       <div>
-      <iframe src={searchKey} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe src={searchKey} width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     </div>
     );

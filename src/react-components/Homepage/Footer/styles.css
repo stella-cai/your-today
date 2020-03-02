@@ -19,5 +19,6 @@
     background-color: DodgerBlue;
     position: absolute;
     bottom: 0px;
-    width: 100%
+    left: 0px;
+    right: 0px;
   }
