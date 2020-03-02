@@ -26,6 +26,17 @@ class Register extends React.Component {
         }
     }
 
+    submitRegister = (e) => {
+        e.preventDefault()
+        console.log('submit button clicked')
+        if (document.querySelector('#password').value == document.querySelector("#verify-password").value) {
+            console.log("registration success")
+            setTimeout(window.location.replace(".././Login"), 2000)
+        } else {
+            
+        }
+    }
+
     render() {
         return (
             <Grid container component="main" style={this.rootStyle()}>
@@ -82,7 +93,8 @@ class Register extends React.Component {
                                 </Grid>
                             </Grid>
                             <Button ype="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }} href="./../Login">Go Back</Button>
-                            <Button type="submit" variant="contained" color="primary" id="signup-button" style={{ float: "right", marginBottom: "20px" }}>
+                            <Button type="submit" variant="contained" color="primary" id="signup-button" style={{ float: "right", marginBottom: "20px" }}
+                                onClick={this.submitRegister}>
                                 Sign Up
                             </Button>
                         </form>
