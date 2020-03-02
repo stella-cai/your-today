@@ -4,7 +4,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import { spacing } from '@material-ui/system';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import "./styles.css"
 
 class LoginRight extends React.Component {
     paperStyle = () => {
@@ -20,13 +22,16 @@ class LoginRight extends React.Component {
     formStyle = () => {
         return {
             marginTop: '10px',
+            flex: 1
         }
     }
 
     buttonStyle = () => {
         return {
             justifyContent: 'center',
-            margin: '20px',
+            marginTop: '20px',
+            marginBottom: '20px',
+            textAlign: 'center',
         }
     }
 
@@ -39,9 +44,13 @@ class LoginRight extends React.Component {
                 <form noValidate style={this.formStyle()}>
                     <TextField id="username" variant="outlined" margin="normal" label="Username" required fullWidth />
                     <TextField id="password" variant="outlined" margin="normal" label="Password" required fullWidth />
-                    <Button type="submit" variant="contained" color="primary" style={this.buttonStyle()}>
-                        Start Your Day Here
-                    </Button>
+                    
+                    <span id='button-container'>
+                        <Button id='login-button' type="submit" variant="contained" color="primary" style={this.buttonStyle()}>
+                            Start Your Day Here
+                        </Button>
+                    </span>
+                    
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
@@ -49,7 +58,7 @@ class LoginRight extends React.Component {
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="./../Register" variant="body2">
                                 {"Register"}
                             </Link>
                         </Grid>
