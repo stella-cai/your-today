@@ -52,7 +52,7 @@ class LoginRight extends React.Component {
                 </Typography>
                 <form noValidate style={this.formStyle()}>
                     <TextField id="username" variant="outlined" margin="normal" label="Username" required fullWidth />
-                    <TextField id="password" variant="outlined" margin="normal" label="Password" required fullWidth />
+                    <TextField id="password" variant="outlined" margin="normal" label="Password" type="password" required fullWidth />
                     
                     <span id='button-container'>
                         <Button id='login-button' type="submit" variant="contained" color="primary" 
