@@ -81,10 +81,10 @@ class Register extends React.Component {
                                     <br />
                                 </Grid>
                             </Grid>
-                            <Button ype="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }}>Go Back</Button>
+                            <Button ype="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }} href="./../Login">Go Back</Button>
                             <Button type="submit" variant="contained" color="primary" id="signup-button" style={{ float: "right", marginBottom: "20px" }}>
                                 Sign Up
-                    </Button>
+                            </Button>
                         </form>
                     </Container>    
                 </Grid>
