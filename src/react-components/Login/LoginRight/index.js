@@ -71,7 +71,7 @@ class LoginRight extends React.Component {
 
 
         return (
-            <div style={this.paperStyle()}>
+            <div style={this.paperStyle()} id="loginRight">
                 <Typography component="h1" variant="h5">
                     Welcome Back!
                 </Typography>

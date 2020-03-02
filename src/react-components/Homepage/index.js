@@ -1,11 +1,12 @@
 /*  Full Queue component */
 // Everything here was previously in the App component.
 import React from "react";
-
+import Container from '@material-ui/core/Container';
 // Importing components
 import Header from "./Header";
 import MainContent from "./MainContent";
 import Footer from "./Footer";
+
 
 class Homepage extends React.Component {
   ///  React 'state'.
@@ -38,14 +39,16 @@ class Homepage extends React.Component {
   // JSX a lot.
   render() {
     return (
-      <div className="App">
-        {/* Header component with text props. */}
-        <Header
-          username="Pan Chen"
-        />
-        <MainContent></MainContent>
-        <Footer></Footer>
-      </div>
+      <Container>
+        <div className="App">
+          {/* Header component with text props. */}
+          <Header
+            username="Pan Chen"
+          />
+          <MainContent></MainContent>
+          {/* <Footer></Footer> */}
+        </div>
+      </Container>
     );
   }
 }
