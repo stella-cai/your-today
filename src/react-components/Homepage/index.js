@@ -5,6 +5,7 @@ import React from "react";
 // Importing components
 import Header from "./Header";
 import MainContent from "./MainContent";
+import Footer from "./Footer";
 
 class Homepage extends React.Component {
   ///  React 'state'.
@@ -43,6 +44,7 @@ class Homepage extends React.Component {
           username="Pan Chen"
         />
         <MainContent></MainContent>
+        <Footer></Footer>
       </div>
     );
   }
