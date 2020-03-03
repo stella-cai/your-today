@@ -8,22 +8,41 @@ export default class Timer extends Component {
         super(props);
         this.state = {
             countdown: 0,
+            disabled: false
         };
     }
 
    startTimer = event => {
         event.preventDefault();
-        console.log("click")
-        const total = document.querySelector("#time-input").value;
+        const btn =  document.querySelector("#start-timer-btn");
+
+        const total = document.querySelector("#time-input").value * 60;
         console.log(total)
-        for(let k = 1; k <=total; k++) {
+        for(let k = 1; k <= total; k++) {
+            // console.log(this.state)
             setTimeout(() => {
-                this.setState({countdown: total-k});
+                this.setState({countdown: total-k,
+                                disabled: true});
                 console.log(this.state.countdown);
+                // console.log(this.state);
                 if(k == total) {
                     console.log("finish");
+                    this.setState({
+                        countdown: 0,
+                        disabled: false
+                    })
                 }
-              }, k * 1000)
+            }, k * 1000)
+        }
+        
+    }
+
+    styleTime = () => {
+        return {
+            min: Math.floor(this.state.countdown/60) < 10 ? ("0" + Math.floor(this.state.countdown/60)) 
+                : Math.floor(this.state.countdown/60),
+            sec: (this.state.countdown % 60) < 10 ? ("0" + this.state.countdown % 60)
+                : this.state.countdown % 60
         }
     }
 
@@ -33,19 +52,15 @@ export default class Timer extends Component {
             <div style={{textAlign: 'center'}}>
             <h3 id="input-prompt"> How long do you want to study for?</h3>
                 <div>
-                    <TextField id="time-input" type="number"/>
-                    <Button id="start-timer-btn" variant="outlined" onClick={this.startTimer}>START</Button>
+                    <TextField id="time-input" placeholder="minutes" type="number"/>
+                    <Button id="start-timer-btn" variant="outlined" onClick={this.startTimer} disabled={this.state.disabled}>
+                        START
+                    </Button>
                 </div>
                 <br/>
                 <div id="timer">
-                    <h3>timer: {this.state.countdown}</h3>
+                    <h3>{this.styleTime().min} : {this.styleTime().sec} </h3>
                 </div>
-            {/* <div>
-                { minutes === 0 && seconds === 0
-                    ? <h1>Busted!</h1>
-                    : <h1>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
-                }
-            </div> */}
             </div>
         )
     }
