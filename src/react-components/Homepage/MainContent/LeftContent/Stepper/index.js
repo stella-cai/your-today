@@ -8,8 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Todos from "../Todos"
 import Button from '@material-ui/core/Button';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,18 +46,42 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    backgroundColor: 'rgba(52, 52, 52, 0.2)',
+    borderRadius: '2%',
+    minHeight: '380px',
+    position: 'relative'
   },
   tabs: {
       backgroundColor: "rgba(0, 0, 0, 0.0)",
       width: "auto",
   },
   tab: {
-    height: "25px",
-    width: "25px",
+    height: "10px",
+    width: "10px",
     backgroundColor: "#bbb",
     borderRadius: "50%",
     display: "inline-block",
+    margin: '5px',
   },
+  keepFooter: {
+    position: 'absolute',
+    bottom: '0px',
+    width: '100%'
+  },
+  footer: {
+    width: '50%',
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: theme.spacing(2),
+  },
+  dots: {
+    display: 'inline-flex',
+    alignItems: 'center', 
+  },
+  button: {
+  //  color: '#bbb' 
+  }
 }));
 
 export default function SimpleTabs() {
@@ -86,13 +110,13 @@ export default function SimpleTabs() {
 
   const handleSwitch = (event, index) => {
     //type = 0 => Move Left, type = 1 => Move Right
-    event.target.style.backgroundColor = "#000";
+    // event.target.style.backgroundColor = "#000";
     setValue(index);
 };
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.tabs}>
+      {/* <AppBar position="static" className={classes.tabs}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -102,9 +126,9 @@ export default function SimpleTabs() {
           <Tab label="2" {...a11yProps(1)} />
           <Tab label="3" {...a11yProps(2)} />
         </Tabs>
-      </AppBar>
+      </AppBar> */}
       <TabPanel value={value} index={0}>
-        <Todos></Todos>
+        <Todos className={classes.todos}></Todos>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Focus
@@ -112,11 +136,17 @@ export default function SimpleTabs() {
       <TabPanel value={value} index={2}>
         Email
       </TabPanel>
-      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIcon></ArrowBackIcon></Button>
-      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIcon></ArrowForwardIcon></Button>
+      <div className={classes.keepFooter}>
+      <div className={classes.footer}>
+      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
+      <span className={classes.dots}>
       <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
       <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
       <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
+      </span>
+      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
+      </div>
+      </div>
     </div>
   );
 }

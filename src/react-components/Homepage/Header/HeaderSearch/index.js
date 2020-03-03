@@ -12,7 +12,8 @@ import {toggleDrawer} from '../../../../actions/drawers'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: '2px 4px',
+    // padding: '2px 4px',
+    width: '100%',
     display: 'flex',
     alignItems: 'center'
   },

@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
     width: "150px",
     color: 'white'
   },
+  todos: {
+    backgroundColor: "rgba(52, 52, 52, 0.5)"
+  }
 }));
 
 export default function DatePickers() {
@@ -75,6 +78,7 @@ export default function DatePickers() {
       <TodoList
       todos = {todos}
       setTodos = {setTodos}
+      classname={classes.todos}
       >
       </TodoList>
     </>
