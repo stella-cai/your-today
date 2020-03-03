@@ -105,7 +105,7 @@ export default function Admin() {
       ]
   )
 
-  // All Active Accounts.
+  // Feedback.
   const [feedback, setFeedback] = React.useState(
     [
         {id: 1, user: "Jack", content: "Good"},
@@ -118,6 +118,11 @@ export default function Admin() {
     const newData = [...data];
     newData.splice(index, 1);
     console.log(newData)
+    method(newData);
+}
+
+const addToScreen = (method, data, item) => {
+    const newData = [...data, item];
     method(newData);
 }
 
@@ -146,10 +151,10 @@ export default function Admin() {
           <Request removeFromScreen = {removeFromScreen} request={request} setRequest={setRequest}></Request>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Frozen removeFromScreen = {removeFromScreen} frozen={frozen} setFrozen={setFrozen}></Frozen>
+        <Frozen all={all} setAll = {setAll} addToScreen = {addToScreen} removeFromScreen = {removeFromScreen} frozen={frozen} setFrozen={setFrozen}></Frozen>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <All removeFromScreen = {removeFromScreen} all={all} setAll={setAll}></All>
+        <All frozen={frozen} setFrozen = {setFrozen} addToScreen = {addToScreen} removeFromScreen = {removeFromScreen} all={all} setAll={setAll}></All>
       </TabPanel>
       <TabPanel value={value} index={4}>
         <Feedback removeFromScreen = {removeFromScreen} feedback={feedback} setFeedback={setFeedback}></Feedback>
