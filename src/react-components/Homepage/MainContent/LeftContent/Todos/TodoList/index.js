@@ -6,17 +6,30 @@ import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
+    // todoForm: {
+    //   padding: '0',
+    //   margin: '0',
+    //   display: 'none',
+    // },
     todoForm: {
-      padding: '0',
-      margin: '0',
-      display: 'none',
-    },
-    todoList: {
+        // marginLeft: '2%',
+        // marginRight: '2%',
+        // width: '100%',
         display: "block",
         overflowY: "scroll",
         overflowX: "hidden",
-        maxHeight: "50%",//need to do a more careful calculation
+        maxHeight: "40%",//need to do a more careful calculation
+
     },
+    todoList: {
+        marginLeft: '2%',
+        // marginRight: '2%',
+        // width: '100%',
+        display: "block",
+        overflowY: "scroll",
+        overflowX: "hidden",
+
+    }
   }));
 
 export default function TodoList(props) {
@@ -44,22 +57,11 @@ export default function TodoList(props) {
     return (
         <>
         <Table className={classes.todoList}>
-            <TodoForm
-                className={classes.todoForm}
-                todos = {todos}
-                add = {add}
-            />
+            <TodoForm className={classes.todoList} todos = {todos} add = {add}/>
 
-            <TableBody className="todoList">
+            <TableBody className={classes.todoList}>
                 {todos.map((todo, index) => (
-                <Todo
-                key={uid(todo)}
-                todo = {todo}
-                todos = {todos}
-                index = {index}
-                complete = {complete}
-                >
-                </Todo>
+                <Todo key={uid(todo)} todo = {todo} todos = {todos} index = {index} complete = {complete} />
                 ))}
             </TableBody>
         </Table>

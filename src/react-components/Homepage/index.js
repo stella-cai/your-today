@@ -11,17 +11,6 @@ import Footer from "./Footer";
 
 
 class Homepage extends React.Component {
-  ///  React 'state'.
-  // Allows us to keep track of changing data in this component.
-  state = {
-    studentName: "",
-    studentCourse: "",
-    students: [
-      { name: "James", course: "CSC108" },
-      { name: "Kate", course: "CSC309" }
-    ]
-  };
-
   // Generic handler for whenever we type in an input box.
   // We change the state for the particular property bound to the textbox from the event.
   handleInputChange = event => {
@@ -56,16 +45,27 @@ class Homepage extends React.Component {
   // JSX a lot.
   render() {
     return (
-      <Box style={this.bgStyle()} width='100%' height='100%'>
+      <div style={this.bgStyle()}>
         <div className="App">
+<<<<<<< HEAD
           {/* Header component with text props. */}
           <Header
             username="Pan Chen"
           />
           <MainContent style={this.mainStyle()}></MainContent>
           {/* <Footer></Footer> */}
+=======
+          <Box style={{position:'relative', padding:"30px"}}>
+            {/* Header component with text props. */}
+            <Header
+              username="Pan Chen"
+            />
+            <MainContent></MainContent>
+            {/* <Footer></Footer> */}
+          </Box>
+>>>>>>> 8b2bd5be9a0c407947d40d45bc521085650c277e
         </div>
-      </Box>
+      </div>
     );
   }
 }

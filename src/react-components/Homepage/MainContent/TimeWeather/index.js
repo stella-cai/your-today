@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   timeWeather: {
     textAlign: 'center'
@@ -17,14 +17,19 @@ const useStyles = makeStyles(theme => ({
   weatherIcon: {
     display: 'inline-block',
     fontSize: '70px',
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
+    color: "white"
   },
   weatherValue: {
     display: 'inline-block',
-    fontSize: '37px'
+    fontSize: '37px',
+    fontWeight: 'bold'
   },
+
   time: {
-    fontSize: '60px'
+    fontFamily: 'Advent Pro',
+    fontSize: '70px',
+    color: "white"
   },
   weather: {
     display: 'inline-block'
