@@ -5,12 +5,15 @@ import MostVisitedLinks from './MostVisitedLinks'
 const useStyles = makeStyles(theme => ({
     root: {
         width: "30%",
-        display: "inline-block",
+        display: "flex",
         margin: "0",
         padding: "0",
         position: "absolute",
-        top: "80px",
-        right: "0px"
+        top: "100px",
+        right: "30px",
+        flexDirection: "column",
+        justifyContent: "space-around",
+        alignItems: 'stretch',
     }
 }));
 export default function RightContent() {

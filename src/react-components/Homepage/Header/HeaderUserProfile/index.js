@@ -8,6 +8,7 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 import Button from '@material-ui/core/Button';
 import {toggleDrawer} from '../../../../actions/drawers'
 import UserStateModal from './UserStateModal'
+import FaceIcon from '@material-ui/icons/Face';
 
 export default function HeaderUserProfile(props) {
   const username = props.username;
@@ -52,7 +53,7 @@ export default function HeaderUserProfile(props) {
       </UserStateModal>
       <Grid container direction="row" alignItems="center">
         <Grid item>
-          <Button onClick={()=>toggleDrawer('left', state, setState, true)}><Avatar>H</Avatar></Button>
+          <Button onClick={()=>toggleDrawer('left', state, setState, true)}><Avatar><FaceIcon /></Avatar></Button>
         </Grid>
         <Grid item className="profile-username">{username}</Grid>
         <Button onClick={handleOpen}>{getProfileState()}</Button>
