@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%'
   },
   button: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     color: "white",
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
@@ -55,6 +55,7 @@ export default function TemporaryDrawer(props) {
         <Button variant="outlined" size="large" className={classes.button}>Favourite Links</Button>
         <Button variant="outlined" size="large" className={classes.button}>Manage Features</Button>
         <Button variant="outlined" size="large" className={classes.button}>Contact us</Button>
+        <Button variant="outlined" size="large" className={classes.button}>Log Out</Button>
       </div>
     </div>
   );
