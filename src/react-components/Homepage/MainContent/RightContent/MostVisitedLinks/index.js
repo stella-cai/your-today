@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    width: "80%",
+    width: "100%",
     height: "auto",
     flexWrap: 'wrap',
     justifyContent: 'space-between',

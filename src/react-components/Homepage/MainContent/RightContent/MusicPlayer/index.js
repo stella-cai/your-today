@@ -7,24 +7,43 @@ import InputBase from '@material-ui/core/InputBase';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    width: "80%",
-    height: "auto",
+    width: "100%",
+    flexWarp: 'wrap',
+    alignItems: 'baseline',
+  },
+
+  inputBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: "100%",
+    height: "auto%",
     marginTop: theme.spacing(2),
     // marginBottom: theme.spacing(2),
     backgroundColor: 'rgba(52, 52, 52, 0.1)',
 
   },
 
+  player: {
+    width: "100%",
+    height: "auto",
+    marginTop: theme.spacing(2),
+    alignItems: 'stretch',
+    alignSelf: 'stretch'
+  },
+
   input: {
     width: '90%',
     color: "white",
     lineHeight: 'normal',
-    flexGrow: 2
+    flexGrow: 4
   },
 
   button: {
@@ -40,7 +59,9 @@ const useStyles = makeStyles(theme => ({
   },
 
   frame: {
-    width: "100%"
+    width: "100%",
+    height: "100%",
+    minHeight: "330px"
   }
 
 }))
@@ -63,9 +84,9 @@ export default function MediaControlCard() {
     a = e.target.value
   }
   return (
-    <div id="spotify">
+    <div id="spotify" className={classes.root}>
       <div id="playlistInputContainer">
-        <Paper component="form" className={classes.root}>
+        <Paper component="form" className={classes.inputBox}>
           {/* <TextField id="input" variant="outlined"
             placeholder="Spotify Playlist URL"
             onChange={searchTextChangeHandler}
@@ -82,9 +103,9 @@ export default function MediaControlCard() {
         </Paper>
       </div>
       <div>
-      <Paper component="form" className={classes.root}>
-        <iframe src={searchKey} className={classes.frame} height="340" frameborder="0" allowtransparency="true" allow="encrypted-media" style={{ borderRadius: "2%" }}></iframe>
-      </Paper>
+      <Box className={classes.player}>
+        <iframe src={searchKey} className={classes.frame} frameborder="0" allowtransparency="true" allow="encrypted-media" style={{ borderRadius: "2%" }}></iframe>
+      </Box>
       </div>
     </div>
   );

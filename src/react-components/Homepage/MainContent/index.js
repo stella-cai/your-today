@@ -14,6 +14,8 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'stretch'
   },
 }));
 
