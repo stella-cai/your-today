@@ -12,8 +12,9 @@ const useStyles = makeStyles(theme => ({
     //   display: 'none',
     // },
     todoForm: {
-        marginLeft: '2%',
-        marginRight: '2%',
+        // marginLeft: '2%',
+        // marginRight: '2%',
+        // width: '100%',
         display: "block",
         overflowY: "scroll",
         overflowX: "hidden",
@@ -22,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     },
     todoList: {
         marginLeft: '2%',
-        marginRight: '2%',
+        // marginRight: '2%',
+        // width: '100%',
         display: "block",
         overflowY: "scroll",
         overflowX: "hidden",
@@ -55,7 +57,7 @@ export default function TodoList(props) {
     return (
         <>
         <Table className={classes.todoList}>
-            <TodoForm className={classes.todoForm} todos = {todos} add = {add}/>
+            <TodoForm className={classes.todoList} todos = {todos} add = {add}/>
 
             <TableBody className={classes.todoList}>
                 {todos.map((todo, index) => (

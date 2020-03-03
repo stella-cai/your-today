@@ -29,29 +29,34 @@ const InputField = withStyles({
 
 const useStyles = makeStyles(theme => ({
     what: {
-        width: "70%",
+        width: "30%",
         wordBreak: "break-all",
+        borderBottom: 'none'
     },
     when: {
-        width: "20%",
+        width: "10%",
+        maxWidth: "50%",
         wordBreak: "break-all",
+        paddingRight: "0",
+        borderBottom: 'none'
     },
     buttonCell: {
-        width: "10%",
+        width: "10%" ,
+        borderBottom: 'none'
     },
     whatInput: {
         width: "100%",
         wordBreak: "break-all",
     },
     whenInput: {
-        width: "100%",
         wordBreak: "break-all",
+        width: '80%'
     },
     input: {
         color: 'white'
     },
     button: {
-        float: "right",
+        // float: "right",
         color: "white",
         border: "0.5px solid white",
         backgroundColor: 'rgba(52, 52, 52, 0.3)',
