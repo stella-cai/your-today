@@ -43,7 +43,7 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'rgba(52, 52, 52, 0.2)',
+    // backgroundColor: 'rgba(52, 52, 52, 0.2)',
     borderRadius: '2%',
     minHeight: '380px',
     maxHeight: '30%',
