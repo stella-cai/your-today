@@ -142,7 +142,7 @@ export default function SimpleTabs() {
           <Todos className={classes.todos}></Todos>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Email></Email>
+          <Email ></Email>
         </TabPanel>
       </div>
       <div className={classes.keepFooter}>

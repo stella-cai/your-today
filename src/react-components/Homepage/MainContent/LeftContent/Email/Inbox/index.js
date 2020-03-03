@@ -106,7 +106,7 @@ export default function Inbox() {
   const [newEmails, setNewEmails] = useState(
     [
       {sender:"Edward Feng", date:"Mon 2020-03-02 9:05 PM", content:'Hey Pan and Team 27,\nSorry for the late reply and thank you for the email.\nYes, your current way of using Weather and Music Player APIs is fair! I will keep that in mind when marking your submission for Phase 1.\nGood luck! And remember to save some time to convert your project to React.\nBest regards,\nEdward Feng'},
-      {sender:"csc301", date:"2020-03-03 6:30 PM", content:"Hi"},
+      {sender:"Edward Feng", date:"Mon 2020-03-02 9:05 PM", content:'Hey Pan and Team 27,\nSorry for the late reply and thank you for the email.\nYes, your current way of using Weather and Music Player APIs is fair! I will keep that in mind when marking your submission for Phase 1.\nGood luck! And remember to save some time to convert your project to React.\nBest regards,\nEdward Feng'},
       {sender:"csc301", date:"2020-03-03 6:30 PM", content:"Hi"},
       {sender:"csc209", date:"2020-03-03 6:30 PM", content:"Hi"},
     ]
@@ -117,6 +117,8 @@ export default function Inbox() {
 
   return (
     <div className={classes.root}>
+      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
+      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
       {
       newEmails.map((newEmail, index) => (
           <TabPanel value={value} index={index}>
@@ -126,8 +128,6 @@ export default function Inbox() {
         }
       <div className={classes.keepFooter}>
       <div className={classes.footer}>
-      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
-      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
       </div>
       </div>
     </div>

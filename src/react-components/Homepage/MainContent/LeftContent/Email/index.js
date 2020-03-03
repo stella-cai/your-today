@@ -5,10 +5,10 @@ import Compose from './Compose'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    width: "100%"
   },
     inbox: {
-        width: "50%"
     }
 }));
 
