@@ -41,13 +41,23 @@ function a11yProps(index) {
   };
 }
 
+
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
   tabs: {
-      backgroundColor: "rgba(0, 0, 0, 0.0)"
-  }
+      backgroundColor: "rgba(0, 0, 0, 0.0)",
+      width: "auto",
+  },
+  tab: {
+    height: "25px",
+    width: "25px",
+    backgroundColor: "#bbb",
+    borderRadius: "50%",
+    display: "inline-block",
+  },
 }));
 
 export default function SimpleTabs() {
@@ -63,7 +73,7 @@ export default function SimpleTabs() {
       if(value == 0 && type == 0) {
           alert("Already Leftmost")
       }
-      else if (value == 3 && type == 1) {
+      else if (value == 2 && type == 1) {
         alert("Already Rightmost")
       }
       else if(type == 0) {
@@ -74,6 +84,12 @@ export default function SimpleTabs() {
       }
   };
 
+  const handleSwitch = (event, index) => {
+    //type = 0 => Move Left, type = 1 => Move Right
+    event.target.style.backgroundColor = "#000";
+    setValue(index);
+};
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.tabs}>
@@ -82,9 +98,9 @@ export default function SimpleTabs() {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab className={classes.tab} label="1" {...a11yProps(0)} />
-          <Tab className={classes.tab} label="2" {...a11yProps(1)} />
-          <Tab className={classes.tab} label="3" {...a11yProps(2)} />
+          <Tab label="1" {...a11yProps(0)} />
+          <Tab label="2" {...a11yProps(1)} />
+          <Tab label="3" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -98,6 +114,9 @@ export default function SimpleTabs() {
       </TabPanel>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIcon></ArrowBackIcon></Button>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIcon></ArrowForwardIcon></Button>
+      <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
+      <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
+      <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
     </div>
   );
 }
