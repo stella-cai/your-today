@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         margin: "0",
         padding: "0",
         position: "absolute",
-        top: "80px",
+        top: "100px",
         right: "30px",
         flexDirection: "column",
         justifyContent: "space-around",

@@ -13,10 +13,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'stretch',
     width: "100%",
     flexWarp: 'wrap',
-    alignItems: 'baseline',
   },
 
   inputBox: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     alignItems: 'center',
     width: "100%",
-    height: "auto%",
+    height: "auto",
     marginTop: theme.spacing(2),
     // marginBottom: theme.spacing(2),
     backgroundColor: 'rgba(52, 52, 52, 0.1)',
