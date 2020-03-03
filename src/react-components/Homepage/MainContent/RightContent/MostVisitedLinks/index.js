@@ -58,7 +58,7 @@ export default function MediaControlCard() {
     <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href="http://acorn.utoronto.ca"> Acorn</Button>
     <Button variant="outlined" size="large" className={classes.buttonRight} startIcon={<LinkIcon />} href="http://q.utoronto.ca"> Quercus</Button>
     <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href="https://web.cs.toronto.edu"> UofT CS</Button>
-    <Button variant="outlined" size="large" className={classes.buttonRight} startIcon={<LinkIcon />} href="http://acorn.utoronto.ca"> Acorn</Button>
+    <Button variant="outlined" size="large" className={classes.buttonRight} startIcon={<LinkIcon />} href="https://leetcode.com"> LeetCode</Button>
     </div>
   )
 }
