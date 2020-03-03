@@ -47,14 +47,6 @@ class Homepage extends React.Component {
     return (
       <div style={this.bgStyle()}>
         <div className="App">
-<<<<<<< HEAD
-          {/* Header component with text props. */}
-          <Header
-            username="Pan Chen"
-          />
-          <MainContent style={this.mainStyle()}></MainContent>
-          {/* <Footer></Footer> */}
-=======
           <Box style={{position:'relative', padding:"30px"}}>
             {/* Header component with text props. */}
             <Header
@@ -63,7 +55,6 @@ class Homepage extends React.Component {
             <MainContent></MainContent>
             {/* <Footer></Footer> */}
           </Box>
->>>>>>> 8b2bd5be9a0c407947d40d45bc521085650c277e
         </div>
       </div>
     );
