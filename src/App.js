@@ -11,6 +11,7 @@ import Loading from './react-components/Loading';
 import Login from './react-components/Login';
 import Register from './react-components/Register';
 import RecoverPassword from './react-components/RecoverPassword';
+import AdminPage from './react-components/AdminPage'
 
 class App extends React.Component {
 
@@ -36,6 +37,8 @@ class App extends React.Component {
                             (<Register state={this.state}/>)}/>
             <Route exact path='/recoverpassword' render={() => 
                             (<RecoverPassword state={this.state}/>)}/>
+            <Route exact path='/adminpage' render={() => 
+                            (<AdminPage state={this.state}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>

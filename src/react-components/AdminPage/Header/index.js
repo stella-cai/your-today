@@ -2,8 +2,6 @@ import React from "react";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
-import './styles.css';
-
 export default function Buttons() {
     return (
         <ButtonGroup color = "primary" aria-label="Admin Header">
