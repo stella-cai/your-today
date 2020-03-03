@@ -91,6 +91,7 @@ const useStyles = makeStyles(theme => ({
 export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [countdown, setCountdown] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -132,7 +133,7 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar> */}
       <TabPanel value={value} index={0}>
-        <Focus></Focus>
+        <Focus setCountdown = {setCountdown} countdown = {countdown}></Focus>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <Todos className={classes.todos}></Todos>
