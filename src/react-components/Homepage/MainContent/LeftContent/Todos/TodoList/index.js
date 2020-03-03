@@ -17,8 +17,8 @@ const useStyles = makeStyles(theme => ({
         // width: '100%',
         display: "block",
         overflowY: "scroll",
-        overflowX: "hidden",
-        maxHeight: "40%",//need to do a more careful calculation
+        // overflowX: "hidden",
+        // maxHeight: "40%",//need to do a more careful calculation
 
     },
     todoList: {
@@ -26,9 +26,12 @@ const useStyles = makeStyles(theme => ({
         // marginRight: '2%',
         // width: '100%',
         display: "block",
-        overflowY: "scroll",
-        overflowX: "hidden",
-
+        // overflowX: "hidden",
+    },
+    todoListTable: {
+        display: "block",
+        overflowY: "auto",
+        maxHeight: "260px",
     }
   }));
 
@@ -59,7 +62,7 @@ export default function TodoList(props) {
         <Table className={classes.todoList}>
             <TodoForm className={classes.todoList} todos = {todos} add = {add}/>
 
-            <TableBody className={classes.todoList}>
+            <TableBody className={classes.todoListTable}>
                 {todos.map((todo, index) => (
                 <Todo key={uid(todo)} todo = {todo} todos = {todos} index = {index} complete = {complete} />
                 ))}
