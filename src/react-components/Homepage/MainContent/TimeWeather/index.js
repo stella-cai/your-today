@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
   weatherValue: {
     display: 'inline-block',
     fontSize: '37px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
 
   time: {
@@ -83,7 +84,7 @@ export default function TimeWeather() {
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
         <AcUnitIcon className = {classes.weatherIcon}></AcUnitIcon>
-        <div className = {classes.weatherValue}>{temp}&#176;</div>
+        <div className = {classes.weatherValue}>{temp}&#176;C</div>
       </Grid>
       <div className={classes.time}>
         {hour} : {minute}
