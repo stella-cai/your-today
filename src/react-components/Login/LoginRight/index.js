@@ -92,7 +92,7 @@ class LoginRight extends React.Component {
                     
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link href="./../RecoverPassword" variant="body2">
                                 Forgot password?
                             </Link>
                         </Grid>
