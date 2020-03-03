@@ -5,9 +5,16 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
 
+const useStyles = makeStyles(theme => ({
+  newEmailContent: {
+    overflowY: "auto",
+    maxHeight: "200px",
+    width: "100%"
+  }
+}));
 
 export default function Inbox(props) {
-
+  const classes = useStyles();
 const sender = props.sender
 const date = props.date
 const content = props.content
@@ -16,7 +23,7 @@ return (
 <div class="newEmail">
   <p>{sender}</p>
   <p>{date}</p>
-  <p style={{whiteSpace: 'pre-line'}}>{content}</p>
+  <p className= {classes.newEmailContent} style={{whiteSpace: 'pre-line'}}>{content}</p>
   <Button variant="contained" color="primary" href="https://www.gmail.com">
         Read More Details on Gmail
       </Button>
