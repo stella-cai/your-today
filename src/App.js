@@ -12,6 +12,7 @@ import Login from './react-components/Login';
 import Register from './react-components/Register';
 import RecoverPassword from './react-components/RecoverPassword';
 import AdminPage from './react-components/AdminPage'
+import Admin from './react-components/Admin'
 
 class App extends React.Component {
 
@@ -39,6 +40,8 @@ class App extends React.Component {
                             (<RecoverPassword state={this.state}/>)}/>
             <Route exact path='/adminpage' render={() => 
                             (<AdminPage state={this.state}/>)}/>
+            <Route exact path='/admin' render={() => 
+                            (<Admin state={this.state}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
