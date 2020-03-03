@@ -11,17 +11,6 @@ import Footer from "./Footer";
 
 
 class Homepage extends React.Component {
-  ///  React 'state'.
-  // Allows us to keep track of changing data in this component.
-  state = {
-    studentName: "",
-    studentCourse: "",
-    students: [
-      { name: "James", course: "CSC108" },
-      { name: "Kate", course: "CSC309" }
-    ]
-  };
-
   // Generic handler for whenever we type in an input box.
   // We change the state for the particular property bound to the textbox from the event.
   handleInputChange = event => {

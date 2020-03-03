@@ -13,29 +13,36 @@ const useStyles = makeStyles(theme => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: "310px",
+    width: "80%",
     height: "auto",
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    // marginBottom: theme.spacing(2),
     backgroundColor: 'rgba(52, 52, 52, 0.1)',
 
   },
 
   input: {
-    width: '80%',
+    width: '90%',
     color: "white",
-    lineHeight: 'normal'
+    lineHeight: 'normal',
+    flexGrow: 2
   },
 
   button: {
+    width: '10%',
     float: 'right',
-    color: "white"
+    color: "white",
+    flexGlow: 1
   },
 
   divider: {
     height: 28,
     margin: 4,
   },
+
+  frame: {
+    width: "100%"
+  }
 
 }))
 
@@ -76,7 +83,9 @@ export default function MediaControlCard() {
         </Paper>
       </div>
       <div>
-        <iframe src={searchKey} width="320" height="340" frameborder="0" allowtransparency="true" allow="encrypted-media" style={{ borderRadius: "2%" }}></iframe>
+      <Paper component="form" className={classes.root}>
+        <iframe src={searchKey} className={classes.frame} height="340" frameborder="0" allowtransparency="true" allow="encrypted-media" style={{ borderRadius: "2%" }}></iframe>
+      </Paper>
       </div>
     </div>
   );

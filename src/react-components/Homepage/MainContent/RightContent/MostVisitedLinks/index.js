@@ -15,25 +15,29 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "320px"
+    display: 'flex',
+    alignItems: 'center',
+    width: "80%",
+    height: "auto",
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
 
   buttonLeft: {
-    marginTop: "20px",
-    float: "left",
+    marginTop: theme.spacing(2),
     color: "white",
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    width: "150px"
+    width: "48%",
   },
 
   buttonRight: {
-    marginTop: "20px",
+    marginTop: theme.spacing(2),
     float: "right",
     color: "white",
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    width: "150px"
+    width: "48%"
   },
 
   list: {
