@@ -2,6 +2,8 @@
 // Everything here was previously in the App component.
 import React from "react";
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+
 // Importing components
 import Header from "./Header";
 import MainContent from "./MainContent";
@@ -10,7 +12,7 @@ import Footer from "./Footer";
 
 class Homepage extends React.Component {
   ///  React 'state'.
-  // Allows us to keep track of chagning data in this component.
+  // Allows us to keep track of changing data in this component.
   state = {
     studentName: "",
     studentCourse: "",
@@ -35,11 +37,19 @@ class Homepage extends React.Component {
     });
   };
 
+  bgStyle = () => {
+    return {
+      backgroundImage: 'url(https://source.unsplash.com/T_Qe4QlMIvQ)',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover'
+    }
+  }
+
   // Each section of the Queue now has its own componenet, cleaning up the
   // JSX a lot.
   render() {
     return (
-      <Container>
+      <Box style={this.bgStyle()} width='100%' height='100%'>
         <div className="App">
           {/* Header component with text props. */}
           <Header
@@ -48,7 +58,7 @@ class Homepage extends React.Component {
           <MainContent></MainContent>
           {/* <Footer></Footer> */}
         </div>
-      </Container>
+      </Box>
     );
   }
 }
