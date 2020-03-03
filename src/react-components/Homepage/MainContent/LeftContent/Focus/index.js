@@ -13,8 +13,9 @@ import Timer from "./Timer"
 //     countDown = this.countDown.bind(this),
 // }
 
-export default function Focus() {
-
+export default function Focus(props) {
+    const countdown = props.countdown;
+    const setCountdown = props.setCountdown;
     return (
         <Container id="focus-page">
             <div id="focus-ready">
@@ -25,7 +26,7 @@ export default function Focus() {
                     <TextField id="time-input" type="number"/>
                     <Button id="start-timer-btn" variant="outlined" onClick={this.startTimer}>START</Button>
                 </div> */}
-            <Timer />
+            <Timer setCountdown = {setCountdown} countdown = {countdown} />
             {/* <br/>
                 <div id="timer">
                     timer: {this.state.time}
