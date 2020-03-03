@@ -5,6 +5,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import "./styles.css"
+import Timer from "./Timer"
+
+// const timer = {
+//     timeRemaining : 0,
+//     startTimer = this.startTimer.bind(this),
+//     countDown = this.countDown.bind(this),
+// }
 
 class Focus extends React.Component{
 
@@ -15,31 +22,32 @@ class Focus extends React.Component{
                 <div id="focus-ready">
                     The key to success is to focus on goals, not obstacles.
                 </div>
-                <h3 id="input-prompt"> How long do you want to study for?</h3>
+                {/* <h3 id="input-prompt"> How long do you want to study for?</h3>
                 <div>
                     <TextField id="time-input" type="number"/>
                     <Button id="start-timer-btn" variant="outlined" onClick={this.startTimer}>START</Button>
-                </div>
-                <br/>
+                </div> */}
+                <Timer/>
+                {/* <br/>
                 <div id="timer">
                     timer: {this.state.time}
-                </div>
+                </div> */}
             </Container>
         )
     }
 
-    startTimer() {
-        console.log("clicked");
-        const time = document.querySelector("#time-input").nodeValue;
-        this.setState({
-            timeRemaining: time
-        })
-       while(this.state.timeRemaining > 0){
-           setInterval(function() {
-               this.state.timeRemaining--;
-           }, 1000)
-       }
-    }
+    // startTimer() {
+    //     console.log("clicked");
+    //     const time = document.querySelector("#time-input").value;
+    //     console.log(time)
+    //     timer.timeRemaining = time;
+    // //     this.timer.timeRemaining = time;
+    //    if(timer.timeRemaining > 0){
+    //        setInterval(function() {
+    //            timer.timeRemaining--;
+    //        }, 1000)
+    //    }
+    // }
 }
 
 export default Focus;
