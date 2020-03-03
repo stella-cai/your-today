@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     borderRadius: '2%',
     minHeight: '380px',
-    maxHeight: '30%',
+    maxHeight: '400px',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexgrow: 5,
-    height: '85%'
+    height: '60%'
   },
   tab: {
     height: "10px",

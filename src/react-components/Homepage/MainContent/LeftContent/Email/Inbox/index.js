@@ -38,48 +38,21 @@ function a11yProps(index) {
   };
 }
 
-
-
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    // backgroundColor: 'rgba(52, 52, 52, 0.2)',
     borderRadius: '2%',
-    minHeight: '380px',
+    // minHeight: '380px',
     maxHeight: '30%',
     position: 'relative',
-    width: "50%",
-    display: "inline-block",
+    width: "65%",
+    flexDirection: 'column',
     wordBreak: "break-all",
+    alignItems: 'flex-start',
+    padding: '0'
   },
-  tabs: {
-      backgroundColor: "rgba(0, 0, 0, 0.0)",
-      width: "auto",
-  },
-  tab: {
-    height: "10px",
-    width: "10px",
-    backgroundColor: "#bbb",
-    borderRadius: "50%",
-    display: "inline-block",
-    margin: '5px',
-  },
-  keepFooter: {
-    position: 'absolute',
-    bottom: '0px',
-    width: '100%'
-  },
-  footer: {
-    width: '50%',
-    margin: '0 auto',
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: theme.spacing(2),
-  },
-  dots: {
-    display: 'inline-flex',
-    alignItems: 'center', 
-  },
+  buttons: {
+    float:'right'
+  }
 }));
 
 export default function Inbox() {
@@ -112,24 +85,23 @@ export default function Inbox() {
     ]
     );
 
-
-
-
   return (
-    <div className={classes.root}>
-      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
-      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
+    <div className={classes.root} id='email-root'>
+      <div className={classes.buttons}>
+      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color: 'white'}} /></Button>
+      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'white'}} /></Button>
+      </div>
       {
       newEmails.map((newEmail, index) => (
           <TabPanel value={value} index={index}>
             <NewEmail sender = {newEmail.sender} date = {newEmail.date} content = {newEmail.content}> </NewEmail>
           </TabPanel>
         ))
-        }
-      <div className={classes.keepFooter}>
-      <div className={classes.footer}>
-      </div>
-      </div>
+      }
+      {/* <div className={classes.keepFooter}>
+      <div className={classes.footer}> */}
+      {/* </div>
+      </div> */}
     </div>
   );
 }
