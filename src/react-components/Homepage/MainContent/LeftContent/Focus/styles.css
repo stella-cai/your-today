@@ -21,20 +21,22 @@
     color: #ffffff;
 }
 
-#time-input {
+/* #time-input {
     color: #000;
     height: 25px;
-    background-color: #ffffff;
+    background-color: rgba(52, 52, 52);
+    color: 'white';
     border-radius: 1%;
-}
+} */
 
 #start-timer-btn {
     color: #ffffff;
-    margin-left: 5px;
+    margin-left: 1px;
     border-color: #ffffff;
 }
 
 #timer {
+    font-size: 24px;
     color: white;
 }
 
