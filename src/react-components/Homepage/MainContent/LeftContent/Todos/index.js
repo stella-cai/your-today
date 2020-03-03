@@ -29,9 +29,9 @@ export default function DatePickers() {
   //const todoList = getTodosFromServer(Today)
   const [todos, setTodos] = useState(
     [
-      {what:"csc309", when:"6:30 PM"},
-      {what:"csc301", when:"9:00 PM"},
-      {what:"MAT235", when:"Before I go to bed."},
+      {what:"CSC309", when:"2020-03-01 10:10 AM"},
+      {what:"CSC301", when:"2020-03-01 10:10 AM"},
+      {what:"MAT235", when:"2020-03-01 10:10 AM"},
     ]
 );
 
@@ -43,17 +43,17 @@ export default function DatePickers() {
     if(day === "2020-03-03") {
       setTodos(
         [
-          {what:"Go Shopping to buy milk.", when:"6:30 PM"},
-          {what:"Watch The Town", when:"9:00 PM"},
+          {what:"Go Shopping to buy milk.", when:"2020-03-03 10:10 AM"},
+          {what:"Watch The Town", when:"2020-03-03 10:10 AM"},
         ]
       )
     }
     else if (day === "2020-03-01") {
       setTodos(
         [
-          {what:"CSC309", when:"6:30 PM"},
-          {what:"CSC301", when:"9:00 PM"},
-          {what:"MAT235", when:"Before I go to bed."},
+          {what:"CSC309", when:"2020-03-01 10:10 AM"},
+          {what:"CSC301", when:"2020-03-01 10:10 AM"},
+          {what:"MAT235", when:"2020-03-01 10:10 AM"},
         ]
       )
     }
