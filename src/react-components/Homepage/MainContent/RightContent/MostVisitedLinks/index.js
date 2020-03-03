@@ -21,6 +21,8 @@ const useStyles = makeStyles(theme => ({
     height: "auto",
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    maxHeight: '120px',
+    overflowY: 'auto'
   },
 
   buttonLeft: {
