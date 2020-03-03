@@ -16,12 +16,14 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'stretch',
     }
 }));
-export default function RightContent() {
+export default function RightContent(props) {
     const classes = useStyles();
+    const links = props.links;
+    const setLinks = props.setLinks;
     return(
         <div className={classes.root}>
             <MusicPlayer></MusicPlayer>
-            <MostVisitedLinks></MostVisitedLinks>
+            <MostVisitedLinks links = {links} setLinks = {setLinks}></MostVisitedLinks>
         </div>
     );
 }

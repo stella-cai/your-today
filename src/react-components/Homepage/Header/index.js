@@ -24,6 +24,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Header(props) {
+  const links = props.links;
+  const setLinks = props.setLinks;
   const classes = useStyles()
   const username = props.username;
   const [state, setState] = useState({
@@ -33,8 +35,9 @@ export default function Header(props) {
 
   return (
     <div className={classes.root}>
+      
       <LeftDrawer state={state} setState={setState}></LeftDrawer>
-      <RightDrawer state={state} setState={setState}></RightDrawer>
+      <RightDrawer state={state} setState={setState} links = {links} setLinks = {setLinks}></RightDrawer>
       <HeaderUserProfile className={classes.profile} username={username} state={state} setState={setState} />
       {/* <Box className={classes.box}> */}
       <HeaderSearch state={state} setState={setState} />

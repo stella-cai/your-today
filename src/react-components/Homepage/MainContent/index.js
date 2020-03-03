@@ -20,17 +20,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function MainContent() {
+export default function MainContent(props) {
   const classes = useStyles();
-  //const [searchKey, setSearchKey] = useState('');
-
+  const links = props.links;
+  const setLinks = props.setLinks;
 
   return (
   <Grid className={classes.root}>
       <TimeWeather></TimeWeather>
       <div className={classes.content}>
       <LeftContent></LeftContent>
-      <RightContent></RightContent>
+      <RightContent links = {links} setLinks = {setLinks}></RightContent>
     </div>
   </Grid>
   );

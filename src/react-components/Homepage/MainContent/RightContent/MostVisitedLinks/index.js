@@ -51,14 +51,18 @@ const useStyles = makeStyles(theme => ({
     width: "10px"
   }
 }));
-export default function MediaControlCard() {
+export default function MediaControlCard(props) {
   const classes = useStyles();
+  const links = props.links;
+  const setLinks = props.setLinks;
   return (
     <div className={classes.root}>
-    <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href="http://acorn.utoronto.ca"> Acorn</Button>
-    <Button variant="outlined" size="large" className={classes.buttonRight} startIcon={<LinkIcon />} href="http://q.utoronto.ca"> Quercus</Button>
-    <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href="https://web.cs.toronto.edu"> UofT CS</Button>
-    <Button variant="outlined" size="large" className={classes.buttonRight} startIcon={<LinkIcon />} href="https://leetcode.com"> LeetCode</Button>
+      {
+      links.map((link, index) => (
+      <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href={link.url}>{link.name}
+      </Button>
+      ))
+      }
     </div>
   )
 }
