@@ -7,11 +7,11 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     what: {
-      width: "70%",
+      width: "60%",
       wordBreak: "break-all",
     },
     when: {
-        width: "20%",
+        width: "30%",
         wordBreak: "break-all",
     },
     finish: {
