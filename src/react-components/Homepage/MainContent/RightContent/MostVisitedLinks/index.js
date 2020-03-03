@@ -15,7 +15,7 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "300px"
+    width: "320px"
   },
 
   buttonLeft: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    width: "140px"
+    width: "150px"
   },
 
   buttonRight: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    width: "140px"
+    width: "150px"
   },
 
   list: {

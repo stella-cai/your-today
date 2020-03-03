@@ -50,16 +50,18 @@ class Homepage extends React.Component {
   // JSX a lot.
   render() {
     return (
-      <Box style={this.bgStyle()} width='100%' height='100%'>
+      <div style={this.bgStyle()}>
         <div className="App">
-          {/* Header component with text props. */}
-          <Header
-            username="Pan Chen"
-          />
-          <MainContent></MainContent>
-          {/* <Footer></Footer> */}
+          <Box style={{position:'relative', padding:"30px"}}>
+            {/* Header component with text props. */}
+            <Header
+              username="Pan Chen"
+            />
+            <MainContent></MainContent>
+            {/* <Footer></Footer> */}
+          </Box>
         </div>
-      </Box>
+      </div>
     );
   }
 }
