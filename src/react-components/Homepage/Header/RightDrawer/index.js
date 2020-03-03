@@ -65,7 +65,7 @@ export default function TemporaryDrawer(props) {
       <div className={classes.buttons}>
         <Button variant="outlined" size="large" className={classes.button}>WallPaper</Button>
         <Button onClick={handleOpen} variant="outlined" size="large" className={classes.button}>Favourite Links</Button>
-        <Button variant="outlined" size="large" className={classes.button}>Manage Features</Button>
+        {/* <Button variant="outlined" size="large" className={classes.button}>Manage Features</Button> */}
         <Button variant="outlined" size="large" className={classes.button}>Contact us</Button>
         <Button variant="outlined" size="large" className={classes.button}>Log Out</Button>
       </div>
