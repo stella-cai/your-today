@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Stepper from "./Stepper";
 import Todos from "./Todos";
+import Focus from "./Focus";
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,6 +27,8 @@ export default function LeftContent() {
     return(
         <div className = {classes.root}>
             <div className ={classes.leftContent}>
+                {/* <Todos></Todos> */}
+                <Focus></Focus>
                 
                 <Stepper></Stepper>
             </div>

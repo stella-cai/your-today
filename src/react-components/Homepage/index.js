@@ -35,6 +35,12 @@ class Homepage extends React.Component {
     }
   }
 
+  mainStyle = () => {
+    return {
+      width: '100%'
+    }
+  }
+
   // Each section of the Queue now has its own componenet, cleaning up the
   // JSX a lot.
   render() {
