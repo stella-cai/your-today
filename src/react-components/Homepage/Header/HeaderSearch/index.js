@@ -5,10 +5,9 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {toggleDrawer} from '../../../../actions/drawers'
-
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,7 +66,7 @@ export default function HeaderSearch(props) {
       aria-label="menu"
       onClick={()=>toggleDrawer('right', state, setState, true)}
       >
-        <MenuIcon />
+        <SettingsIcon />
       </IconButton>
     </Paper>
   </div>
