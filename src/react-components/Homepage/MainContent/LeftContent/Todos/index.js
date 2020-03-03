@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: "150px",
+    color: 'white'
   },
 }));
 
@@ -45,8 +46,8 @@ export default function DatePickers() {
     else if (day === "2020-03-01") {
       setTodos(
         [
-          {what:"csc309", when:"6:30 PM"},
-          {what:"csc301", when:"9:00 PM"},
+          {what:"CSC309", when:"6:30 PM"},
+          {what:"CSC301", when:"9:00 PM"},
           {what:"MAT235", when:"Before I go to bed."},
         ]
       )
@@ -59,7 +60,7 @@ export default function DatePickers() {
   return (
     <>
       <form className={classes.container} noValidate>
-        <TextField
+        {/* <TextField
           id="date"
           label="Date"
           type="date"
@@ -69,7 +70,7 @@ export default function DatePickers() {
             shrink: true,
           }}
           onChange={(e)=>getTodos(e.target.value)}
-        />
+        /> */}
       </form>
       <TodoList
       todos = {todos}

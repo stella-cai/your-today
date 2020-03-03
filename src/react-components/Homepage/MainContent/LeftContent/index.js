@@ -9,6 +9,9 @@ const useStyles = makeStyles(theme => ({
         display: "inline-block",
         margin: "0",
         padding: "0",
+        backgroundColor: 'rgba(52, 52, 52, 0.4)',
+        borderRadius: '2%',
+        marginTop: theme.spacing(2)
     },
     leftContent: {
         marginRight: "25px",
