@@ -72,7 +72,30 @@ export default function TodoForm(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        add(what, when);
+        console.log(when)
+        let year = when.substr(0, when.indexOf('-')); 
+        if(year.length > 4) {
+            alert("Please input a year in range(1000, 9999)")
+            return
+        }
+        let month = when.slice(5, 7)
+        let day = when.slice(8, 10)
+        let hour = parseInt(when.slice(11, 13))
+        let minute = when.slice(14, 16)
+        let formattedWhen = ""
+        
+        if (hour> 12) {
+            console.log(hour)
+            hour = hour - 12
+            if(hour<10) {
+                hour = "0" + hour
+            }
+            formattedWhen = year + "-" + month + "-" + day + " " + hour + ":" + minute + " PM"
+        }
+        else {
+            formattedWhen = year + "-" + month + "-" + day + " " + hour + ":" + minute + " AM"
+        }
+        add(what, formattedWhen);
         setWhat("");
         setWhen("");
     }
@@ -121,6 +144,7 @@ export default function TodoForm(props) {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    max="9999-12-31T23:59"
                 />
             </TableCell>
             <TableCell className={classes.buttonCell} component="th" scope="row">
