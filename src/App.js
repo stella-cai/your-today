@@ -9,7 +9,8 @@ import './App.css';
 import Homepage from './react-components/Homepage';
 import Loading from './react-components/Loading';
 import Login from './react-components/Login';
-import Register from './react-components/Register'
+import Register from './react-components/Register';
+import RecoverPassword from './react-components/RecoverPassword';
 
 class App extends React.Component {
 
@@ -33,6 +34,8 @@ class App extends React.Component {
                             (<Login state={this.state}/>)}/>
             <Route exact path='/register' render={() => 
                             (<Register state={this.state}/>)}/>
+            <Route exact path='/recoverpassword' render={() => 
+                            (<RecoverPassword state={this.state}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
