@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +30,13 @@ const useStyles = makeStyles(theme => ({
   button: {
     float: 'right',
     color: "white"
-  }
+  },
+
+  divider: {
+    height: 28,
+    margin: 4,
+  },
+
 }))
 
 export default function MediaControlCard() {
@@ -59,7 +66,8 @@ export default function MediaControlCard() {
         >
          </TextField> */}
           <InputBase className={classes.input} placeholder="  Spotify Playlist URL" onChange={searchTextChangeHandler} />
-          <Button type="submit" className={classes.button} aria-label="search">
+          <Divider className={classes.divider} orientation="vertical" />
+          <Button type="submit" className={classes.button} aria-label="search" onClick={searchButtonClickHandler}>
             Go
           </Button>
           {/* <IconButton id="button" type="submit"  aria-label="search" onClick={searchButtonClickHandler}>
