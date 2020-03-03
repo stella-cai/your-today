@@ -10,6 +10,7 @@ import Todos from "../Todos"
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Focus from ".././Focus";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,6 +50,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'rgba(52, 52, 52, 0.2)',
     borderRadius: '2%',
     minHeight: '380px',
+    maxHeight: '30%',
     position: 'relative'
   },
   tabs: {
@@ -132,10 +134,10 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar> */}
       <TabPanel value={value} index={0}>
-        <Todos className={classes.todos}></Todos>
+        <Focus></Focus>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Focus
+      <Todos className={classes.todos}></Todos>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Email

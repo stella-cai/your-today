@@ -13,28 +13,26 @@ import Timer from "./Timer"
 //     countDown = this.countDown.bind(this),
 // }
 
-class Focus extends React.Component{
+export default function Focus() {
 
-    render() {
-
-        return (
-            <Container id="focus-page">
-                <div id="focus-ready">
-                    The key to success is to focus on goals, not obstacles.
+    return (
+        <Container id="focus-page">
+            <div id="focus-ready">
+                The key to success is to focus on goals, not obstacles.
                 </div>
-                {/* <h3 id="input-prompt"> How long do you want to study for?</h3>
+            {/* <h3 id="input-prompt"> How long do you want to study for?</h3>
                 <div>
                     <TextField id="time-input" type="number"/>
                     <Button id="start-timer-btn" variant="outlined" onClick={this.startTimer}>START</Button>
                 </div> */}
-                <Timer/>
-                {/* <br/>
+            <Timer />
+            {/* <br/>
                 <div id="timer">
                     timer: {this.state.time}
                 </div> */}
-            </Container>
-        )
-    }
+        </Container>
+    )
+}
 
     // startTimer() {
     //     console.log("clicked");
@@ -48,6 +46,4 @@ class Focus extends React.Component{
     //        }, 1000)
     //    }
     // }
-}
 
-export default Focus;

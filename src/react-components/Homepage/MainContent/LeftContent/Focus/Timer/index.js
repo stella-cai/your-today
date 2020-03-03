@@ -30,7 +30,7 @@ export default class Timer extends Component {
     render() {
         // const { minutes, seconds } = this.state
         return (
-            <div>
+            <div style={{textAlign: 'center'}}>
             <h3 id="input-prompt"> How long do you want to study for?</h3>
                 <div>
                     <TextField id="time-input" type="number"/>
@@ -38,7 +38,7 @@ export default class Timer extends Component {
                 </div>
                 <br/>
                 <div id="timer">
-                    timer: {this.state.countdown}
+                    <h3>timer: {this.state.countdown}</h3>
                 </div>
             {/* <div>
                 { minutes === 0 && seconds === 0

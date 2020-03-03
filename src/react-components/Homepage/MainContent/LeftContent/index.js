@@ -28,7 +28,7 @@ export default function LeftContent() {
         <div className = {classes.root}>
             <div className ={classes.leftContent}>
                 {/* <Todos></Todos> */}
-                <Focus></Focus>
+                {/* <Focus></Focus> */}
                 
                 <Stepper></Stepper>
             </div>

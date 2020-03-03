@@ -3,7 +3,7 @@ body {
   }
 .sidenav {
     height: 100%;
-    width: 18%;
+    width: 20%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -12,24 +12,7 @@ body {
     overflow-x: hidden;
     padding-top: 20px;
   }
-
-  .button {
-    padding: 15px 25px;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: brown;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    padding: 26px 28px 26px 36px;
-    margin: 46px 48px 46px 81px;
-  }
-  
-  .button:hover {background-color: #3e8e41}
-  
+    
   .button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;

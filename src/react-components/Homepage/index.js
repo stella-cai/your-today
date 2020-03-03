@@ -47,7 +47,7 @@ class Homepage extends React.Component {
     return (
       <div style={this.bgStyle()}>
         <div className="App">
-          <Box style={{position:'relative', padding:"50px"}}>
+          <Box style={{position:'relative', paddingLeft:"50px", paddingRight: '50px', paddingTop:'30px'}}>
             {/* Header component with text props. */}
             <Header
               username="John Doe"
