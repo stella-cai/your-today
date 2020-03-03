@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Todos from "../Todos"
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import Focus from ".././Focus";
-import Email from ".././Email";
+import NewEmail from './NewEmail'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,7 +47,10 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '2%',
     minHeight: '380px',
     maxHeight: '30%',
-    position: 'relative'
+    position: 'relative',
+    width: "50%",
+    display: "inline-block",
+    wordBreak: "break-all",
   },
   tabs: {
       backgroundColor: "rgba(0, 0, 0, 0.0)",
@@ -79,29 +80,18 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-flex',
     alignItems: 'center', 
   },
-  button: {
-  //  color: '#bbb' 
-  },
-  todos: {
-    margin: '0 auto',
-    padding: '0'
-  }
 }));
 
-export default function SimpleTabs() {
+export default function Inbox() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   const handleMove = (event, type) => {
       //type = 0 => Move Left, type = 1 => Move Right
       if(value == 0 && type == 0) {
           alert("Already Leftmost")
       }
-      else if (value == 2 && type == 1) {
+      else if (value == newEmails.length - 1 && type == 1) {
         alert("Already Rightmost")
       }
       else if(type == 0) {
@@ -112,42 +102,31 @@ export default function SimpleTabs() {
       }
   };
 
-  const handleSwitch = (event, index) => {
-    //type = 0 => Move Left, type = 1 => Move Right
-    // event.target.style.backgroundColor = "#000";
-    setValue(index);
-};
+  //Later we will get the New Unread Email From Gmail
+  const [newEmails, setNewEmails] = useState(
+    [
+      {sender:"Edward Feng", date:"Mon 2020-03-02 9:05 PM", content:'Hey Pan and Team 27,\nSorry for the late reply and thank you for the email.\nYes, your current way of using Weather and Music Player APIs is fair! I will keep that in mind when marking your submission for Phase 1.\nGood luck! And remember to save some time to convert your project to React.\nBest regards,\nEdward Feng'},
+      {sender:"csc301", date:"2020-03-03 6:30 PM", content:"Hi"},
+      {sender:"csc301", date:"2020-03-03 6:30 PM", content:"Hi"},
+      {sender:"csc209", date:"2020-03-03 6:30 PM", content:"Hi"},
+    ]
+    );
+
+
+
 
   return (
     <div className={classes.root}>
-      {/* <AppBar position="static" className={classes.tabs}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-        >
-          <Tab label="1" {...a11yProps(0)} />
-          <Tab label="2" {...a11yProps(1)} />
-          <Tab label="3" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar> */}
-      <TabPanel value={value} index={0}>
-        <Focus></Focus>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      <Todos className={classes.todos}></Todos>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <Email></Email>
-      </TabPanel>
+      {
+      newEmails.map((newEmail, index) => (
+          <TabPanel value={value} index={index}>
+            <NewEmail sender = {newEmail.sender} date = {newEmail.date} content = {newEmail.content}> </NewEmail>
+          </TabPanel>
+        ))
+        }
       <div className={classes.keepFooter}>
       <div className={classes.footer}>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
-      <span className={classes.dots}>
-      <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
-      <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
-      <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
-      </span>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
       </div>
       </div>
