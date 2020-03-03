@@ -12,7 +12,10 @@ import Alert from '@material-ui/lab/Alert';
 class LoginRight extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {redirectCountDown: 3};
+        this.state = {
+            redirectCountDown: 3,
+            login: false
+        };
     }
 
     
@@ -48,10 +51,11 @@ class LoginRight extends React.Component {
     submitLogin = event => {
         event.preventDefault();
         console.log("clicked")
-        if( document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
+        if( !this.state.login && document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
             console.log("logging in");
             document.querySelector("#wrongPassword").style.display = "none"
             document.querySelector("#loginSuccess").style.display = "block"
+            this.setState({login: true});
             for(let k = 1; k <=3; k++) {
                 setTimeout(() => {
                     this.setState({redirectCountDown: 3-k});
@@ -61,7 +65,7 @@ class LoginRight extends React.Component {
                   }, 1000*k)
             }
         }
-        else{
+        else if (!this.state.login){
             console.log("wrongPassword")
             document.querySelector("#wrongPassword").style.display = "block"
         }
