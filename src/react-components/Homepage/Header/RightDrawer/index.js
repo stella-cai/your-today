@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
-    width: "90%",
+    width: "80%",
 
   }
 }))

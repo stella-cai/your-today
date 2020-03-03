@@ -10,8 +10,8 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -24,11 +24,34 @@ const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
     width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
+    backgroundColor: 'rgba(52, 52, 52)',
+    border: '0',
+    borderRadius: '2%',
+    // border: '2px solid #000',
+    // boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
+  root: {
+  },
+  title: {
+    color: 'white',
+    fontSize: "25px",
+    margin: theme.spacing(2)
+  },
+  buttons: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%'
+  },
+  button: {
+    color: 'white'
+  }
 }));
 
 export default function UserStateModal(props) {
@@ -53,9 +76,11 @@ export default function UserStateModal(props) {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">What is your Mood?</h2>
-          <Button onClick={() => updatePropfileState(0)}><SentimentVerySatisfiedIcon className="profile-status"></SentimentVerySatisfiedIcon></Button>
-          <Button onClick={() => updatePropfileState(1)}><SentimentVeryDissatisfiedIcon className="profile-status"></SentimentVeryDissatisfiedIcon></Button>
+          <h2 id="simple-modal-title" className={classes.title}>What is your Mood?</h2>
+          <div className={classes.buttons}>
+          <Button onClick={() => updatePropfileState(0)} className={classes.button}><SentimentVerySatisfiedIcon className="profile-status"></SentimentVerySatisfiedIcon></Button>
+          <Button onClick={() => updatePropfileState(1)} className={classes.button}><SentimentVeryDissatisfiedIcon className="profile-status"></SentimentVeryDissatisfiedIcon></Button>
+          </div>
           <UserStateModal />
         </div>
       </Modal>
