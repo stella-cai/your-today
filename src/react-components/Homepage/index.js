@@ -41,7 +41,8 @@ class Homepage extends React.Component {
     return {
       backgroundImage: 'url(https://source.unsplash.com/T_Qe4QlMIvQ)',
       backgroundPosition: 'center',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      height: '100vh'
     }
   }
 
