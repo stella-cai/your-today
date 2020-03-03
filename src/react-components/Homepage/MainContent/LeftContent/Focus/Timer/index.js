@@ -41,7 +41,6 @@ export default function Timer(props) {
     const [disabled, setDisabled] = React.useState(false);
     const startTimer = event => {
         event.preventDefault();
-        const btn = document.querySelector("#start-timer-btn");
         const total = document.querySelector("#time-input").value * 60;
         for (let k = 1; k <= total; k++) {
             // console.log(this.state)

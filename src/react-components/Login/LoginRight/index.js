@@ -4,10 +4,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Alert from '@material-ui/lab/Alert';
 import { spacing } from '@material-ui/system';
 import { browserHistory } from 'react-router';
 import "./styles.css"
-import Alert from '@material-ui/lab/Alert';
 
 class LoginRight extends React.Component {
     constructor(props) {
