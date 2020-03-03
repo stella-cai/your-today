@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 
     },
     todoList: {
-        marginLeft: '2%',
+        // marginLeft: '2%',
         // marginRight: '2%',
         // width: '100%',
         display: "block",

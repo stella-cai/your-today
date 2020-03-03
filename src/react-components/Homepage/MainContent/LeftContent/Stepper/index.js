@@ -45,28 +45,41 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'rgba(52, 52, 52, 0.2)',
+    backgroundColor: 'rgba(52, 52, 52, 0.3)',
     borderRadius: '2%',
     minHeight: '380px',
     maxHeight: '30%',
-    position: 'relative'
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start'
   },
+  // tabs: {
+  //     backgroundColor: "rgba(0, 0, 0, 0.0)",
+  //     width: "auto",
+  // },
   tabs: {
-      backgroundColor: "rgba(0, 0, 0, 0.0)",
-      width: "auto",
+    padding: '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexgrow: 5,
+    height: '85%'
   },
   tab: {
     height: "10px",
     width: "10px",
-    backgroundColor: "#bbb",
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
     borderRadius: "50%",
-    display: "inline-block",
+    display: "inlineblock",
     margin: '5px',
   },
   keepFooter: {
     position: 'absolute',
+    height: '15%',
     bottom: '0px',
-    width: '100%'
+    width: '100%', 
+    flexgrow: 1
   },
   footer: {
     width: '50%',
@@ -77,10 +90,10 @@ const useStyles = makeStyles(theme => ({
   },
   dots: {
     display: 'inline-flex',
-    alignItems: 'center', 
+    alignItems: 'center',
   },
   button: {
-  //  color: '#bbb' 
+    //  color: '#bbb' 
   },
   todos: {
     margin: '0 auto',
@@ -98,59 +111,50 @@ export default function SimpleTabs() {
   };
 
   const handleMove = (event, type) => {
-      //type = 0 => Move Left, type = 1 => Move Right
-      if(value == 0 && type == 0) {
-          alert("Already Leftmost")
-      }
-      else if (value == 2 && type == 1) {
-        alert("Already Rightmost")
-      }
-      else if(type == 0) {
-          setValue(value - 1);
-      }
-      else if(type == 1) {
-          setValue(value + 1);
-      }
+    //type = 0 => Move Left, type = 1 => Move Right
+    if (value == 0 && type == 0) {
+      alert("Already Leftmost")
+    }
+    else if (value == 2 && type == 1) {
+      alert("Already Rightmost")
+    }
+    else if (type == 0) {
+      setValue(value - 1);
+    }
+    else if (type == 1) {
+      setValue(value + 1);
+    }
   };
 
   const handleSwitch = (event, index) => {
     //type = 0 => Move Left, type = 1 => Move Right
     // event.target.style.backgroundColor = "#000";
     setValue(index);
-};
+  };
 
   return (
     <div className={classes.root}>
-      {/* <AppBar position="static" className={classes.tabs}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-        >
-          <Tab label="1" {...a11yProps(0)} />
-          <Tab label="2" {...a11yProps(1)} />
-          <Tab label="3" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar> */}
-      <TabPanel value={value} index={0}>
-        <Focus setCountdown = {setCountdown} countdown = {countdown}></Focus>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      <Todos className={classes.todos}></Todos>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <Email></Email>
-      </TabPanel>
-      <div className={classes.keepFooter}>
-      <div className={classes.footer}>
-      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
-      <span className={classes.dots}>
-      <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
-      <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
-      <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
-      </span>
-      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'rgba(52, 52, 52)'}} /></Button>
+      <div className={classes.tabs}>
+        <TabPanel value={value} index={0}>
+          <Focus setCountdown={setCountdown} countdown={countdown}></Focus>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <Todos className={classes.todos}></Todos>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <Email></Email>
+        </TabPanel>
       </div>
+      <div className={classes.keepFooter}>
+        <div className={classes.footer}>
+          <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{ color: 'rgba(52, 52, 52, 0.5)' }} /></Button>
+          <span className={classes.dots}>
+            <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
+            <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
+            <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
+          </span>
+          <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{ color: 'rgba(52, 52, 52, 0.5)' }} /></Button>
+        </div>
       </div>
     </div>
   );
