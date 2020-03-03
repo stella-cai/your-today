@@ -9,6 +9,26 @@ import Button from '@material-ui/core/Button';
 import {toggleDrawer} from '../../../../actions/drawers'
 import UserStateModal from './UserStateModal'
 import FaceIcon from '@material-ui/icons/Face';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '20%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    marginLeft: theme.spacing(1),
+    // marginRight: theme.spacing(1)
+  },
+
+  username: {
+    fontSize: "20px", 
+    color: "white", 
+    justifyContent: 'center', 
+    alignSelf: 'center',
+  },
+  }));
 
 export default function HeaderUserProfile(props) {
   const username = props.username;
@@ -18,6 +38,8 @@ export default function HeaderUserProfile(props) {
   //const [state, setState] = useState(props.state);
 
   const [userStateModalOpen, setUserStateModalOpen] = useState(false);
+
+  const classes = useStyles()
 
   const getProfileState = () => 
   {
@@ -51,15 +73,13 @@ export default function HeaderUserProfile(props) {
       setProfileState = {setProfileState} 
       >
       </UserStateModal>
-      <Grid container direction="row" alignItems="center">
-        <Grid item>
+      <Box className={classes.root}>
+        {/* <Grid item>
           <Button onClick={()=>toggleDrawer('left', state, setState, true)}><Avatar><FaceIcon /></Avatar></Button>
-        </Grid>
-        <Grid item className="profile-username">{username}</Grid>
-        <Button onClick={handleOpen}>{getProfileState()}</Button>
-        <Grid item>
-        </Grid>
-      </Grid>
+        </Grid> */}
+        <Box item className="profile-username" className={classes.username}>{username}</Box>
+        <Button onClick={handleOpen} style={{color: "white"}}>{getProfileState()}</Button>
+      </Box>
     </div>
   )
 
