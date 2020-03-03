@@ -81,6 +81,10 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
   //  color: '#bbb' 
+  },
+  todos: {
+    margin: '0 auto',
+    padding: '0'
   }
 }));
 

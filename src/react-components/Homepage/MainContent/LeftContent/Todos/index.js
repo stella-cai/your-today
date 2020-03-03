@@ -9,13 +9,15 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    // marginLeft: theme.spacing(1),
+    // marginRight: theme.spacing(1),
     width: "150px",
     color: 'white'
   },
   todos: {
-    backgroundColor: "rgba(52, 52, 52, 0.5)"
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
+    margin: '0 auto',
+    padding: '0'
   }
 }));
 
