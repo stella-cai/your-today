@@ -11,7 +11,6 @@ import Loading from './react-components/Loading';
 import Login from './react-components/Login';
 import Register from './react-components/Register';
 import RecoverPassword from './react-components/RecoverPassword';
-import AdminPage from './react-components/AdminPage'
 import Admin from './react-components/Admin'
 
 class App extends React.Component {

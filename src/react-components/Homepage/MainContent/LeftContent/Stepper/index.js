@@ -152,9 +152,9 @@ export default function SimpleTabs() {
         <div className={classes.footer}>
           <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button} /></Button>
           <span className={classes.dots}>
-            <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
-            <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
-            <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
+            <span className={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
+            <span className={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
+            <span className={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
           </span>
           <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button} /></Button>
         </div>
