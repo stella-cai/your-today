@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     todoListTable: {
         display: "block",
         overflowY: "auto",
-        maxHeight: "260px",
+        maxHeight: "200px",
     }
   }));
 
