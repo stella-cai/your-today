@@ -1,5 +1,27 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+    text: {
+        color: 'white',
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2)
+    },
+    buttons: {
+        float: 'right'
+    },
+    button: {
+        color: 'white',
+        border: '1px solid white',
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1)
+    },
+}))
+
+
 export default function Frozen(props) {
+    const classes = useStyles()
     const frozen = props.frozen
     const setFrozen = props.setFrozen
     const removeFromScreen = props.removeFromScreen
@@ -18,9 +40,13 @@ export default function Frozen(props) {
     }
 
     return (
-        <div>
+        <div className={classes.root}>
                 {frozen.map((f, index) => (
-                <p key = {index}>{f.user} {f.reason} {f.date} <button onClick = {()=> unFrozen(index, f.id)}>Unfrozen</button> <button onClick = {()=> ignore(index, f.id)}>Ignore</button></p>
+                <p className={classes.text} key = {index}>{f.user}: {f.reason} {f.date} 
+                <span className={classes.buttons}>
+                <Button size='small' className={classes.button} onClick = {()=> unFrozen(index, f.id)}>Unfreeze</Button>
+                <Button size='small' className={classes.button} onClick = {()=> ignore(index, f.id)}>Ignore</Button>
+                    </span></p>
                 ))}
         </div>
     )

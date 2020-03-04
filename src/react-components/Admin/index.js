@@ -24,7 +24,10 @@ export default function Admin() {
       backgroundImage: 'url(https://source.unsplash.com/T_Qe4QlMIvQ)',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      height: '100vh'
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%'
     }
   }
 
@@ -33,7 +36,7 @@ export default function Admin() {
       <div className="App">
         <Box style={{position:'relative', paddingLeft:"50px", paddingRight: '50px', paddingTop:'30px'}}>
           <Header
-            username="John Doe"
+            username="Admin"
             links = {links} 
             setLinks = {setLinks}
           />

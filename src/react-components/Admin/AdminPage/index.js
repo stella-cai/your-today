@@ -58,13 +58,21 @@ function LinkTab(props) {
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/T_Qe4QlMIvQ)',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    height: '100vh'
+    justifyContent: 'center'
   },
+  
+  tabs: {
+    // width: '80%',
+    marginLeft: '50px',
+    marginRight: '50px',
+    marginTop: '30px'
+  },
+  tab: {
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    height: '450px',
+    overflowY: 'auto'
+  }
 }));
 
 export default function AdminPage() {
@@ -88,7 +96,7 @@ export default function AdminPage() {
   // Recent Creation.
   const [request, setRequest] = React.useState(
     [
-      { id: 3, user: "Lucy", reason: "I forgot my passowrd", date: "2020-03-03" },
+      { id: 3, user: "Lucy", reason: "I forgot my password", date: "2020-03-03" },
       { id: 4, user: "Maria", reason: "I registered my account last month.", date: "2020-03-02" },
     ]
   )
@@ -151,19 +159,19 @@ export default function AdminPage() {
             <LinkTab label="Feedbacks" href="/" {...a11yProps(4)} />
           </Tabs>
         </AppBar>
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0} className={classes.tab}>
           <Creation removeFromScreen={removeFromScreen} creation={creation} setCreation={setCreation}></Creation>
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={1} className={classes.tab}>
           <Request removeFromScreen={removeFromScreen} request={request} setRequest={setRequest}></Request>
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={2} className={classes.tab}>
           <Frozen all={all} setAll={setAll} addToScreen={addToScreen} removeFromScreen={removeFromScreen} frozen={frozen} setFrozen={setFrozen}></Frozen>
         </TabPanel>
-        <TabPanel value={value} index={3}>
+        <TabPanel value={value} index={3} className={classes.tab}>
           <All frozen={frozen} setFrozen={setFrozen} addToScreen={addToScreen} removeFromScreen={removeFromScreen} all={all} setAll={setAll}></All>
         </TabPanel>
-        <TabPanel value={value} index={4}>
+        <TabPanel value={value} index={4} className={classes.tab}>
           <Feedback removeFromScreen={removeFromScreen} feedback={feedback} setFeedback={setFeedback}></Feedback>
         </TabPanel>
       </Box>
