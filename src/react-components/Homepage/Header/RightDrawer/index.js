@@ -66,6 +66,7 @@ export default function TemporaryDrawer(props) {
         setLinkSettingOpen(true);
         break;
       case("wallpaperBtn"):
+        console.log("click wallpaper")
         setWallpaperSettingOpen(true);
         break;
       case("contactBtn"):
@@ -88,11 +89,11 @@ export default function TemporaryDrawer(props) {
         <span className={classes.header}>Setting</span>
       </div>
       <div className={classes.buttons}>
-        <Button variant="outlined" size="large" id="wallpaper-btn" className={classes.button}>WallPaper</Button>
-        <Button onClick={handleOpen} variant="outlined" id="links-btn" size="large" className={classes.button}>Favourite Links</Button>
+        <Button onClick={handleOpen} variant="outlined" size="large" id="wallpaperBtn" className={classes.button}>Wallpaper</Button>
+        <Button onClick={handleOpen} variant="outlined" id="linkBtn" size="large" className={classes.button}>Favourite Links</Button>
         {/* <Button variant="outlined" size="large" className={classes.button}>Manage Features</Button> */}
-        <Button variant="outlined" size="large" id="contact-btn" className={classes.button}>Contact us</Button>
-        <Button variant="outlined" size="large" id="logout-btn" className={classes.button} href="./../../../">Log Out</Button>
+        <Button onClick={handleOpen} variant="outlined" size="large" id="contactBtn" className={classes.button}>Contact us</Button>
+        <Button variant="outlined" size="large" id="logoutBtn" className={classes.button} href="./../../../">Log Out</Button>
       </div>
     </div>
   );

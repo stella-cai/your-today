@@ -2,11 +2,15 @@
 
 ### Getting Started ###
 ---
-cd /team27/
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+git clone https://github.com/csc309-winter-2020/team27.git
+cd /team27
 npm install
 npm start
 
-### Authentication ###
+### Login Credentials ###
 ---
 *For basic user*
 username: user
@@ -42,3 +46,11 @@ By selecting different buttons in the header:
 * view frozen accounts
 * view all accounts
 * view user feedback
+
+### Features for Phase 2 ###
+---
+* use gmail API to have email feature work
+* use user's real location for time and weather
+* get a new inspirational message everyday from an API
+* save user data and preferences in our database
+* save admin data and information in our database
