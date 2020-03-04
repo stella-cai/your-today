@@ -3,7 +3,10 @@ import Drawer from '@material-ui/core/Drawer';
 import { toggleDrawer } from '../../../../actions/drawers'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import LinkSetting from './LinkSetting'
+import LinkSetting from './LinkSetting';
+import WallpaperSetting from './WallpaperSetting';
+import ContactSetting from './ContactSetting';
+
 
 import './styles.css';
 
@@ -44,17 +47,37 @@ const useStyles = makeStyles(theme => ({
 export default function TemporaryDrawer(props) {
   const state = props.state;
   const setState = props.setState;
-  const classes = useStyles()
+  const classes = useStyles();
   const links = props.links;
   const setLinks = props.setLinks;
-  const [linkSettingOpen, setLinkSettingOpen] = useState(false);
+  const wallpaper = props.wallpaper;
+  const setWallpaper = props.setWallpaper;
 
-  const handleOpen = () => {
-    setLinkSettingOpen(true);
+  const [linkSettingOpen, setLinkSettingOpen] = useState(false);
+  const [wallpaperSettingOpen, setWallpaperSettingOpen] = useState(false);
+  const [contactSettingOpen, setContactSettingOpen] = useState(false);
+
+  const handleOpen = (e) => {
+    e.preventDefault();
+    switch(e.target.parentElement.id){
+      case("linkBtn"):
+        setLinkSettingOpen(true);
+        break;
+      case("wallpaperBtn"):
+        setWallpaperSettingOpen(true);
+        break;
+      case("contactBtn"):
+        setContactSettingOpen(true);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleClose = () => {
     setLinkSettingOpen(false);
+    setWallpaperSettingOpen(false);
+    setContactSettingOpen(false);
   };
 
   const sideList = side => (
@@ -63,10 +86,10 @@ export default function TemporaryDrawer(props) {
         <span className={classes.header}>Setting</span>
       </div>
       <div className={classes.buttons}>
-        <Button variant="outlined" size="large" className={classes.button}>WallPaper</Button>
-        <Button onClick={handleOpen} variant="outlined" size="large" className={classes.button}>Favourite Links</Button>
+        <Button id="wallpaperBtn" onClick={handleOpen} variant="outlined" size="large" className={classes.button}>WallPaper</Button>
+        <Button id="linkBtn" onClick={handleOpen} variant="outlined" size="large" className={classes.button}>Favorite Links</Button>        
         {/* <Button variant="outlined" size="large" className={classes.button}>Manage Features</Button> */}
-        <Button variant="outlined" size="large" className={classes.button}>Contact us</Button>
+        <Button id="contactBtn" onClick={handleOpen} variant="outlined" size="large" className={classes.button}>Contact us</Button>
         <Button variant="outlined" size="large" className={classes.button} href="./../../../">Log Out</Button>
       </div>
     </div>
@@ -84,6 +107,22 @@ export default function TemporaryDrawer(props) {
       setLinks = {setLinks}
       >
       </LinkSetting>
+      <WallpaperSetting
+      wallpaperSettingOpen = {wallpaperSettingOpen}
+      setWallpaperSettingOpen = {setWallpaperSettingOpen}
+      handleClose = {handleClose}
+      wallpaper = {wallpaper} 
+      setWallpaper = {setWallpaper}
+      >
+      </WallpaperSetting>
+
+      <ContactSetting
+      contactSettingOpen = {contactSettingOpen}
+      setContactSettingOpen = {setContactSettingOpen}
+      handleClose = {handleClose}
+      >
+      </ContactSetting>
+
       <Drawer open={state.right} onClose={() => toggleDrawer('right', state, setState, false)}
         anchor='right'>
         {sideList('right')}
