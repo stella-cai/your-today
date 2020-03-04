@@ -60,7 +60,8 @@ const useStyles = makeStyles(theme => ({
   frame: {
     width: "100%",
     height: "100%",
-    minHeight: "330px"
+    minHeight: "330px",
+    borderRadius: "2%"
   }
 
 }))
@@ -103,7 +104,7 @@ export default function MediaControlCard() {
       </div>
       <div>
       <Box className={classes.player}>
-        <iframe src={searchKey} className={classes.frame} frameborder="0" allowtransparency="true" allow="encrypted-media" style={{ borderRadius: "2%" }}></iframe>
+        <iframe src={searchKey} className={classes.frame} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </Box>
       </div>
     </div>

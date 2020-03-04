@@ -56,6 +56,20 @@ class RecoverPassword extends React.Component{
         }
     }
 
+    lbuttonStyle = () => {
+        return {
+            float: "left", 
+            marginBottom: "20px"
+        }
+    }
+
+    rbuttonStyle = () => {
+        return {
+            float: "right", 
+            marginBottom: "20px"
+        }
+    }
+
     submitRecover = (e) => {
         e.preventDefault()
         console.log('recover button clicked')
@@ -81,8 +95,8 @@ class RecoverPassword extends React.Component{
                                     variant="filled" style={this.inputStyle()} fullWidth/>
                             </Grid>
                             
-                            <Button type="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }} href="./../Login">Go Back</Button>
-                            <Button type="submit" variant="contained" color="primary" id="signup-button" style={{ float: "right", marginBottom: "20px" }}
+                            <Button type="submit" variant="contained" id="goback-button" style={this.lbuttonStyle()} href="./../Login">Go Back</Button>
+                            <Button type="submit" variant="contained" color="primary" id="signup-button" style={this.rbuttonStyle()}
                                 onClick={this.submitRecover}>
                                 Send Email
                             </Button>

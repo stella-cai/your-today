@@ -98,6 +98,9 @@ const useStyles = makeStyles(theme => ({
   todos: {
     margin: '0 auto',
     padding: '0'
+  },
+  button:{
+    color: 'rgba(52, 52, 52, 0.5)'
   }
 }));
 
@@ -147,13 +150,13 @@ export default function SimpleTabs() {
       </div>
       <div className={classes.keepFooter}>
         <div className={classes.footer}>
-          <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{ color: 'rgba(52, 52, 52, 0.5)' }} /></Button>
+          <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button} /></Button>
           <span className={classes.dots}>
             <span class={classes.tab} onClick={(e) => handleSwitch(e, 0)}></span>
             <span class={classes.tab} onClick={(e) => handleSwitch(e, 1)}></span>
             <span class={classes.tab} onClick={(e) => handleSwitch(e, 2)}></span>
           </span>
-          <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{ color: 'rgba(52, 52, 52, 0.5)' }} /></Button>
+          <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button} /></Button>
         </div>
       </div>
     </div>

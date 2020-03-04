@@ -13,6 +13,12 @@ class SecurityQuestion extends React.Component {
         console.log(this.option);
     }
 
+    formStyle = () => {
+        return {
+            width: '100%'
+        }
+    }
+
     render() {
 
         const {number}= this.props;
@@ -21,7 +27,7 @@ class SecurityQuestion extends React.Component {
         return (
             <div className="security-question">
                 <InputLabel className="security-question-label">{"Security Question " + number + "*"}</InputLabel>
-                <FormControl required style={{width: '100%'}}>
+                <FormControl required style={this.formStyle()}>
                 <InputLabel className="security-question-label">{"Choose a Question"}</InputLabel>
                 <Select className="select" value={this.option} labelId ="security-question-label"
                 onChange={this.handleChange} autoWidth={true} displayEmpty>

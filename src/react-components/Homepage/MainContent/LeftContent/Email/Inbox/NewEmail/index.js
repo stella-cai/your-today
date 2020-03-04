@@ -9,7 +9,11 @@ const useStyles = makeStyles(theme => ({
   newEmailContent: {
     overflowY: "auto",
     maxHeight: "180px",
-    width: "100%"
+    width: "100%",
+    whiteSpace: 'pre-line'
+  }, 
+  div: {
+    color: 'white'
   }
 }));
 
@@ -20,10 +24,10 @@ export default function Inbox(props) {
   const content = props.content
 
   return (
-    <div class="newEmail" style={{color: 'white'}}>
+    <div class="newEmail" className={classes.div}>
       <p>{sender}</p>
       <p>{date}</p>
-      <p className={classes.newEmailContent} style={{ whiteSpace: 'pre-line' }}>{content}</p>
+      <p className={classes.newEmailContent}> {content}</p>
       {/* <Button variant="contained" color="primary" href="https://www.gmail.com">
         Read More Details on Gmail
       </Button> */}

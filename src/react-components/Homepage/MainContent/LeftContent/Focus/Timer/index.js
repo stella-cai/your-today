@@ -32,6 +32,12 @@ const InputField = withStyles({
 const useStyles = makeStyles(theme => ({
     input: {
         color: 'white'
+    },
+    textalign: {
+        textAlign: 'center' 
+    },
+    noborder: {
+        border: "0px"
     }
 }))
 
@@ -70,7 +76,7 @@ export default function Timer(props) {
     }
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div className={classes.textalign}>
             <h3 id="input-prompt"> How long do you want to study for?</h3>
             <div>
                 <InputField className={classes.input} id="time-input" placeholder="minutes" type="number" />
@@ -80,7 +86,7 @@ export default function Timer(props) {
             </div>
             <br />
             <div id="timer">
-                <h3 style={{border: "0px"}}>{styleTime().min} : {styleTime().sec} </h3>
+                <h3 className={classes.noborder}>{styleTime().min} : {styleTime().sec} </h3>
             </div>
         </div>
     );
@@ -130,7 +136,6 @@ export default function Timer(props) {
 //     render() {
 //         // const { minutes, seconds } = this.state
 //         return (
-//             <div style={{textAlign: 'center'}}>
 //             <h3 id="input-prompt"> How long do you want to study for?</h3>
 //                 <div>
 //                     <TextField id="time-input" placeholder="minutes" type="number"/>

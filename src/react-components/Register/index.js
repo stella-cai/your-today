@@ -36,6 +36,27 @@ class Register extends React.Component {
         }
     }
 
+    lbuttonStyle = () => {
+        return {
+            float: "left", 
+            marginBottom: "20px"
+        }
+    }
+
+    rbuttonStyle = () => {
+        return {
+            float: "right", 
+            marginBottom: "20px"
+        }
+    }
+
+    marginStyle = () => {
+        return {
+            marginTop:"20px", 
+            marginBottom: "20px" 
+        }
+    }
+
     render() {
         return (
             <Grid container component="main" style={this.rootStyle()}>
@@ -43,7 +64,7 @@ class Register extends React.Component {
                 <Grid item xs={false} sm={4} md={7} style={this.imageStyle()} />
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                     <Container id="register-container" component="main" maxWidth="xs">
-                        <Typography component="h1" variant="h5" style={{marginTop:"20px", marginBottom: "20px" }}>
+                        <Typography component="h1" variant="h5" style={this.marginStyle()}>
                             Register
                         </Typography>
                         <form id="register-form" noValidate>
@@ -91,8 +112,8 @@ class Register extends React.Component {
                                     <br />
                                 </Grid>
                             </Grid>
-                            <Button ype="submit" variant="contained" id="goback-button" style={{ float: "left", marginBottom: "20px" }} href="./../Login">Go Back</Button>
-                            <Button type="submit" variant="contained" color="primary" id="signup-button" style={{ float: "right", marginBottom: "20px" }}
+                            <Button ype="submit" variant="contained" id="goback-button" style={this.lbuttonStyle()} href="./../Login">Go Back</Button>
+                            <Button type="submit" variant="contained" color="primary" id="signup-button" style={this.rbuttonStyle()}
                                 onClick={this.submitRegister}>
                                 Sign Up
                             </Button>

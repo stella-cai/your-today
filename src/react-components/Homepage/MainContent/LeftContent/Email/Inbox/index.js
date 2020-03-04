@@ -52,6 +52,9 @@ const useStyles = makeStyles(theme => ({
   },
   buttons: {
     float:'right'
+  },
+  button: {
+    color: 'white'
   }
 }));
 
@@ -88,8 +91,8 @@ export default function Inbox() {
   return (
     <div className={classes.root} id='email-root'>
       <div className={classes.buttons}>
-      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon style={{color: 'white'}} /></Button>
-      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon style={{color:'white'}} /></Button>
+      <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button}/></Button>
+      <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button}/></Button>
       </div>
       {
       newEmails.map((newEmail, index) => (
