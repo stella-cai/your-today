@@ -38,8 +38,6 @@ class App extends React.Component {
                             (<Register state={this.state}/>)}/>
             <Route exact path='/recoverpassword' render={() => 
                             (<RecoverPassword state={this.state}/>)}/>
-            <Route exact path='/adminpage' render={() => 
-                            (<AdminPage state={this.state}/>)}/>
             <Route exact path='/admin' render={() => 
                             (<Admin state={this.state}/>)}/>
           </Switch>

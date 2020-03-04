@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Grid from '@material-ui/core/Grid';
-
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -83,7 +83,9 @@ export default function TimeWeather() {
   return (
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
-        <AcUnitIcon className = {classes.weatherIcon}></AcUnitIcon>
+        <a href ="https://openweathermap.org/city/6167865" target="_blank">
+          <AcUnitIcon className = {classes.weatherIcon} />
+        </a>
         <div className = {classes.weatherValue}>{temp}&#176;C</div>
       </Grid>
       <div className={classes.time}>
