@@ -72,7 +72,7 @@ export default function All(props) {
             {all.map((a, index) => (
                 <div key={a.id}>
                         <InputLabel className={classes.text} >{a.user} {a.reason} {a.date}</InputLabel>
-                        <span style={{width: '200px'}}>
+                        <span>
                         <InputField id={a.id} label="Reason to Freeze"/>
                         </span>
                         <div className={classes.buttons}>

@@ -28,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center', 
     alignSelf: 'center',
   },
+
+  button: {
+    color: "white"
+  }
   }));
 
 export default function HeaderUserProfile(props) {
@@ -78,7 +82,7 @@ export default function HeaderUserProfile(props) {
           <Button onClick={()=>toggleDrawer('left', state, setState, true)}><Avatar><FaceIcon /></Avatar></Button>
         </Grid> */}
         <Box item className="profile-username" className={classes.username}>{username}</Box>
-        <Button onClick={handleOpen} style={{color: "white"}}>{getProfileState()}</Button>
+        <Button onClick={handleOpen} className={classes.button}>{getProfileState()}</Button>
       </Box>
     </div>
   )
