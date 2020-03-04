@@ -74,6 +74,10 @@ export default function TodoForm(props) {
         e.preventDefault();
         console.log(when)
         let year = when.substr(0, when.indexOf('-')); 
+        if(when == "") {
+            alert("Please input a valid date")
+            return
+        }
         if(year.length > 4) {
             alert("Please input a year in range(1000, 9999)")
             return
@@ -144,6 +148,7 @@ export default function TodoForm(props) {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    value = {when}
                     max="9999-12-31T23:59"
                 />
             </TableCell>
