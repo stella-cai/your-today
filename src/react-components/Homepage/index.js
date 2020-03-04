@@ -35,10 +35,20 @@ export default function Homepage() {
     }
   }
 
+  const boxStyle = () => {
+    return {
+      position:'relative', 
+      paddingLeft:"50px", 
+      paddingRight: '50px', 
+      paddingTop:'30px'
+    }
+  }
+
+
   return(      
     <div style={bgStyle()}>
       <div className="App">
-        <Box style={{position:'relative', paddingLeft:"50px", paddingRight: '50px', paddingTop:'30px'}}>
+        <Box style={boxStyle()}>
           <Header
             username="John Doe"
             links = {links} 
