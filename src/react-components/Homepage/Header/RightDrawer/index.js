@@ -39,7 +39,9 @@ const useStyles = makeStyles(theme => ({
     border: "1.5px solid white",
     backgroundColor: 'rgba(52, 52, 52, 0.3)',
     width: "80%",
-
+  },
+  div: {
+    margin: '30px'
   }
 }))
 
@@ -82,7 +84,7 @@ export default function TemporaryDrawer(props) {
 
   const sideList = side => (
     <div className={classes.root}>
-      <div style={{ margin: '30px' }}>
+      <div className={classes.div}>
         <span className={classes.header}>Setting</span>
       </div>
       <div className={classes.buttons}>

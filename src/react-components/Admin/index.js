@@ -43,7 +43,7 @@ export default function Admin() {
   return(      
     <div style={bgStyle()}>
       <div className="App">
-        <Box style={this.boxStyle()}>
+        <Box style={boxStyle()}>
           <Header
             username="Admin"
             links = {links} 
