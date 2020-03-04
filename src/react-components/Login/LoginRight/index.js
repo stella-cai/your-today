@@ -50,7 +50,6 @@ class LoginRight extends React.Component {
 
     submitLogin = event => {
         event.preventDefault();
-        console.log("clicked")
         if( !this.state.login && document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
             console.log("logging in");
             document.querySelector("#wrongPassword").style.display = "none"
@@ -61,6 +60,20 @@ class LoginRight extends React.Component {
                     this.setState({redirectCountDown: 3-k});
                     if(k == 3) {
                         window.location.replace(".././homepage");
+                    }
+                  }, 1000*k)
+            }
+        }
+        else if( !this.state.login && document.querySelector("#username").value === "admin" && document.querySelector("#password").value === "admin"){
+            console.log("logging in");
+            document.querySelector("#wrongPassword").style.display = "none"
+            document.querySelector("#loginSuccess").style.display = "block"
+            this.setState({login: true});
+            for(let k = 1; k <=3; k++) {
+                setTimeout(() => {
+                    this.setState({redirectCountDown: 3-k});
+                    if(k == 3) {
+                        window.location.replace(".././admin");
                     }
                   }, 1000*k)
             }
