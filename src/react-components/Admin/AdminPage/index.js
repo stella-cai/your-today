@@ -72,6 +72,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'rgba(52, 52, 52, 0.8)',
     height: '450px',
     overflowY: 'auto'
+  },
+  header: {
+    backgroundColor: 'rgba(52, 52, 52)',
+    color: 'white'
   }
 }));
 
@@ -145,7 +149,7 @@ export default function AdminPage() {
   return (
     <div classname={classes.root}>
       <Box className={classes.tabs}>
-        <AppBar position="static">
+        <AppBar className={classes.header} position="static">
           <Tabs
             variant="fullWidth"
             value={value}
