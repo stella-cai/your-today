@@ -1,5 +1,6 @@
 /* New cleaned up version of App.js */
 import React from 'react';
+import { Redirect } from 'react-router';
 
 // Importing react-router-dom to use the React Router
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
@@ -12,27 +13,32 @@ import Login from './react-components/Login';
 import Register from './react-components/Register';
 import RecoverPassword from './react-components/RecoverPassword';
 import Admin from './react-components/Admin'
+import {Middleware} from "./actions/middleware";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    Middleware.checkLoggedin(this); // sees if a user is logged in.
+  }
 
   // a 'global' state that you can pass through to any child componenets of App.
   //   In the Routes below they are passed to both the Home and Queue states.
   state = {
+    currentUser: null,
     abc: new Date().toISOString().slice(0,10)
   }
 
   render() {
+    const currentUser = this.state.currentUser;
     return (
         <div>
         <BrowserRouter>
           <Switch> { /* Similar to a switch statement - shows the component depending on the URL path */ }
             { /* Each Route below shows a different component depending on the exact path in the URL  */ }
-            <Route exact path='/' render={() => 
-                            (<Loading state={this.state}/>)}/>
-            <Route exact path='/homepage' render={() => 
-                            (<Homepage state={this.state}/>)}/>
+            <Route exact path='/' render={() =>
+             (!currentUser  ? <Loading state={this.state} /> : <Homepage state={this.state} />)}/>
             <Route exact path='/login' render={() => 
-                            (<Login state={this.state}/>)}/>
+                            (currentUser ? <Redirect to="/" /> : <Login state={this.state}/>)}/>
             <Route exact path='/register' render={() => 
                             (<Register state={this.state}/>)}/>
             <Route exact path='/recoverpassword' render={() => 

@@ -1,3 +1,22 @@
+function checkLoggedin(app) {
+    const url = "/check-loggedin";
+
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json && json.currentUser) {
+                app.setState({ currentUser: json.currentUser });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
 function userRegister(user){
     const url = "/user-register";
     const request = new Request(url, {
@@ -24,7 +43,6 @@ function userRegister(user){
 }
 
 function login(username, password) {
-    let result = 0
     const data = {username: username, password: password}
     const url = "/auth";
     const request = new Request(url, {
@@ -35,24 +53,22 @@ function login(username, password) {
             "Content-Type": "application/json"
         }
     })
-    fetch(request)
+    return fetch(request)
         .then(function (res) {
-            if(res.status == 200) {
-                result = 1
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong. check your username / password")
             }
         })
         .catch(error => {
             console.log(error);
         })
-    if(result == 1) {
-        return "success"
-    }
-    else {
-        return "fail"
-    }
 }
 
 export const Middleware = {
     userRegister,
     login,
+    checkLoggedin,
 }

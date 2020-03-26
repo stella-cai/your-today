@@ -53,24 +53,25 @@ class LoginRight extends React.Component {
 
     submitLogin = event => {
         event.preventDefault();
-        alert(Middleware.login(this.state.username, this.state.password))
-        if(Middleware.login(this.state.username, this.state.password) == "success") {
-            console.log("logging in");
-            document.querySelector("#wrongPassword").style.display = "none"
-            document.querySelector("#loginSuccess").style.display = "block"
-            this.setState({login: true});
-            for(let k = 1; k <=3; k++) {
-                setTimeout(() => {
-                    this.setState({redirectCountDown: 3-k});
-                    if(k == 3) {
-                        window.location.replace(".././homepage");
-                    }
-                  }, 1000*k)
+        let self = this
+        Middleware.login(self.state.username, self.state.password).then(function(result) {
+            if(result == "success") {
+                console.log("logging in");
+                document.querySelector("#wrongPassword").style.display = "none"
+                document.querySelector("#loginSuccess").style.display = "block"
+                for(let k = 1; k <=3; k++) {
+                    setTimeout(() => {
+                        self.setState({redirectCountDown: 3-k});
+                        if(k == 3) {
+                            window.location.replace(".././homepage");
+                        }
+                      }, 1000*k)
+                }
             }
-        }
-        else {
-            alert("logging fail")
-        }
+            else {
+                alert("logging fail")
+            }
+        });
     }
 
     render() {
