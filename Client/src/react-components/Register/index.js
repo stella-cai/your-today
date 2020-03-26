@@ -24,7 +24,8 @@ class Register extends React.Component {
             lastname: "",
             password: "",
             verifyPassword: "",
-            birthday: ""
+            birthday: "",
+            securityQuestions: [{question: "", answer: ""}, {question: "", answer: ""}, {question: "", answer: ""}]
         }
     }
 
@@ -45,30 +46,37 @@ class Register extends React.Component {
     submitRegister = (e) => {
         e.preventDefault()
         console.log('submit button clicked')
-        const user = {
-            username: this.state.username,
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            password: this.state.password,
-            email: this.state.email,
-            birthday: new Date(this.state.birthday)
-        }
-        alert(Middleware.userRegister(user))
+        alert(this.state.securityQuestions[0].question)
         // if (document.querySelector('#password').value == document.querySelector("#verify-password").value) {
-
         //     const user = {
         //         username: this.state.username,
         //         firstname: this.state.firstname,
         //         lastname: this.state.lastname,
         //         password: this.state.password,
         //         email: this.state.email,
-        //         birthday: new Date(this.state.birthday)
+        //         birthday: new Date(this.state.birthday),
+        //         securityQuestions: [
+        //             {
+        //                 question: this.state.securityQuestions[0].question,
+        //                 answer: this.state.securityQuestions[0].answer
+        //             },
+        //             {
+        //                 question: this.state.securityQuestions[1].question,
+        //                 answer: this.state.securityQuestions[1].answer
+        //             },
+        //             {
+        //                 question: this.state.securityQuestions[2].question,
+        //                 answer: this.state.securityQuestions[2].answer
+        //             }
+        //         ]
         //     }
-        //     alert(Middleware.userRegister(user))
-
-
-        //     console.log("registration success")
-        //     setTimeout(window.location.replace(".././Login"), 2000)
+        //     if (Middleware.userRegister(user) == 1) {
+        //         alert("Username already exists!")
+        //     }
+        //     else {
+        //         console.log("registration success")
+        //         setTimeout(window.location.replace(".././Login"), 2000)
+        //     }
         // }
     }
 
@@ -138,13 +146,13 @@ class Register extends React.Component {
 
                                 <Grid item spacing={2} xs={12}>
                                     <SecurityQuestion
-                                        number={1} />
+                                        number={0} registerForm={this}/>
                                     <br />
                                     <SecurityQuestion
-                                        number={2} />
+                                        number={1} registerForm={this}/>
                                     <br />
                                     <SecurityQuestion
-                                        number={3} />
+                                        number={2} registerForm={this}/>
                                     <br />
                                 </Grid>
                             </Grid>
