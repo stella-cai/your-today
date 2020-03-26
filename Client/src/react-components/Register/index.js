@@ -45,8 +45,32 @@ class Register extends React.Component {
 
     submitRegister = (e) => {
         e.preventDefault()
+        const user = {
+            username: this.state.username,
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            password: this.state.password,
+            email: this.state.email,
+            birthday: new Date(this.state.birthday),
+            securityQuestions: [
+                {
+                    question: this.state.securityQuestions[0].question,
+                    answer: this.state.securityQuestions[0].answer
+                },
+                {
+                    question: this.state.securityQuestions[1].question,
+                    answer: this.state.securityQuestions[1].answer
+                },
+                {
+                    question: this.state.securityQuestions[2].question,
+                    answer: this.state.securityQuestions[2].answer
+                }
+            ]
+        }
+        if (Middleware.userRegister(user) == 1) {
+            alert("Username already exists!")
+        }
         console.log('submit button clicked')
-        alert(this.state.securityQuestions[0].question)
         // if (document.querySelector('#password').value == document.querySelector("#verify-password").value) {
         //     const user = {
         //         username: this.state.username,
@@ -77,6 +101,9 @@ class Register extends React.Component {
         //         console.log("registration success")
         //         setTimeout(window.location.replace(".././Login"), 2000)
         //     }
+        // }
+        // else {
+        //     alert("Passwords don't match!")
         // }
     }
 

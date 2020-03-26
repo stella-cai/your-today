@@ -7,6 +7,7 @@ import Link from '@material-ui/core/Link';
 import Alert from '@material-ui/lab/Alert';
 import { spacing } from '@material-ui/system';
 import { browserHistory } from 'react-router';
+import {Middleware} from "../../../actions/middleware";
 import "./styles.css"
 
 class LoginRight extends React.Component {
@@ -14,7 +15,9 @@ class LoginRight extends React.Component {
         super(props);
         this.state = {
             redirectCountDown: 3,
-            login: false
+            login: false,
+            username: "",
+            password: ""
         };
     }
 
@@ -50,7 +53,8 @@ class LoginRight extends React.Component {
 
     submitLogin = event => {
         event.preventDefault();
-        if( !this.state.login && document.querySelector("#username").value === "user" && document.querySelector("#password").value === "user"){
+        alert(Middleware.login(this.state.username, this.state.password))
+        if(Middleware.login(this.state.username, this.state.password) == "success") {
             console.log("logging in");
             document.querySelector("#wrongPassword").style.display = "none"
             document.querySelector("#loginSuccess").style.display = "block"
@@ -64,23 +68,8 @@ class LoginRight extends React.Component {
                   }, 1000*k)
             }
         }
-        else if( !this.state.login && document.querySelector("#username").value === "admin" && document.querySelector("#password").value === "admin"){
-            console.log("logging in");
-            document.querySelector("#wrongPassword").style.display = "none"
-            document.querySelector("#loginSuccess").style.display = "block"
-            this.setState({login: true});
-            for(let k = 1; k <=3; k++) {
-                setTimeout(() => {
-                    this.setState({redirectCountDown: 3-k});
-                    if(k == 3) {
-                        window.location.replace(".././admin");
-                    }
-                  }, 1000*k)
-            }
-        }
-        else if (!this.state.login){
-            console.log("wrongPassword")
-            document.querySelector("#wrongPassword").style.display = "block"
+        else {
+            alert("logging fail")
         }
     }
 
@@ -93,8 +82,8 @@ class LoginRight extends React.Component {
                     Welcome Back!
                 </Typography>
                 <form noValidate style={this.formStyle()}>
-                    <TextField id="username" variant="outlined" margin="normal" label="Username" required fullWidth />
-                    <TextField id="password" variant="outlined" margin="normal" label="Password" type="password" required fullWidth />
+                    <TextField value={this.state.username} onChange = {(e) => this.setState({username: e.target.value})} id="username" variant="outlined" margin="normal" label="Username" required fullWidth />
+                    <TextField value={this.state.password} onChange = {(e) => this.setState({password: e.target.value})}  id="password" variant="outlined" margin="normal" label="Password" type="password" required fullWidth />
                     
                     <span id='button-container'>
                         <Button id='login-button' type="submit" variant="contained" color="primary" 

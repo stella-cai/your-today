@@ -14,22 +14,16 @@ class SecurityQuestion extends React.Component {
         }
     }
 
-    handleChange = e => {
-        console.log("change");
-        this.setState({option: e.target.value})
-
+    handleChange = async (e) => {
+        console.log("change")
         let questions = this.props.registerForm.state.securityQuestions
-        alert(questions)
-        questions[this.props.number].question = this.option
+        questions[this.props.number].question = e.target.value
         this.props.registerForm.setState({securityQuestions: questions})
-        alert(this.props.registerForm.state.securityQuestions[this.props.number].question)
     }
 
-    handleAnswerChange = e => {
-        this.setState({answer: e.target.value})
-
+    handleAnswerChange = async (e) => {
         let questions = this.props.registerForm.state.securityQuestions
-        questions[this.props.number].answer = this.answer
+        questions[this.props.number].answer = e.target.value
         this.props.registerForm.setState({securityQuestions: questions})
     }
 
@@ -50,7 +44,7 @@ class SecurityQuestion extends React.Component {
                 <InputLabel className="security-question-label">{"Security Question " + number + "*"}</InputLabel>
                 <FormControl required style={this.formStyle()}>
                 <InputLabel className="security-question-label">{"Choose a Question"}</InputLabel>
-                <Select value={this.state.option} onChange = {(e) => this.handleChange(e)} className="select" labelId ="security-question-label" autoWidth={true} displayEmpty>
+                <Select value={this.props.registerForm.state.securityQuestions[number].question} onChange = {(e) => this.handleChange(e)} className="select" labelId ="security-question-label" autoWidth={true} displayEmpty>
                     <MenuItem value={"What is your mother's maiden name?"}>What is your mother's maiden name?</MenuItem>
                     <MenuItem value="What is the name of your favorite pet?">What is the name of your favorite pet?</MenuItem>
                     <MenuItem value="What is the name of your favorite teacher?">What is the name of your favorite teacher?</MenuItem>
@@ -58,7 +52,7 @@ class SecurityQuestion extends React.Component {
                     <MenuItem value="What was your childhood nickname?">What was your childhood nickname?</MenuItem>
                     <MenuItem value="What school did you attend in sixth grade?">What school did you attend in sixth grade?</MenuItem>
                 </Select>
-                <TextField value={this.state.answer} onChange = {(e) => this.handleAnswerChange(e)} className="security-answer" type="text" name="answer" margin="dense" 
+                <TextField value={this.props.registerForm.state.securityQuestions[number].answer} onChange = {(e) => this.handleAnswerChange(e)} className="security-answer" type="text" name="answer" margin="dense" 
                                 variant="outlined" placeholder="Answer" required fullWidth/>
                 </FormControl>
             </div>
