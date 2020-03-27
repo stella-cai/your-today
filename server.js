@@ -29,54 +29,66 @@ const Bcrypt = require("bcryptjs")
 
 
 
-app.get("/check-loggedin", (req, res) => {
-    if (req.session.loggedin) {
-        res.send({ currentUser: req.session.user });
-    } else {
-        res.status(401).send();
-    }
-});
+// app.get("/check-loggedin", (req, res) => {
+//     if (req.session.loggedin) {
+//         res.send({ currentUser: req.session.user });
+//     } else {
+//         res.status(401).send();
+//     }
+// });
 
-app.post('/user-register', (req, res) => {
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: Bcrypt.hashSync(req.body.password, 10),
-        fisrtname: req.body.firstname,
-        lastname: req.body.lastname,
-        birthday: req.body.birthday,
-        mod: req.body.securityQuestions
+// app.post('/user-register', (req, res) => {
+//     const user = new User({
+//         username: req.body.username,
+//         email: req.body.email,
+//         password: Bcrypt.hashSync(req.body.password, 10),
+//         fisrtname: req.body.firstname,
+//         lastname: req.body.lastname,
+//         birthday: req.body.birthday,
+//         mod: req.body.securityQuestions
 
-    })
+//     })
 
-	user.save().then((result) => {
-		res.send(result)
-	}, (error) => {
-		res.status(400).send(error) // 400 for bad request
-	})
-})
+// 	user.save().then((result) => {
+// 		res.send(result)
+// 	}, (error) => {
+// 		res.status(400).send(error) // 400 for bad request
+// 	})
+// })
 
-
-
-app.post('/auth', (req, res) => {
-    User.findOne({username: req.body.username}, function(err, user) {
-        if (err) return console.error(err)
+// app.post('/auth', (req, res) => {
+//     User.findOne({username: req.body.username}, function(err, user) {
+//         if (err) return console.error(err)
         
-        if (user === null) {
-            res.send("The Username doesn't exist!")
-            res.status(400).send("wrong username")
-        }
-        else if (!Bcrypt.compareSync(req.body.password, user.password)) {
-            res.status(400).send("wrong passwordsss")
-        }
-        else {
-            req.session.loggedin = true
-            req.session.user = user
+//         if (user === null) {
+//             res.send("The Username doesn't exist!")
+//             res.status(400).send("wrong username")
+//         }
+//         else if (!Bcrypt.compareSync(req.body.password, user.password)) {
+//             res.status(400).send("wrong passwordsss")
+//         }
+//         else {
+//             req.session.loggedin = true
+//             req.session.user = user
+//             res.status(200).send("success")
+//         }
+//     })
+// })
+
+app.post('/set-wallpaper', (req, res) => {
+    User.findOneAndUpdate(
+        { 'username': req.session.user.username},
+        { 'wallpaper': req.body.wallpaper }, 
+        function (err, user) {
+            if (err) throw err
+            req.session.user.wallpaper = req.body.wallpaper
             res.status(200).send("success")
         }
-    })
+    )
 })
 
+const credentialRouter = require('./routes/credentials')
+app.use('/credential', credentialRouter)
 /*** Webpage routes below **********************************/
 // Serve the build
 app.use(express.static(__dirname + "/Client/build"));

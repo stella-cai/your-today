@@ -84,7 +84,7 @@ const UserSchema = new mongoose.Schema({
 
   wallpaper: {
     type: String,
-    default: "afasfasf"
+    default: "https://source.unsplash.com/T_Qe4QlMIvQ"
   },
 
   securityQuestions: [SecurityQuestionsSchema],
