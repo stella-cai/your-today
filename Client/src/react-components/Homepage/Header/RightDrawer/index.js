@@ -111,6 +111,7 @@ export default function TemporaryDrawer(props) {
       >
       </LinkSetting>
       <WallpaperSetting
+      app={props.app}
       wallpaperSettingOpen = {wallpaperSettingOpen}
       setWallpaperSettingOpen = {setWallpaperSettingOpen}
       handleClose = {handleClose}

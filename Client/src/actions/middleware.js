@@ -1,3 +1,28 @@
+function setUserWallpaper(wallpaperUrl) {
+    const url = "/set-wallpaper";
+    const date = {"wallpaper": wallpaperUrl}
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(date),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong. check your username / password")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 function checkLoggedin(app) {
     const url = "/check-loggedin";
 
@@ -71,4 +96,5 @@ export const Middleware = {
     userRegister,
     login,
     checkLoggedin,
+    setUserWallpaper,
 }

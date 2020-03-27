@@ -8,7 +8,7 @@ import Header from "./Header";
 import MainContent from "./MainContent";
 
 
-export default function Homepage() {
+export default function Homepage(props) {
   const [links, setLinks] = useState(
     [
       {url:"https://www.google.com", name:"Google"},
@@ -20,7 +20,7 @@ export default function Homepage() {
   );
 
   const [wallpaper, setWallpaper] = useState (
-      "https://source.unsplash.com/T_Qe4QlMIvQ"
+    props.app.state.currentUser.wallpaper
   );
 
   console.log(wallpaper);
@@ -50,6 +50,7 @@ export default function Homepage() {
       <div className="App">
         <Box style={boxStyle()}>
           <Header
+            app={props.app}
             username="John Doe"
             links = {links} 
             setLinks = {setLinks}

@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
+import {Middleware} from "../../../../../actions/middleware";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -128,6 +129,10 @@ export default function WallpaperSetting(props) {
   const handleSubmit = e => {
     e.preventDefault();
     // const newLinks = [...links, { url: url, name: urlName }];
+    Middleware.setUserWallpaper(newWallpaper)
+    let temp = props.app.state.currentUser
+    temp.wallpaper = newWallpaper
+    props.app.setState({currentUser: temp})
     setWallpaper(newWallpaper);
     setNewWallpaper("");
     handleClose();
