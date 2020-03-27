@@ -24,7 +24,7 @@ function setUserWallpaper(wallpaperUrl) {
 }
 
 function checkLoggedin(app) {
-    const url = "/check-loggedin";
+    const url = "/credential/check-loggedin";
 
     fetch(url)
         .then(res => {
@@ -43,7 +43,7 @@ function checkLoggedin(app) {
 }
 
 function userRegister(user){
-    const url = "/user-register";
+    const url = "/credential/user-register";
     const request = new Request(url, {
         method: "post",
         body: JSON.stringify(user),
@@ -69,7 +69,7 @@ function userRegister(user){
 
 function login(username, password) {
     const data = {username: username, password: password}
-    const url = "/auth";
+    const url = "/credential/auth";
     const request = new Request(url, {
         method: "post",
         body: JSON.stringify(data),
