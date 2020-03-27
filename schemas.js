@@ -96,5 +96,6 @@ const UserSchema = new mongoose.Schema({
 })
  
 module.exports = {
-  UserSchema: UserSchema
+  UserSchema: UserSchema,
+  TodoListSchema: TodoListSchema
 }
