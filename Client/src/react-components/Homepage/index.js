@@ -23,6 +23,10 @@ export default function Homepage(props) {
     props.app.state.currentUser.wallpaper
   );
 
+  const [profileState, setProfileState] = useState(
+    props.app.state.currentUser.mood
+  );
+
   console.log(wallpaper);
   console.log(setWallpaper);
 
@@ -56,6 +60,8 @@ export default function Homepage(props) {
             setLinks = {setLinks}
             wallpaper={wallpaper} 
             setWallpaper = {setWallpaper}
+            profileState = {profileState}
+            setProfileState = {setProfileState}
           />
           <MainContent links = {links} setLinks = {setLinks} ></MainContent>
         </Box>

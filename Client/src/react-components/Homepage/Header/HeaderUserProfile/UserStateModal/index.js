@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import Button from '@material-ui/core/Button';
+import { Middleware } from "../../../../../actions/middleware"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -63,7 +64,8 @@ export default function UserStateModal(props) {
   const profileState = props.profileState;
   const setProfileState = props.setProfileState;
 
-  const updatePropfileState = state => {
+  const updatePropfileState = (state) => {
+    Middleware.setUserMood(state);
     setProfileState(state);
     handleClose();
   }

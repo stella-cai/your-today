@@ -38,7 +38,8 @@ export default function HeaderUserProfile(props) {
   const username = props.username;
   const state = props.state;
   const setState = props.setState;
-  const [profileState, setProfileState] = useState(0);
+  const setProfileState = props.setProfileState;
+  const profileState = props.profileState;
   //const [state, setState] = useState(props.state);
 
   const [userStateModalOpen, setUserStateModalOpen] = useState(false);

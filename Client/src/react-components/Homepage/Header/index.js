@@ -31,6 +31,9 @@ export default function Header(props) {
   const setWallpaper = props.setWallpaper;
   const classes = useStyles()
   const username = props.username;
+  const setProfileState = props.setProfileState;
+  const profileState = props.profileState;
+
   const [state, setState] = useState({
     left: false,
     right: false
@@ -42,7 +45,12 @@ export default function Header(props) {
       <LeftDrawer state={state} setState={setState}></LeftDrawer>
       <RightDrawer app={props.app} state={state} setState={setState} links = {links} setLinks = {setLinks}
         wallpaper={wallpaper} setWallpaper={setWallpaper}></RightDrawer>
-      <HeaderUserProfile className={classes.profile} username={username} state={state} setState={setState} />
+      <HeaderUserProfile profileState = {profileState}
+                         setProfileState = {setProfileState} 
+                         className={classes.profile} 
+                         username={username} 
+                         state={state} 
+                         setState={setState} />
       {/* <Box className={classes.box}> */}
       <HeaderSearch state={state} setState={setState} />
       {/* </Box> */}

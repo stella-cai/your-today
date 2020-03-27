@@ -45,7 +45,7 @@ app.post('/user-register', (req, res) => {
         fisrtname: req.body.firstname,
         lastname: req.body.lastname,
         birthday: req.body.birthday,
-        mod: req.body.securityQuestions
+        securityQuestions: req.body.securityQuestions
 
     })
 

@@ -87,6 +87,18 @@ app.post('/set-wallpaper', (req, res) => {
     )
 })
 
+app.post('/set-mood', (req, res) => {
+    User.findOneAndUpdate(
+        { 'username': req.session.user.username},
+        { 'mood': req.body.mood }, 
+        function (err, user) {
+            if (err) throw err
+            req.session.user.mood = req.body.mood
+            res.status(200).send("success")
+        }
+    )
+})
+
 const credentialRouter = require('./routes/credentials')
 app.use('/credential', credentialRouter)
 /*** Webpage routes below **********************************/
