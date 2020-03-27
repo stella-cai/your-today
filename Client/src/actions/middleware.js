@@ -92,9 +92,36 @@ function login(username, password) {
         })
 }
 
+
+function setUserMood(mood) {
+    const url = "/set-mood";
+    const data = {"mood": mood}
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong. check your username / password")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const Middleware = {
     userRegister,
     login,
     checkLoggedin,
     setUserWallpaper,
+    setUserMood
 }
