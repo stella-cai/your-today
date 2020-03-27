@@ -27,6 +27,16 @@ const UserSchema = schemas.UserSchema
 const User = mongoose.model('user', UserSchema, 'user')
 const Bcrypt = require("bcryptjs")
 
+
+
+app.get("/check-loggedin", (req, res) => {
+    if (req.session.loggedin) {
+        res.send({ currentUser: req.session.user });
+    } else {
+        res.status(401).send();
+    }
+});
+
 app.post('/user-register', (req, res) => {
     const user = new User({
         username: req.body.username,
@@ -35,7 +45,7 @@ app.post('/user-register', (req, res) => {
         fisrtname: req.body.firstname,
         lastname: req.body.lastname,
         birthday: req.body.birthday,
-        securityQuestions:req.body.securityQuestions
+        mod: req.body.securityQuestions
 
     })
 
@@ -44,6 +54,27 @@ app.post('/user-register', (req, res) => {
 	}, (error) => {
 		res.status(400).send(error) // 400 for bad request
 	})
+})
+
+
+
+app.post('/auth', (req, res) => {
+    User.findOne({username: req.body.username}, function(err, user) {
+        if (err) return console.error(err)
+        
+        if (user === null) {
+            res.send("The Username doesn't exist!")
+            res.status(400).send("wrong username")
+        }
+        else if (!Bcrypt.compareSync(req.body.password, user.password)) {
+            res.status(400).send("wrong passwordsss")
+        }
+        else {
+            req.session.loggedin = true
+            req.session.user = user
+            res.status(200).send("success")
+        }
+    })
 })
 
 /*** Webpage routes below **********************************/

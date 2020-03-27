@@ -63,7 +63,7 @@ class LoginRight extends React.Component {
                     setTimeout(() => {
                         self.setState({redirectCountDown: 3-k});
                         if(k == 3) {
-                            window.location.replace(".././homepage");
+                            window.location.replace(".././");
                         }
                       }, 1000*k)
                 }

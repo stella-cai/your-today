@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 const SecurityQuestionsSchema = new mongoose.Schema({
   question: {
-    type: String
+    type: String,
+    required: true
   },
   
   answer: {
