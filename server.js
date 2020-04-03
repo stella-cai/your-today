@@ -22,10 +22,7 @@ app.use(session({
 }))
 
 const mongoose = require('./mongoose.js')
-const schemas = require('./schemas.js')
-const UserSchema = schemas.UserSchema
-const User = mongoose.model('user', UserSchema, 'user')
-const Bcrypt = require("bcryptjs")
+const { User } = require('./models/user')
 
 const credentialRouter = require('./routes/credentials')
 app.use('/credential', credentialRouter)
@@ -33,29 +30,8 @@ app.use('/credential', credentialRouter)
 const todoRouter = require('./routes/todo.js')
 app.use('/todo', todoRouter)
 
-app.post('/set-wallpaper', (req, res) => {
-    User.findOneAndUpdate(
-        { 'username': req.session.user.username},
-        { 'wallpaper': req.body.wallpaper }, 
-        function (err, user) {
-            if (err) throw err
-            req.session.user.wallpaper = req.body.wallpaper
-            res.status(200).send("success")
-        }
-    )
-})
-
-app.post('/set-mood', (req, res) => {
-    User.findOneAndUpdate(
-        { 'username': req.session.user.username},
-        { 'mood': req.body.mood }, 
-        function (err, user) {
-            if (err) throw err
-            req.session.user.mood = req.body.mood
-            res.status(200).send("success")
-        }
-    )
-})
+const linkRouter = require('./routes/link.js')
+app.use('/link', linkRouter)
 
 /*** Webpage routes below **********************************/
 // Serve the build

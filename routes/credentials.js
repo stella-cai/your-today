@@ -21,12 +21,8 @@ credentialsRouter.use(session({
 }))
 
 const mongoose = require('../mongoose.js')
-const schemas = require('../schemas.js')
-const UserSchema = schemas.UserSchema
-const User = mongoose.model('user', UserSchema, 'user')
+const { User } = require('../models/user')
 const Bcrypt = require("bcryptjs")
-
-
 
 credentialsRouter.get("/check-loggedin", (req, res) => {
     if (req.session.loggedin) {

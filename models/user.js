@@ -95,6 +95,4 @@ const UserSchema = new mongoose.Schema({
 
 })
  
-module.exports = {
-  UserSchema: UserSchema,
-}
+module.exports = { UserSchema }
