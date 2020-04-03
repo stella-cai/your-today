@@ -99,3 +99,5 @@ linkRouter.delete('/:id', (req, res) => {
         res.status(500).send(err)
     })
 })
+
+module.exports = linkRouter
