@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import { publicIp } from 'public-ip';
+
+const log = console.log
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,13 +68,26 @@ export default function TimeWeather() {
   } 
   
   
-  const getWeatherInfo = (cityID) => {
+  const getWeatherInfo = () => {
+    let latitude;
+    let longitude;
+
+    const ipAddress = publicIp.v4()
+    fetch('https://ipapi.co/' + ipAddress + '/json/')
+      .then(function(resp){
+        log(resp.json())
+        return resp.json()
+      })
+      .then(function(data){
+        latitude = data.latitude
+        longitude = data.longitude
+      })
     const key = 'b670e8e2fd850cc641897211bf6a2252';
-    fetch('https://api.openweathermap.org/data/2.5/weather?id=' + cityID+ '&appid=' + key)  
+    fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + key)  
     .then(function(resp) { return resp.json() }) // Convert data to json
     .then(function(data) {
       const temp = Math.round(data.main.temp - 273.15)
-      setTemp(5)
+      setTemp(temp)
     })
     .catch(function() {
     // catch any errors
