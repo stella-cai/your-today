@@ -22,16 +22,16 @@ app.use(session({
 
 const mongoose = require('./mongoose.js')
 
-const credentialRouter = require('./routes/credentials')
+const credentialRouter = require('./routes/credentialsRouter.js')
 app.use('/credential', credentialRouter)
 
-const todoRouter = require('./routes/todo.js')
+const todoRouter = require('./routes/todoRouter.js')
 app.use('/todo', todoRouter)
 
-const linkRouter = require('./routes/link.js')
+const linkRouter = require('./routes/linkRouter.js')
 app.use('/link', linkRouter)
 
-const settingsRouter = require('./routes/settings.js')
+const settingsRouter = require('./routes/settingsRouter.js')
 app.use('/settings', settingsRouter)
 
 /*** Webpage routes below **********************************/
