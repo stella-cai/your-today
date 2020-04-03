@@ -22,17 +22,20 @@ app.use(session({
 
 const mongoose = require('./mongoose.js')
 
-const credentialRouter = require('./routes/credentialsRouter.js')
+const credentialRouter = require('./routes/credentialsRouter')
 app.use('/credential', credentialRouter)
 
-const todoRouter = require('./routes/todoRouter.js')
+const todoRouter = require('./routes/todoRouter')
 app.use('/todo', todoRouter)
 
-const linkRouter = require('./routes/linkRouter.js')
+const linkRouter = require('./routes/linkRouter')
 app.use('/link', linkRouter)
 
-const settingsRouter = require('./routes/settingsRouter.js')
+const settingsRouter = require('./routes/settingsRouter')
 app.use('/settings', settingsRouter)
+
+const feedbackRouter = require('./routes/feedbackRouter')
+app.use('/feedback', feedbackRouter)
 
 /*** Webpage routes below **********************************/
 // Serve the build

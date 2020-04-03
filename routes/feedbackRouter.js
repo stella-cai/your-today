@@ -18,6 +18,7 @@ feedbackRouter.use(session({
     saveUninitialized: true
 }))
 
+const { ObjectID } = require('mongodb')
 const mongoose = require('../mongoose.js')
 const { Feedback } = require('./../models/feedback')
 
@@ -62,6 +63,14 @@ feedbackRouter.patch('/:id', (req, res) => {
         { read: 1 },
         { new: true }
     ).then((feedback) => {
-        res.send(feedback)
+        if (!feedback) {
+            res.status(404).send()
+        } else {
+            res.send(feedback)
+        }
+    }).catch((err) => {
+        res.status(500).send(err)
     })
 })
+
+module.exports = feedbackRouter
