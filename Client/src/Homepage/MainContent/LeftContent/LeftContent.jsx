@@ -28,7 +28,7 @@ export function LeftContent(props) {
                 {/* <Todos></Todos> */}
                 {/* <Focus></Focus> */}
                 
-                <Stepper todos = {props.todos} setTodos = {props.setTodos}></Stepper>
+                <Stepper messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></Stepper>
             </div>
         </div>
     )

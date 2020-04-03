@@ -12,6 +12,7 @@ import Frozen from './Frozen'
 import All from './All'
 import Feedback from './Feedback'
 import { mergeClasses } from '@material-ui/styles';
+import {Middleware} from "../actions/middleware";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -107,11 +108,14 @@ export default function AdminPage() {
 
 
   // Frozen.
-  const [frozen, setFrozen] = React.useState(
-    [
-      { id: 5, user: "Peter", reason: "Sending spam emails" },
-    ]
-  )
+  // Feedback.
+  const [frozen, setFrozen] = React.useState([])
+  Middleware.getFrozenUsers().then(function(result) {
+    console.log(result)
+    if(result) {
+      setFrozen(result)
+    }
+  })
 
   // All Active Accounts.
   const [all, setAll] = React.useState(

@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import NewEmail from './NewEmail'
+import {Middleware} from "../../../../actions/middleware";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Inbox() {
+export default function Inbox(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -80,12 +81,7 @@ export default function Inbox() {
 
   //Later we will get the New Unread Email From Gmail
   const [newEmails, setNewEmails] = useState(
-    [
-      {sender:"Edward Feng", date:"Mon 2020-03-02 9:05 PM", content:'Hey Pan and Team 27,\nSorry for the late reply and thank you for the email.\nYes, your current way of using Weather and Music Player APIs is fair! I will keep that in mind when marking your submission for Phase 1.\nGood luck! And remember to save some time to convert your project to React.\nBest regards,\nEdward Feng'},
-      {sender:"Somebody", date:"Mon 2020-03-15 9:05 PM", content:'Hello'},
-      {sender:"csc301", date:"2020-03-03 6:30 PM", content:"Hi"},
-      {sender:"csc209", date:"2020-03-03 6:30 PM", content:"Hi"},
-    ]
+    props.messages
     );
 
   return (

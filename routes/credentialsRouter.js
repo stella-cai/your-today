@@ -22,11 +22,12 @@ credentialsRouter.use(session({
 
 const mongoose = require('../mongoose.js')
 const { User } = require('./../models/user')
+const { Message } = require('./../models/message')
 const Bcrypt = require("bcryptjs")
 
 credentialsRouter.get("/check-loggedin", (req, res) => {
     if (req.session.loggedin) {
-        res.send({ currentUser: req.session.user });
+        res.send({ currentUser: req.session.user, messages: req.session.messages});
     } else {
         res.status(401).send();
     }
@@ -63,9 +64,14 @@ credentialsRouter.post('/auth', (req, res) => {
             res.status(400).send("wrong passwordsss")
         }
         else {
-            req.session.loggedin = true
-            req.session.user = user
-            res.status(200).send("success")
+            Message.find({to: req.body.username}, function(err, messages) {
+
+                req.session.loggedin = true
+                req.session.user = user
+                req.session.messages = messages
+
+                res.status(200).send("success")
+            })
         }
     })
 })

@@ -1,3 +1,17 @@
+async function getFrozenUsers() {
+    const url = "/account/frozen";
+
+    return fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
 function completeTodo(todoId) {
     const url = "/todo/" + todoId;
     const request = new Request(url, {
@@ -129,8 +143,9 @@ function checkLoggedin(app) {
             }
         })
         .then(json => {
-            if (json && json.currentUser) {
+            if (json && json.currentUser && json.messages) {
                 app.setState({ currentUser: json.currentUser });
+                app.setState({ messages: json.messages });
             }
         })
         .catch(error => {
@@ -224,4 +239,5 @@ export const Middleware = {
     deleteLink,
     addTodo,
     completeTodo,
+    getFrozenUsers,
 }

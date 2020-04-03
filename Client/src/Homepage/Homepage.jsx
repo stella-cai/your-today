@@ -61,7 +61,7 @@ export function Homepage(props) {
             profileState = {profileState}
             setProfileState = {setProfileState}
           />
-          <MainContent links = {links} setLinks = {setLinks} todos = {todos} setTodos = {setTodos}></MainContent>
+          <MainContent messages = {props.app.state.messages} username={props.app.state.currentUser.username} links = {links} setLinks = {setLinks} todos = {todos} setTodos = {setTodos}></MainContent>
         </Box>
       </div>
     </div>

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Inbox from './Inbox'
 import Compose from './Compose'
+import webSocket from 'socket.io-client'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,14 +21,41 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export function Email() {
+export function Email(props) {
   const classes = useStyles();
+
+  const [to, setTo] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [ws,setWs] = useState(webSocket('http://localhost:3000'))
+
+  const connectWebSocket = () => {
+      setWs(webSocket('http://localhost:3000'))
+  }
+
+  useEffect(()=>{
+      if(ws){
+          console.log('success connect!')
+          initWebSocket()
+      }
+  },[ws])
+
+  const initWebSocket = () => {
+      ws.on('getMessage', message => {
+          console.log(message)
+      })
+  }
+
+  const sendMessage = () => {
+      ws.emit('getMessage', {sender: props.username, to: to, subject: subject, content: message, date: new Date()})
+  }
 
 
   return (
     <div className={classes.root}>
-      <Inbox className={classes.inbox} id='inbox'></Inbox>
-      <Compose className={classes.compose}></Compose>
+      <Inbox messages = {props.messages} className={classes.inbox} id='inbox'></Inbox>
+      <Compose sendMessage = {sendMessage} to={to} setTo={setTo} subject={subject} setSubject={setSubject} message={message} setMessage={setMessage} className={classes.compose}></Compose>
     </div>
   );
 }

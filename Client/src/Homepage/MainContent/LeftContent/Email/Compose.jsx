@@ -51,9 +51,15 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(1)
     }
 }));
-export default function Inbox() {
+export default function Inbox(props) {
     const classes = useStyles();
-
+    const to = props.to
+    const setTo = props.setTo
+    const subject = props.subject
+    const setSubject = props.setSubject
+    const message = props.message
+    const setMessage = props.setMessage
+    const sendMessage=props.sendMessage
     return (
         <div className={classes.root}>
             <TableRow>
@@ -65,12 +71,16 @@ export default function Inbox() {
                 <InputField
                     className={classes.input}
                     label="To"
+                    value={to}
+                    onChange={e => setTo(e.target.value)}
                 />
             </TableRow>
             <TableRow>
                 <InputField
                     className={classes.input}
                     label="Subject"
+                    value={subject}
+                    onChange={e => setSubject(e.target.value)}
                 />
             </TableRow>
             <TableRow>
@@ -78,10 +88,12 @@ export default function Inbox() {
                     multiline rows='4'
                     className={classes.input}
                     label="Message"
+                    value={message}
+                    onChange={e => setMessage(e.target.value)}
                 />
             </TableRow>
             <TableRow>
-                <Button className={classes.button}>Send</Button>
+                <Button className={classes.button} onClick={sendMessage}>Send</Button>
             </TableRow>
         </div>
     );

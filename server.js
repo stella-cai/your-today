@@ -53,3 +53,20 @@ const port = process.env.PORT || 5000
 app.listen(port, () => {
 	log(`Listening on port ${port}...`)
 })
+
+const server = require('http').Server(app)
+    .listen(3000,()=>{console.log('open server!')})
+
+
+const { Message } = require('./models/message')
+const io = require('socket.io')(server)
+io.on('connection', socket => {
+    console.log('success connect!')
+    socket.on('getMessage', message => {
+        console.log(socket.id)
+        const newMessage = new Message(message)
+        newMessage.save().then((result) => {
+            socket.emit('getMessage', result)
+        })
+    })
+})
