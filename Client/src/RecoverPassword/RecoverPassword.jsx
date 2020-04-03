@@ -113,4 +113,4 @@ class RecoverPassword extends React.Component{
     }
 }
 
-export default RecoverPassword;
+export {RecoverPassword};

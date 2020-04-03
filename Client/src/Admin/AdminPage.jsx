@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Creation from './Creation'
-import Request from '../AdminPage'
+import Request from './Request'
 import Frozen from './Frozen'
 import All from './All'
 import Feedback from './Feedback'

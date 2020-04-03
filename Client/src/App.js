@@ -10,9 +10,9 @@ import './App.css';
 import {Homepage} from './Homepage';
 import {Loading} from './Loading';
 import {Login} from './Login';
-import Register from './react-components/Register';
-import RecoverPassword from './react-components/RecoverPassword';
-import Admin from './react-components/Admin'
+import {Register} from './Register';
+import {RecoverPassword} from './RecoverPassword';
+import {Admin} from './Admin'
 import {Middleware} from "./actions/middleware";
 
 class App extends React.Component {

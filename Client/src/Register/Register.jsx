@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 
 import SecurityQuestion from "./SecurityQuestion";
 
-import {Middleware} from "../../actions/middleware";
+import {Middleware} from "../actions/middleware";
 
 
 class Register extends React.Component {
@@ -197,4 +197,4 @@ class Register extends React.Component {
 
 }
 
-export default Register;
+export {Register};
