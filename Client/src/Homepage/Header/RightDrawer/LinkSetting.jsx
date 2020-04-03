@@ -7,6 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
+import { Middleware } from "../../../actions/middleware"
 
 function getModalStyle() {
   const top = 50;
@@ -129,18 +130,25 @@ export default function LinkSetting(props) {
 
   const deleteLink = index => {
 
-    const newLinks = [...links];
-    newLinks.splice(index, 1);
-    setLinks(newLinks);
+    Middleware.deleteLink(links[index]._id).then(function(result) {
+      if (result == "success") {
+        const newLinks = [...links];
+        newLinks.splice(index, 1);
+        setLinks(newLinks);
+      }
+    })
   }
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newLinks = [...links, { url: url, name: urlName }];
-    setLinks(newLinks);
-    setUrl("");
-    setUrlName("");
-    handleClose();
+    const addedLink = Middleware.addLink({ url: url, displayName: urlName })
+    addedLink.then(function(result) {
+      const newLinks = [...links, result];
+      setLinks(newLinks);
+      setUrl("");
+      setUrlName("");
+      handleClose();
+    });
   }
 
   return (
@@ -160,7 +168,7 @@ export default function LinkSetting(props) {
                 <div className={classes.link}>
                   <div className={classes.buttondiv}>
                   <Button className={classes.button} ariant="outlined" size="large">
-                  {link.name}
+                  {link.displayName}
                   <IconButton onClick={() => deleteLink(index)} className={classes.delete}><ClearIcon /></IconButton>
                   </Button>
                   </div>

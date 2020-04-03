@@ -1,5 +1,52 @@
+function deleteLink(linkId) {
+    const url = "/link/" + linkId;
+    const request = new Request(url, {
+        method: "delete",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.send("success");
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+function addLink(link) {
+    const url = "/link";
+    const date = link
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(date),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json && json.addedLink) {
+                return json.addedLink
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 function setUserWallpaper(wallpaperUrl) {
-    const url = "/set-wallpaper";
+    const url = "/settings/set-wallpaper";
     const date = {"wallpaper": wallpaperUrl}
     const request = new Request(url, {
         method: "post",
@@ -123,5 +170,7 @@ export const Middleware = {
     login,
     checkLoggedin,
     setUserWallpaper,
-    setUserMood
+    setUserMood,
+    addLink,
+    deleteLink
 }

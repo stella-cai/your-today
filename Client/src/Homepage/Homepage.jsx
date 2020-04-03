@@ -10,13 +10,7 @@ import {MainContent} from "./MainContent";
 
 export function Homepage(props) {
   const [links, setLinks] = useState(
-    [
-      {url:"https://www.google.com", name:"Google"},
-      {url:"http://acorn.utoronto.ca", name:"Acorn"},
-      {url:"http://q.utoronto.ca", name:"Quercus"},
-      {url:"https://web.cs.toronto.edu", name:"UofT CS"},
-      {url:"https://leetcode.com", name:"Leetcode"}
-    ]
+    props.app.state.currentUser.linkList
   );
 
   const [wallpaper, setWallpaper] = useState (
