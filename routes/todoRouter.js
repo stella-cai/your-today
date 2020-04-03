@@ -28,6 +28,7 @@ const { User } = require('./../models/user')
 todoRouter.post('/', (req, res) => {
     if (!req.body.what || !req.body.when) {
         res.status(400).send()
+        return
     }
 
     const todo = {
@@ -76,7 +77,7 @@ todoRouter.delete('/:id', (req, res) => {
         return
     }
 
-    User.find({ username: req.session.user.username }).then((user) => {
+    User.findOne({ username: req.session.user.username }).then((user) => {
         if (!user) {
             res.status(404).send() // could not find this restaurant
         } else {

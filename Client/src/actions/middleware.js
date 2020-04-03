@@ -1,3 +1,52 @@
+function completeTodo(todoId) {
+    const url = "/todo/" + todoId;
+    const request = new Request(url, {
+        method: "delete",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return "success";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+
+function addTodo(todo) {
+    const url = "/todo";
+    const data = todo
+    console.log(JSON.stringify(data))
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json && json.addedTodo) {
+                return json.addedTodo
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 function deleteLink(linkId) {
     const url = "/link/" + linkId;
     const request = new Request(url, {
@@ -10,7 +59,7 @@ function deleteLink(linkId) {
     return fetch(request)
         .then(res => {
             if (res.status === 200) {
-                return res.send("success");
+                return "success";
             }
         })
         .catch(error => {
@@ -20,10 +69,10 @@ function deleteLink(linkId) {
 
 function addLink(link) {
     const url = "/link";
-    const date = link
+    const data = link
     const request = new Request(url, {
         method: "post",
-        body: JSON.stringify(date),
+        body: JSON.stringify(data),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
@@ -172,5 +221,7 @@ export const Middleware = {
     setUserWallpaper,
     setUserMood,
     addLink,
-    deleteLink
+    deleteLink,
+    addTodo,
+    completeTodo,
 }

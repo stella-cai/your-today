@@ -104,7 +104,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleTabs() {
+export default function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [countdown, setCountdown] = React.useState(0);
@@ -142,7 +142,7 @@ export default function SimpleTabs() {
           <Focus setCountdown={setCountdown} countdown={countdown}></Focus>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Todos className={classes.todos}></Todos>
+          <Todos className={classes.todos} todos = {props.todos} setTodos = {props.setTodos}></Todos>
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Email ></Email>

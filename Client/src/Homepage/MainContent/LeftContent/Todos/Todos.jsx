@@ -21,46 +21,39 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export function Todos() {
+export function Todos(props) {
   const classes = useStyles();
 
   // When our project is finished, we will get the default value from the backend. But for know, just assume that it's March 1, 2020 and we have two todos: csc309 and csc301.
 
   //const todoList = getTodosFromServer(Today)
-  const [todos, setTodos] = useState(
-    [
-      {what:"CSC309", when:"2020-03-01 10:10 AM"},
-      {what:"CSC301", when:"2020-03-01 10:10 AM"},
-      {what:"MAT235", when:"2020-03-01 10:10 AM"},
-    ]
-);
 
-  const getTodos = (day) => {
-    // For now, assume the user only stores todos for 2020-03-03 and 2020-03-01, later we will get the data from the server.
+  // const getTodos = (day) => {
+  //   // For now, assume the user only stores todos for 2020-03-03 and 2020-03-01, later we will get the data from the server.
 
-    //const todoList = getTodosFromServer(day)
+  //   //const todoList = getTodosFromServer(day)
 
-    if(day === "2020-03-03") {
-      setTodos(
-        [
-          {what:"Go Shopping to buy milk.", when:"2020-03-03 10:10 AM"},
-          {what:"Watch The Town", when:"2020-03-03 10:10 AM"},
-        ]
-      )
-    }
-    else if (day === "2020-03-01") {
-      setTodos(
-        [
-          {what:"CSC309", when:"2020-03-01 10:10 AM"},
-          {what:"CSC301", when:"2020-03-01 10:10 AM"},
-          {what:"MAT235", when:"2020-03-01 10:10 AM"},
-        ]
-      )
-    }
-    else {
-      setTodos([])
-    }
-  }
+  //   if(day === "2020-03-03") {
+  //     setTodos(
+  //       [
+  //         {what:"Go Shopping to buy milk.", when:"2020-03-03 10:10 AM"},
+  //         {what:"Watch The Town", when:"2020-03-03 10:10 AM"},
+  //       ]
+  //     )
+  //   }
+  //   else if (day === "2020-03-01") {
+  //     setTodos(
+  //       [
+  //         {what:"CSC309", when:"2020-03-01 10:10 AM"},
+  //         {what:"CSC301", when:"2020-03-01 10:10 AM"},
+  //         {what:"MAT235", when:"2020-03-01 10:10 AM"},
+  //       ]
+  //     )
+  //   }
+  //   else {
+  //     setTodos([])
+  //   }
+  // }
 
   return (
     <>
@@ -78,8 +71,8 @@ export function Todos() {
         /> */}
       </form>
       <TodoList
-      todos = {todos}
-      setTodos = {setTodos}
+      todos = {props.todos}
+      setTodos = {props.setTodos}
       classname={classes.todos}
       >
       </TodoList>

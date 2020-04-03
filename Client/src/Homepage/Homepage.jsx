@@ -21,6 +21,10 @@ export function Homepage(props) {
     props.app.state.currentUser.mood
   );
 
+  const [todos, setTodos] = useState(
+    props.app.state.currentUser.todoList
+  );
+
   console.log(wallpaper);
   console.log(setWallpaper);
 
@@ -49,7 +53,7 @@ export function Homepage(props) {
         <Box style={boxStyle()}>
           <Header
             app={props.app}
-            username="John Doe"
+            username={props.app.state.currentUser.username}
             links = {links} 
             setLinks = {setLinks}
             wallpaper={wallpaper} 
@@ -57,7 +61,7 @@ export function Homepage(props) {
             profileState = {profileState}
             setProfileState = {setProfileState}
           />
-          <MainContent links = {links} setLinks = {setLinks} ></MainContent>
+          <MainContent links = {links} setLinks = {setLinks} todos = {todos} setTodos = {setTodos}></MainContent>
         </Box>
       </div>
     </div>

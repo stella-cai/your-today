@@ -68,23 +68,27 @@ linkRouter.get('/', (req, res) => {
 // Route for deleting a link
 linkRouter.delete('/:id', (req, res) => {
     const id = req.params.id
+    console.log(id)
 
     if (!ObjectID.isValid(id)) {
         res.status(404).send()
     }
 
-    User.find({ username: req.session.user.username }).then((user) => {
+    User.findOne({ username: req.session.user.username }).then((user) => {
         if (!user) {
             res.status(404).send()
-        } else {
+        } 
+        else {
             const deletedLink = user.linkList.find((link) => {
-                link._id.toString() === id
+                return link._id == id
             })
+            console.log(user.linkList)
             if (!deletedLink) {
                 res.status(404).send()
             } else {
-                const updatedLink = user.linkList.filter((link) =>
-                    link._id.toString() !== id
+                const updatedLink = user.linkList.filter((link) => {
+                    return link._id != id
+                }
                 )
                 User.findOneAndUpdate(
                     { username: req.session.user.username },
@@ -92,11 +96,12 @@ linkRouter.delete('/:id', (req, res) => {
                     { new: true }
                 ).then(() => {
                     req.session.user.linkList = updatedLink
-                    res.send({ deletedTodo })
+                    res.send({ deletedLink })
                 })
             }
         }
     }).catch((err) => {
+        console.log(err)
         res.status(500).send(err)
     })
 })

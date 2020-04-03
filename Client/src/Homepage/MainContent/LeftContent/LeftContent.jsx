@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-export function LeftContent() {
+export function LeftContent(props) {
     //const { todos, deleteTodo } = useTodoState([]);
     const classes = useStyles();
     return(
@@ -28,7 +28,7 @@ export function LeftContent() {
                 {/* <Todos></Todos> */}
                 {/* <Focus></Focus> */}
                 
-                <Stepper></Stepper>
+                <Stepper todos = {props.todos} setTodos = {props.setTodos}></Stepper>
             </div>
         </div>
     )

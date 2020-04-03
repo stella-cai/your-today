@@ -61,7 +61,7 @@ export default function MediaControlCard(props) {
     <div className={classes.root}>
       {
       links.map((link, index) => (
-      <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href={link.url}>{link.name}
+      <Button variant="outlined" size="large" className={classes.buttonLeft} startIcon={<LinkIcon />} href={link.url}>{link.displayName}
       </Button>
       ))
       }

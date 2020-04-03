@@ -5,6 +5,7 @@ import TableBody from "@material-ui/core/TableBody";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 import { makeStyles } from '@material-ui/core/styles';
+import {Middleware} from "../../../../actions/middleware";
 const useStyles = makeStyles(theme => ({
     // todoForm: {
     //   padding: '0',
@@ -46,14 +47,25 @@ export default function TodoList(props) {
     const classes = useStyles();
 
     const complete = index => {
-        const newTodos = [...todos];
-        newTodos.splice(index, 1);
-        setTodos(newTodos);
+
+        Middleware.completeTodo(todos[index]._id).then(function(result) {
+            if (result == "success") {
+              const newTodos = [...todos];
+              newTodos.splice(index, 1);
+              setTodos(newTodos);
+            }
+          })
     };
 
     const add = (newWhat, newWhen) => {
-        const newTodos = [...todos, {what: newWhat, when: newWhen}];
-        setTodos(newTodos);
+
+
+        // Not cheacking if "what" is undefined!!
+        const addedTodo = Middleware.addTodo({ what: newWhat, when: newWhen })
+        addedTodo.then(function(result) {
+            const newTodos = [...todos, result];
+            setTodos(newTodos);
+        });
         
     };
 
