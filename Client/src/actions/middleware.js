@@ -205,7 +205,7 @@ function login(username, password) {
 
 
 function setUserMood(mood) {
-    const url = "/set-mood";
+    const url = "/settings/set-mood";
     const data = {"mood": mood}
     const request = new Request(url, {
         method: "post",
