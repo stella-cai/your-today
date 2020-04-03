@@ -2,13 +2,13 @@
 // Everything here was previously in the App component.
 import React, { useState } from "react";
 import Box from '@material-ui/core/Box';
-import AdminPage from './AdminPage'
 
 // Importing components
-import {Header} from "../../Homepage/Header";
+import {Header} from "./Header";
+import {MainContent} from "./MainContent";
 
 
-export default function Admin() {
+export function Homepage(props) {
   const [links, setLinks] = useState(
     [
       {url:"https://www.google.com", name:"Google"},
@@ -19,15 +19,23 @@ export default function Admin() {
     ]
   );
 
+  const [wallpaper, setWallpaper] = useState (
+    props.app.state.currentUser.wallpaper
+  );
+
+  const [profileState, setProfileState] = useState(
+    props.app.state.currentUser.mood
+  );
+
+  console.log(wallpaper);
+  console.log(setWallpaper);
+
   const bgStyle = () => {
     return {
-      backgroundImage: 'url(https://source.unsplash.com/T_Qe4QlMIvQ)',
+      backgroundImage: 'url(' + wallpaper +')',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%'
+      height: '100vh'
     }
   }
 
@@ -40,17 +48,23 @@ export default function Admin() {
     }
   }
 
+
   return(      
     <div style={bgStyle()}>
       <div className="App">
         <Box style={boxStyle()}>
           <Header
-            username="Admin"
+            app={props.app}
+            username="John Doe"
             links = {links} 
             setLinks = {setLinks}
+            wallpaper={wallpaper} 
+            setWallpaper = {setWallpaper}
+            profileState = {profileState}
+            setProfileState = {setProfileState}
           />
+          <MainContent links = {links} setLinks = {setLinks} ></MainContent>
         </Box>
-        <AdminPage></AdminPage>
       </div>
     </div>
   );

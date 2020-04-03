@@ -7,7 +7,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 // Importing the Queue and our simple Home Page
-import Homepage from './react-components/Homepage';
+import {Homepage} from './Homepage';
 import {Loading} from './Loading';
 import {Login} from './Login';
 import Register from './react-components/Register';
