@@ -1,14 +1,37 @@
 /*  Full Queue component */
 // Everything here was previously in the App component.
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Box from '@material-ui/core/Box';
 
 // Importing components
 import {Header} from "./Header";
 import {MainContent} from "./MainContent";
+import webSocket from 'socket.io-client'
 
 
 export function Homepage(props) {
+  const [ws,setWs] = useState(webSocket('http://localhost:3000'))
+
+  // const connectWebSocket = () => {
+  //     setWs(webSocket('http://localhost:3000', {username: props.username}))
+  // }
+
+  useEffect(()=>{
+      if(ws){
+          console.log('success connect!')
+          initWebSocket()
+      }
+  },[ws])
+
+  const initWebSocket = () => {
+    ws.send(JSON.stringify({type: "user-log-in", username: props.app.state.currentUser.username}))
+      ws.on('getMessage', message => {
+          const newNewEmails = [...props.app.state.messages, message];
+          props.app.setState({ messages: newNewEmails });
+          console.log(props.app.state.messages)
+      })
+  }
+
   const [links, setLinks] = useState(
     props.app.state.currentUser.linkList
   );
@@ -65,7 +88,9 @@ export function Homepage(props) {
             profileState = {profileState}
             setProfileState = {setProfileState}
           />
-          <MainContent messages = {props.app.state.messages}
+          <MainContent 
+          ws={ws}
+          messages = {props.app.state.messages}
            username={props.app.state.currentUser.username}
            links = {links}
            setLinks = {setLinks}

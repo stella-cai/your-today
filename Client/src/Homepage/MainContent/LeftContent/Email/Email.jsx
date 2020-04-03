@@ -28,28 +28,7 @@ export function Email(props) {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [newEmails, setNewEmails] = useState(props.messages)
-
-  const [ws,setWs] = useState(webSocket('http://localhost:3000'))
-
-  // const connectWebSocket = () => {
-  //     setWs(webSocket('http://localhost:3000', {username: props.username}))
-  // }
-
-  useEffect(()=>{
-      if(ws){
-          console.log('success connect!')
-          initWebSocket()
-      }
-  },[ws])
-
-  const initWebSocket = () => {
-    ws.send(JSON.stringify({type: "user-log-in", username: props.username}))
-      ws.on('getMessage', message => {
-          const newNewEmails = [...newEmails, message];
-          setNewEmails(newNewEmails);
-          console.log(newEmails)
-      })
-  }
+  const ws = props.ws
 
   const sendMessage = () => {
       ws.emit('getMessage', {sender: props.username, to: to, subject: subject, content: message, date: new Date()})

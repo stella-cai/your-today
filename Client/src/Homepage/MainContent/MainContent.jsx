@@ -31,7 +31,7 @@ export function MainContent(props) {
   <Grid className={classes.root}>
       <TimeWeather></TimeWeather>
       <div className={classes.content}>
-        <LeftContent messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></LeftContent>
+        <LeftContent ws={props.ws} messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></LeftContent>
         <RightContent links = {links} setLinks = {setLinks} music = {music}
            setMusic = {setMusic}></RightContent>
       </div>
