@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-
 app.use(bodyParser.json())
 app.use(session({
 	secret: 'secret',
@@ -22,7 +21,6 @@ app.use(session({
 }))
 
 const mongoose = require('./mongoose.js')
-const { User } = require('./models/user')
 
 const credentialRouter = require('./routes/credentials')
 app.use('/credential', credentialRouter)
@@ -32,6 +30,9 @@ app.use('/todo', todoRouter)
 
 const linkRouter = require('./routes/link.js')
 app.use('/link', linkRouter)
+
+const settingsRouter = require('./routes/settings.js')
+app.use('/settings', settingsRouter)
 
 /*** Webpage routes below **********************************/
 // Serve the build

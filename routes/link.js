@@ -19,7 +19,7 @@ linkRouter.use(session({
 }))
 
 const mongoose = require('../mongoose.js')
-const { User } = require('../models/user')
+const { User } = require('./../models/user')
 
 // Route for adding a new link
 // expected request form:

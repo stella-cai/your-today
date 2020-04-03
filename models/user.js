@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
  
-
 const SecurityQuestionsSchema = new mongoose.Schema({
   question: {
     type: String,
@@ -23,7 +22,6 @@ const TodoListSchema = new mongoose.Schema({
     type: Date,
     required: true
   }
-
 })
  
 const LinkSchema = new mongoose.Schema({
@@ -35,7 +33,6 @@ const LinkSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-    
 })
 
 const UserSchema = new mongoose.Schema({
@@ -95,4 +92,6 @@ const UserSchema = new mongoose.Schema({
 
 })
  
-module.exports = { UserSchema }
+const User = mongoose.model('User', UserSchema)
+
+module.exports = { User }

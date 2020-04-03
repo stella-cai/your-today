@@ -19,7 +19,7 @@ settingsRouter.use(session({
 }))
 
 const mongoose = require('../mongoose.js')
-const { User } = require('../models/user')
+const { User } = require('./../models/user')
 
 settingsRouter.post('/set-wallpaper', (req, res) => {
     User.findOneAndUpdate(
@@ -45,4 +45,4 @@ settingsRouter.post('/set-mood', (req, res) => {
     )
 })
 
-module.exports = todoRouter
+module.exports = settingsRouter

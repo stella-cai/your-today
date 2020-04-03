@@ -21,7 +21,7 @@ credentialsRouter.use(session({
 }))
 
 const mongoose = require('../mongoose.js')
-const { User } = require('../models/user')
+const { User } = require('./../models/user')
 const Bcrypt = require("bcryptjs")
 
 credentialsRouter.get("/check-loggedin", (req, res) => {
@@ -56,7 +56,7 @@ credentialsRouter.post('/auth', (req, res) => {
         if (err) return console.error(err)
         
         if (user === null) {
-            res.send("The Username doesn't exist!")
+            // res.send("The Username doesn't exist!")
             res.status(400).send("wrong username")
         }
         else if (!Bcrypt.compareSync(req.body.password, user.password)) {

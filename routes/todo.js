@@ -19,9 +19,7 @@ todoRouter.use(session({
 }))
 
 const mongoose = require('../mongoose.js')
-const schemas = require('../schemas.js')
-const UserSchema = schemas.UserSchema
-const User = mongoose.model('user', UserSchema, 'user')
+const { User } = require('./../models/user')
 
 // Route for adding a new todo item
 // expected request form:
