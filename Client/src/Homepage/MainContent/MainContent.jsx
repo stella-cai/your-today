@@ -24,13 +24,16 @@ export function MainContent(props) {
   const classes = useStyles();
   const links = props.links;
   const setLinks = props.setLinks;
+  const music = props.music;
+  const setMusic = props.setMusic;
 
   return (
   <Grid className={classes.root}>
       <TimeWeather></TimeWeather>
       <div className={classes.content}>
         <LeftContent messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></LeftContent>
-        <RightContent links = {links} setLinks = {setLinks}></RightContent>
+        <RightContent links = {links} setLinks = {setLinks} music = {music}
+           setMusic = {setMusic}></RightContent>
       </div>
   </Grid>
   );

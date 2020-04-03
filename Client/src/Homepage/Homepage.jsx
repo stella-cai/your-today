@@ -25,6 +25,10 @@ export function Homepage(props) {
     props.app.state.currentUser.todoList
   );
 
+  const [music, setMusic] = useState(
+    props.app.state.currentUser.music_url
+  );
+
   console.log(wallpaper);
   console.log(setWallpaper);
 
@@ -61,7 +65,15 @@ export function Homepage(props) {
             profileState = {profileState}
             setProfileState = {setProfileState}
           />
-          <MainContent messages = {props.app.state.messages} username={props.app.state.currentUser.username} links = {links} setLinks = {setLinks} todos = {todos} setTodos = {setTodos}></MainContent>
+          <MainContent messages = {props.app.state.messages}
+           username={props.app.state.currentUser.username}
+           links = {links}
+           setLinks = {setLinks}
+           todos = {todos}
+           setTodos = {setTodos}
+           music = {music}
+           setMusic = {setMusic}>
+          </MainContent>
         </Box>
       </div>
     </div>

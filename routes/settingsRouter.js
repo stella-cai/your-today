@@ -45,4 +45,16 @@ settingsRouter.post('/set-mood', (req, res) => {
     )
 })
 
+settingsRouter.post('/set-music', (req, res) => {
+    User.findOneAndUpdate(
+        { 'username': req.session.user.username},
+        { 'music_url': req.body.music_url }, 
+        function (err, user) {
+            if (err) throw err
+            req.session.user.music_url = req.body.music_url
+            res.status(200).send("success")
+        }
+    )
+})
+
 module.exports = settingsRouter
