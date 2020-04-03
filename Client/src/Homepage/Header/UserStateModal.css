@@ -1,0 +1,21 @@
+.MuiGrid-item.profile-username {
+    display: none;
+    margin: 0 10px;
+  }
+
+.MuiSvgIcon-root.profile-status {
+    display: none;
+    margin-top: 4px;
+}
+
+@media (min-width: 785px) {
+    .MuiGrid-item.profile-username {
+        display: block;
+        margin: 0 10px;
+      }
+    
+    .MuiSvgIcon-root.profile-status {
+        display: block;
+        margin-top: 2px;
+    }
+}
