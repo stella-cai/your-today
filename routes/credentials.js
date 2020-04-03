@@ -1,21 +1,20 @@
 /* Phase 2 API */
 'use strict'
 const log = console.log
-log('Express server')
 var bodyParser = require('body-parser')
 const express = require('express')
 
-const app = express()
+const credentialsRouter = express.Router()
 var session = require('express-session')
 
-app.use(express.static(__dirname + '/pub'))
-app.use(bodyParser.urlencoded({
+credentialsRouter.use(express.static(__dirname + '/pub'))
+credentialsRouter.use(bodyParser.urlencoded({
     extended: true
 }))
 
 
-app.use(bodyParser.json())
-app.use(session({
+credentialsRouter.use(bodyParser.json())
+credentialsRouter.use(session({
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true
@@ -29,7 +28,7 @@ const Bcrypt = require("bcryptjs")
 
 
 
-app.get("/check-loggedin", (req, res) => {
+credentialsRouter.get("/check-loggedin", (req, res) => {
     if (req.session.loggedin) {
         res.send({ currentUser: req.session.user });
     } else {
@@ -37,7 +36,7 @@ app.get("/check-loggedin", (req, res) => {
     }
 });
 
-app.post('/user-register', (req, res) => {
+credentialsRouter.post('/user-register', (req, res) => {
     const user = new User({
         username: req.body.username,
         email: req.body.email,
@@ -56,7 +55,7 @@ app.post('/user-register', (req, res) => {
 	})
 })
 
-app.post('/auth', (req, res) => {
+credentialsRouter.post('/auth', (req, res) => {
     User.findOne({username: req.body.username}, function(err, user) {
         if (err) return console.error(err)
         
@@ -75,4 +74,4 @@ app.post('/auth', (req, res) => {
     })
 })
 
-module.exports = app
+module.exports = credentialsRouter
