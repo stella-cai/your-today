@@ -60,13 +60,31 @@ const server = require('http').Server(app)
 
 const { Message } = require('./models/message')
 const io = require('socket.io')(server)
+let usersOnline = []
 io.on('connection', socket => {
+    socket.on('message', evt => {
+        console.log(evt)
+        const data = JSON.parse(evt);
+        switch(data.type) {
+            case "user-log-in":
+                usersOnline.push({username: data.username, socket_id: socket.id})
+        }
+      })
+
+      socket.on('disconnect', function() {
+        usersOnline = usersOnline.filter(user => user.socket_id != socket.id)
+      })
+
     console.log('success connect!')
     socket.on('getMessage', message => {
         console.log(socket.id)
         const newMessage = new Message(message)
         newMessage.save().then((result) => {
-            socket.emit('getMessage', result)
+            const receiver = usersOnline.find(user => user.username == message.to)
+            if(receiver) {
+                // the user is online
+                io.to(`${receiver.socket_id}`).emit('getMessage', result)
+            }
         })
     })
 })

@@ -31,9 +31,9 @@ export function Email(props) {
 
   const [ws,setWs] = useState(webSocket('http://localhost:3000'))
 
-  const connectWebSocket = () => {
-      setWs(webSocket('http://localhost:3000'))
-  }
+  // const connectWebSocket = () => {
+  //     setWs(webSocket('http://localhost:3000', {username: props.username}))
+  // }
 
   useEffect(()=>{
       if(ws){
@@ -43,6 +43,7 @@ export function Email(props) {
   },[ws])
 
   const initWebSocket = () => {
+    ws.send(JSON.stringify({type: "user-log-in", username: props.username}))
       ws.on('getMessage', message => {
           const newNewEmails = [...newEmails, message];
           setNewEmails(newNewEmails);
