@@ -78,11 +78,8 @@ export default function Inbox(props) {
           setValue(value + 1);
       }
   };
-
-  //Later we will get the New Unread Email From Gmail
-  const [newEmails, setNewEmails] = useState(
-    props.messages
-    );
+  const newEmails = props.newEmails
+  const setNewEmails = props.setNewEmails
 
   return (
     <div className={classes.root} id='email-root'>

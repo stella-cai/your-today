@@ -27,6 +27,7 @@ export function Email(props) {
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [newEmails, setNewEmails] = useState(props.messages)
 
   const [ws,setWs] = useState(webSocket('http://localhost:3000'))
 
@@ -43,7 +44,9 @@ export function Email(props) {
 
   const initWebSocket = () => {
       ws.on('getMessage', message => {
-          console.log(message)
+          const newNewEmails = [...newEmails, message];
+          setNewEmails(newNewEmails);
+          console.log(newEmails)
       })
   }
 
@@ -54,7 +57,7 @@ export function Email(props) {
 
   return (
     <div className={classes.root}>
-      <Inbox messages = {props.messages} className={classes.inbox} id='inbox'></Inbox>
+      <Inbox newEmails = {newEmails} setNewEmails = {setNewEmails} className={classes.inbox} id='inbox'></Inbox>
       <Compose sendMessage = {sendMessage} to={to} setTo={setTo} subject={subject} setSubject={setSubject} message={message} setMessage={setMessage} className={classes.compose}></Compose>
     </div>
   );
