@@ -13,51 +13,55 @@ todoRouter.use(bodyParser.urlencoded({
 
 todoRouter.use(bodyParser.json())
 todoRouter.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
 }))
 
 const mongoose = require('../mongoose.js')
-const { User } = require('../schemas/')
 const schemas = require('../schemas.js')
 const UserSchema = schemas.UserSchema
-const TodoListSchema = schemas.TodoListSchema
 const User = mongoose.model('user', UserSchema, 'user')
-const TodoList = mongoose.model('todolist', TodoListSchema, 'todolist')
 
 // Route for adding a new todo item
 // expected request form:
 // { what: ..., when: ... }
 todoRouter.post('/', (req, res) => {
-    const todo = new TodoList({
+    if (!req.body.what || !req.body.when) {
+        res.status(400).send()
+    }
+
+    const todo = {
         what: req.body.what,
         when: req.body.when
-    })
+    }
 
     User.findOneAndUpdate(
         { username: req.session.user.username },
-        { $push: {todoList: todo } },
+        { $push: { todoList: todo } },
         { new: true }
     ).then((user) => {
         if (!user) {
             res.status(404).send() // could not find user
         } else {
-            req.session.user.todoList.push(todo)
-            res.send({ todo })
+            const addedTodo = user.todoList[user.todoList.length - 1]
+            req.session.user.todoList.push(addedTodo)
+            res.send({ addedTodo })
         }
+    }).catch((err) => {
+        res.status(500).send(err) // server error
     })
 })
 
 // Route for getting all todo items
-todoRouter.get('/', (req,res) => {
-    User.find( { username: req.session.user.username } ).then((user) => {
-        if(!user) {
+todoRouter.get('/', (req, res) => {
+    User.find({ username: req.session.user.username }).then((user) => {
+        if (!user) {
             res.status(404).send() // could not find user
         } else {
             res.send(user.todoList)
         }
-    }, (err) => {
+    }).catch((err) => {
         res.status(500).send(err)
     })
 
@@ -73,18 +77,18 @@ todoRouter.delete('/:id', (req, res) => {
         return
     }
 
-    User.find( { username: req.session.user.username } ).then((user) => {
+    User.find({ username: req.session.user.username }).then((user) => {
         if (!user) {
             res.status(404).send() // could not find this restaurant
         } else {
-            const deletedItem = user.todoList.find((todo) => 
+            const deletedItem = user.todoList.find((todo) =>
                 todo._id.toString() === id
             )
             if (!deletedItem) {
                 res.status(404).send() // could not find this reservation
             } else {
-                const updatedTodo = user.todoList.filter((todo) => 
-                        todo._id.toString() !== id
+                const updatedTodo = user.todoList.filter((todo) =>
+                    todo._id.toString() !== id
                 )
                 User.findOneAndUpdate(
                     { username: req.session.user.username },
@@ -92,10 +96,12 @@ todoRouter.delete('/:id', (req, res) => {
                     { new: true }
                 ).then(() => {
                     req.session.user.todoList = updatedTodo
-                    res.send( { updatedTodo } )
+                    res.send({ deletedItem })
                 })
             }
         }
+    }).catch((err) => {
+        res.status(500).send(err)
     })
 })
 

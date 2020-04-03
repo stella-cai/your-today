@@ -33,11 +33,6 @@ app.use('/credential', credentialRouter)
 const todoRouter = require('./routes/todo.js')
 app.use('/todo', todoRouter)
 
-app.get('/', (req, res) => {
-    console.log('connected')
-    res.status(200).send(success)
-})
-
 app.post('/set-wallpaper', (req, res) => {
     User.findOneAndUpdate(
         { 'username': req.session.user.username},
