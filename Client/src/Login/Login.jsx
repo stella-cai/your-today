@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LoginRight from "./LoginRight";
-import "./styles.css"
+import "./Login.css"
 
 class Login extends React.Component {
     rootStyle = () => {
@@ -32,4 +32,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export {Login};

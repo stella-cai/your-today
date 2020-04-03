@@ -7,8 +7,8 @@ import Link from '@material-ui/core/Link';
 import Alert from '@material-ui/lab/Alert';
 import { spacing } from '@material-ui/system';
 import { browserHistory } from 'react-router';
-import {Middleware} from "../../../actions/middleware";
-import "./styles.css"
+import {Middleware} from "../actions/middleware";
+import "./LoginRight.css"
 
 class LoginRight extends React.Component {
     constructor(props) {
