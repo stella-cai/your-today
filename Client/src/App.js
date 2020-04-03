@@ -8,7 +8,7 @@ import './App.css';
 
 // Importing the Queue and our simple Home Page
 import Homepage from './react-components/Homepage';
-import Loading from './react-components/Loading';
+import {Loading} from './Loading';
 import {Login} from './Login';
 import Register from './react-components/Register';
 import RecoverPassword from './react-components/RecoverPassword';

@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
-import "./styles.css";
+import "./Loading.css";
 
 /* Component for the Home page */
-class Home extends React.Component {
+class Loading extends React.Component {
   render() {
     return (
       <div className="home__bg-image center">
@@ -17,4 +17,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export {Loading};
