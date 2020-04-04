@@ -7,13 +7,32 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
-import Alert from '@material-ui/lab/Alert';
+
+import SecurityQuestion from "../Register/SecurityQuestion";
+
+import {Middleware} from "../actions/middleware";
 
 
-class RecoverPassword extends React.Component{
+class RecoverPassword extends React.Component {
     componentDidMount(){ 
-        document.title = "Recover Password | Today" 
+        document.title = "Register | Today" 
         } 
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+            firstname: "",
+            lastname: "",
+            password: "",
+            verifyPassword: "",
+            birthday: "",
+            securityQuestions: [{question: "", answer: ""}, {question: "", answer: ""}, {question: "", answer: ""}]
+        }
+    }
+
+
     rootStyle = () => {
         return {
             height: '100vh',
@@ -27,35 +46,32 @@ class RecoverPassword extends React.Component{
         }
     }
 
-    inputStyle = () => {
-        return {
-            marginTop: '10px',
-            marginBottom: '30px',
+    submitRecover = (e) => {
+        e.preventDefault()
+        console.log('submit button clicked')
+        if (document.querySelector('#password').value === document.querySelector("#verify-password").value) {
+            const user = {
+                username: this.state.username,
+                password: this.state.password,
+                securityQuestions: [
+                    {
+                        question: this.state.securityQuestions[0].question,
+                        answer: this.state.securityQuestions[0].answer
+                    },
+                    {
+                        question: this.state.securityQuestions[1].question,
+                        answer: this.state.securityQuestions[1].answer
+                    },
+                    {
+                        question: this.state.securityQuestions[2].question,
+                        answer: this.state.securityQuestions[2].answer
+                    }
+                ]
+            }
+            // TODO check username exists and security question.
         }
-    }
-
-    headerStyle = () => {
-        return {
-            marginTop: '50px',
-            marginBottom: "20px",
-        }
-    }
-
-    subHeaderStyle = () => {
-        return {
-            marginTop: '10px',
-            marginBottom: "10px",
-            fontSize: "15px"
-        }
-    }
-
-    alertStyle = () => {
-        return {
-            display: 'none',
-            marginTop: '20px',
-            marginBottom: '10px',
-            // marginLeft: '20px',
-            // marginRight: '20px',
+        else {
+            alert("New Passwords don't match!")
         }
     }
 
@@ -73,10 +89,11 @@ class RecoverPassword extends React.Component{
         }
     }
 
-    submitRecover = (e) => {
-        e.preventDefault()
-        console.log('recover button clicked')
-        document.querySelector("#recoverAlert").style.display = "block";
+    marginStyle = () => {
+        return {
+            marginTop:"20px", 
+            marginBottom: "20px" 
+        }
     }
 
     render() {
@@ -85,35 +102,48 @@ class RecoverPassword extends React.Component{
                 <CssBaseline />
                 <Grid item xs={false} sm={4} md={7} style={this.imageStyle()} />
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                    <Container id="recover-container" component="main" maxWidth="xs">
-                        <Typography component="h1" variant="h5" style={this.headerStyle()}>
-                            Recover Password
+                    <Container id="register-container" component="main" maxWidth="xs">
+                        <Typography component="h1" variant="h5" style={this.marginStyle()}>
+                            Register
                         </Typography>
-                        <Typography component="h3" variant="h6" style={this.subHeaderStyle()}>
-                            Enter the email address associated with your account.
-                        </Typography>
-                        <form id="recover-form" noValidate>
-                            <Grid item xs={12} sm={12}>
-                                <TextField id="email-input" label="Email" 
-                                    variant="filled" style={this.inputStyle()} fullWidth/>
+                        <form id="register-form" noValidate>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField value={this.state.username} onChange = {(e) => this.setState({username: e.target.value})} variant="outlined" fullWidth
+                                        id="username" label="Username" name="username" required />
+                                </Grid>
+                                <Grid item spacing={2} xs={12}>
+                                    <SecurityQuestion
+                                        number={0} registerForm={this}/>
+                                    <br />
+                                    <SecurityQuestion
+                                        number={1} registerForm={this}/>
+                                    <br />
+                                    <SecurityQuestion
+                                        number={2} registerForm={this}/>
+                                    <br />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField value={this.state.password} onChange = {(e) => this.setState({password: e.target.value})} variant="outlined" fullWidth name="password"
+                                        label="New Password" type="password" id="password" required />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField value={this.state.verifyPassword} onChange = {(e) => this.setState({verifyPassword: e.target.value})} variant="outlined" fullWidth name="password"
+                                        label="Verify New Password" type="password" id="verify-password" required />
+                                </Grid>
                             </Grid>
-                            
-                            <Button type="submit" variant="contained" id="goback-button" style={this.lbuttonStyle()} href="./../Login">Go Back</Button>
+                            <Button ype="submit" variant="contained" id="goback-button" style={this.lbuttonStyle()} href="./../Login">Go Back</Button>
                             <Button type="submit" variant="contained" color="primary" id="signup-button" style={this.rbuttonStyle()}
-                                onClick={this.submitRecover}>
-                                Send Email
+                                onClick={(e) => this.submitRecover(e)}>
+                                Recover
                             </Button>
                         </form>
-                        <br/>
-                        <br/>
-                        <Alert id ="recoverAlert" variant="filled" severity="success" style={this.alertStyle()}>
-                            We sent you an email to reset your password! 
-                        </Alert>
-                    </Container>
+                    </Container>    
                 </Grid>
             </Grid>
         )
     }
+
 }
 
 export {RecoverPassword};
