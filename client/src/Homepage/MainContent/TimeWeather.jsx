@@ -113,7 +113,7 @@ export default function TimeWeather() {
         });
   }
 
-  function chooseIcon(){
+  const chooseIcon = () => {
     let date = new Date();
     let hh = date.getHours();
     console.log(hh)
@@ -141,7 +141,7 @@ export default function TimeWeather() {
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
         <a href = {weatherLink} target="_blank">
-          {chooseIcon}}
+          {chooseIcon()}
         </a>
         <div className = {classes.weatherValue}>{temp}&#176;C</div>
       </Grid>
