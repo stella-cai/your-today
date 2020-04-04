@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function accountsEqual(list1, list2){
+function listsEqual(list1, list2){
   if(!list1 || !list2 || list1.length != list2.length)
     return false
   
@@ -131,7 +131,7 @@ export default function AdminPage() {
     console.log("comparing frozen users")
     console.log(result)
     console.log(frozen)
-    if(!accountsEqual(result.accounts, frozen)) {
+    if(!listsEqual(result.accounts, frozen)) {
       console.log("setting result inside getFrozenUsers")
       setFrozen(result.accounts)
     }
@@ -143,20 +143,23 @@ export default function AdminPage() {
   Middleware.getActiveUsers().then(function(result) {
     // console.log(result)
     // console.log(all)
-    if(!accountsEqual(result.users, all)) {
+    if(!listsEqual(result.users, all)) {
       console.log("setting result inside getActiveUsers")
       setAll(result.users)
     }
   })
 
   // Feedback.
-  const [feedback, setFeedback] = React.useState(
-    [
-      { id: 1, user: "Jack", content: "Good" },
-      { id: 2, user: "Jack", content: "Wonderful" },
-      { id: 3, user: "Lucy", content: "So so" },
-    ]
-  )
+  const [feedback, setFeedback] = React.useState([])
+  Middleware.getFeedback().then(function(result) {
+    console.log("comparing feedback")
+    console.log(result.feedbacks)
+    console.log(feedback)
+    if(!listsEqual(result.feedbacks, feedback)) {
+      console.log("setting result inside getFeedback")
+      setFeedback(result.feedbacks)
+    }
+  })
 
   const removeFromScreen = (index, method, data) => {
     const newData = [...data];

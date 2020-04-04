@@ -44,7 +44,7 @@ feedbackRouter.post('/', (req, res) => {
 
 // Route to get all feedbacks
 feedbackRouter.get('/', (req, res) => {
-    Feedback.find().then((feedbacks) => {
+    Feedback.find({read: 0}).then((feedbacks) => {
         res.send({ feedbacks })
     }).catch((err) => {
         res.status(500).send(err)
@@ -52,15 +52,16 @@ feedbackRouter.get('/', (req, res) => {
 })
 
 // Route for marking a feedback as read
-feedbackRouter.patch('/:id', (req, res) => {
-    const id = req.params.id
-
+feedbackRouter.delete('/', (req, res) => {
+    const id = req.body.id
+    log("feedback")
+    log(id)
     if (!ObjectID.isValid(id)) {
         res.status(404).send()
         return
     }
 
-    Feedback.findOneAndUpdate(
+    Feedback.findByIdAndUpdate(
         id,
         { read: 1 },
         { new: true }

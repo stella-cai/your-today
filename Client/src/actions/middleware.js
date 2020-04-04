@@ -361,6 +361,46 @@ function addFeedback(feedback){
         })
 }
 
+function getFeedback(){
+    const url = "/feedback/";
+
+    return fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        }); 
+}
+
+function readFeedback(id){
+    console.log("middleware id: " + id)
+    const url = "/feedback/"
+    const data = {"id": id}
+    const request = new Request(url, {
+        method: "delete",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong reading feedback")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const Middleware = {
     userRegister,
     login,
@@ -378,4 +418,6 @@ export const Middleware = {
     unfreezeUser,
     logout,
     addFeedback,
+    getFeedback,
+    readFeedback,
 }

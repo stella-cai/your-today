@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import {Middleware} from "../actions/middleware";
 
 const useStyles = makeStyles(theme => ({
     text: {
@@ -27,15 +28,16 @@ export default function All(props) {
     const removeFromScreen = props.removeFromScreen
     const read = (index, id) => {
         // Some codes that communicate with the backend... (That's why we need ID here.)
+        Middleware.readFeedback(id)
         removeFromScreen(index, setFeedback, feedback)
     }
 
     return (
         <div>
             {feedback.map((f, index) => (
-                <p className={classes. text} key={index}>{f.user} : {f.content}
+                <p className={classes. text} key={index}>{f.username} : {f.feedback}
                     <span className={classes.buttons}>
-                    <Button size='small' className={classes.button} onClick={() => read(index, f.id)}>Mark As Read</Button>
+                    <Button size='small' className={classes.button} onClick={() => read(index, f._id)}>Mark As Read</Button>
                     </span>
                 </p>
                     ))}
