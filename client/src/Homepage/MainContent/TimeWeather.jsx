@@ -113,6 +113,27 @@ export default function TimeWeather() {
         });
   }
 
+  function chooseIcon(){
+    let date = new Date();
+    let hh = date.getHours();
+    console.log(hh)
+    if (hh > 9 && hh < 18){
+    if (temp < 0){
+      return <AcUnitIcon className = {classes.weatherIcon} />
+    }else if(temp < 9){
+      return <CloudIcon className = {classes.weatherIcon} />
+    }else if(temp < 15){
+      return <WbSunnyIcon className = {classes.weatherIcon} />
+    }else{
+      return <Brightness3Icon className = {classes.weatherIcon} />
+    }
+  }else{
+      return <NightsStayIcon className = {classes.weatherIcon} />
+
+  }
+}
+
+
   //For know, we will pase the city id of Toronto. Later, we will fetch the city id dependong on where the user is located.
   getWeatherInfo()
   updateTime()
@@ -120,7 +141,7 @@ export default function TimeWeather() {
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
         <a href = {weatherLink} target="_blank">
-          <AcUnitIcon className = {classes.weatherIcon} />
+          {chooseIcon}}
         </a>
         <div className = {classes.weatherValue}>{temp}&#176;C</div>
       </Grid>
