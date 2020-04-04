@@ -401,6 +401,26 @@ function readFeedback(id){
         })
 }
 
+function removeMessageFromDatabase(messageId) {
+    const url = "/message/" + messageId;
+    const request = new Request(url, {
+        method: "delete",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return "success";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const Middleware = {
     userRegister,
     login,
@@ -420,4 +440,5 @@ export const Middleware = {
     addFeedback,
     getFeedback,
     readFeedback,
+    removeMessageFromDatabase,
 }

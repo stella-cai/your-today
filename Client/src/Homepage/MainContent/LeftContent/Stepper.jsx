@@ -151,7 +151,7 @@ export default function SimpleTabs(props) {
           <Todos className={classes.tabPanel} todos = {props.todos} setTodos = {props.setTodos}></Todos>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Email ws={props.ws} className={classes.tabPanel} messages = {props.messages} username = {props.username}></Email>
+          <Email deleteMessage={props.deleteMessage} ws={props.ws} className={classes.tabPanel} messages = {props.messages} username = {props.username}></Email>
         </TabPanel>
       </div>
       <div className={classes.keepFooter}>

@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 import {Header} from "./Header";
 import {MainContent} from "./MainContent";
 import webSocket from 'socket.io-client'
+import {Middleware} from "../actions/middleware";
 
 
 export function Homepage(props) {
@@ -75,6 +76,18 @@ export function Homepage(props) {
     }
   }
 
+  const deleteMessage = (index) => {
+    const real_index = props.app.state.messages.length - 1 - index
+
+    Middleware.removeMessageFromDatabase(props.app.state.messages[real_index]._id).then(function(result) {
+      if (result == "success") {
+        const newMessages = [...props.app.state.messages];
+        newMessages.splice(real_index, 1);
+        props.app.setState({ messages: newMessages });
+      }
+    })
+  }
+
 
   return(      
     <div style={bgStyle()}>
@@ -99,7 +112,9 @@ export function Homepage(props) {
            todos = {todos}
            setTodos = {setTodos}
            music = {music}
-           setMusic = {setMusic}>
+           setMusic = {setMusic}
+           deleteMessage={deleteMessage}
+           >
           </MainContent>
         </Box>
       </div>

@@ -82,12 +82,15 @@ export default function Inbox(props) {
   };
   const newEmails = props.newEmails
 
+  // const deleteMessage = (index) => {
+  //   alert(index)
+  // }
   return (
     <div className={classes.root} id='email-root'>
       <div className={classes.buttons}>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button}/></Button>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button}/></Button>
-      <Button><DeleteIcon className={classes.button}/></Button>
+      <Button><DeleteIcon onClick={() => props.deleteMessage(value)} className={classes.button}/></Button>
       </div>
       {
       newEmails.slice(0).reverse().map((newEmail, index) => (
