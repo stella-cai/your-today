@@ -25,6 +25,12 @@ const { User } = require('./../models/user')
 const { Message } = require('./../models/message')
 const Bcrypt = require("bcryptjs")
 
+
+credentialsRouter.get('/logout', function(req, res){
+    req.session.destroy()
+    res.status(200).send();
+  });
+
 credentialsRouter.get("/check-loggedin", (req, res) => {
     if (req.session.loggedin) {
         res.send({ currentUser: req.session.user, messages: req.session.messages});
