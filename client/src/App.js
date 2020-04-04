@@ -36,7 +36,7 @@ class App extends React.Component {
           <Switch> { /* Similar to a switch statement - shows the component depending on the URL path */ }
             { /* Each Route below shows a different component depending on the exact path in the URL  */ }
             {currentUser&&currentUser.status==0&&<Route exact path="/" render={() => (<Homepage app = {this} state={this.state} />)} />}
-            {currentUser&&currentUser.status==2&&<Route exact path="/" render={() => (<Loading app = {this} state={this.state} />)} />}
+            {currentUser&&currentUser.status==2&&<Route exact path="/" render={() => (<Admin app = {this} state={this.state} />)} />}
             {currentUser&&currentUser.status==1&&<Route exact path="/" render={() => (<Redirect to="/" />)} />}
             {!currentUser&&<Route exact path="/" render={() => (<Loading app = {this} state={this.state} />)} />}
 
