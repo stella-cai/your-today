@@ -6,7 +6,7 @@ import Stepper from "./Stepper";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: "60%",
+        width: "60vw",
         display: "inline-block",
         margin: "0",
         padding: "0",
@@ -25,9 +25,6 @@ export function LeftContent(props) {
     return(
         <div className = {classes.root}>
             <div className ={classes.leftContent}>
-                {/* <Todos></Todos> */}
-                {/* <Focus></Focus> */}
-                
                 <Stepper ws={props.ws} messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></Stepper>
             </div>
         </div>

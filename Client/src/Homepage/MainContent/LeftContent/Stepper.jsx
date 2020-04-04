@@ -64,7 +64,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexgrow: 5,
-    height: '60%'
+    height: '60%',
+    minWidth: '100%'
   },
   tab: {
     height: "10px",
@@ -73,6 +74,11 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "50%",
     display: "inlineblock",
     margin: '5px',
+  },
+  tabPanel: {
+    minWidth: '90%',
+    margin: '0 auto',
+    padding: '0'
   },
   keepFooter: {
     position: 'absolute',
@@ -95,10 +101,10 @@ const useStyles = makeStyles(theme => ({
   button: {
     //  color: '#bbb' 
   },
-  todos: {
-    margin: '0 auto',
-    padding: '0'
-  },
+  // todos: {
+  //   margin: '0 auto',
+  //   padding: '0'
+  // },
   button:{
     color: 'rgba(52, 52, 52, 0.5)'
   }
@@ -138,14 +144,14 @@ export default function SimpleTabs(props) {
   return (
     <div className={classes.root}>
       <div className={classes.tabs}>
-        <TabPanel value={value} index={0}>
+        <TabPanel className={classes.tabPanel} value={value} index={0}>
           <Focus setCountdown={setCountdown} countdown={countdown}></Focus>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Todos className={classes.todos} todos = {props.todos} setTodos = {props.setTodos}></Todos>
+          <Todos className={classes.tabPanel} todos = {props.todos} setTodos = {props.setTodos}></Todos>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Email ws={props.ws} messages = {props.messages} username = {props.username}></Email>
+          <Email ws={props.ws} className={classes.tabPanel} messages = {props.messages} username = {props.username}></Email>
         </TabPanel>
       </div>
       <div className={classes.keepFooter}>

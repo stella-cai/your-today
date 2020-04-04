@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     todoForm: {
         // marginLeft: '2%',
         // marginRight: '2%',
-        // width: '100%',
+        width: '100%',
         display: "block",
         overflowY: "scroll",
         // overflowX: "hidden",
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     todoList: {
         // marginLeft: '2%',
         // marginRight: '2%',
-        // width: '100%',
+        width: '100%',
         display: "block",
         // overflowX: "hidden",
     },

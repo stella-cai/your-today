@@ -7,7 +7,7 @@ import webSocket from 'socket.io-client'
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    width: "100%",
+    width: "50vw",
     justifyContent: 'space-between'
   },
   inbox: {

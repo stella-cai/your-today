@@ -6,6 +6,7 @@ import Box from "@material-ui/core/Box";
 import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import DeleteIcon from '@material-ui/icons/Delete';
 import NewEmail from './NewEmail'
 import {Middleware} from "../../../../actions/middleware";
 
@@ -49,7 +50,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     wordBreak: "break-all",
     alignItems: 'flex-start',
-    padding: '0'
+    padding: '0',
+    borderRight: theme.spacing(2)
   },
   buttons: {
     float:'right'
@@ -85,6 +87,7 @@ export default function Inbox(props) {
       <div className={classes.buttons}>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button}/></Button>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button}/></Button>
+      <Button><DeleteIcon className={classes.button}/></Button>
       </div>
       {
       newEmails.map((newEmail, index) => (

@@ -34,6 +34,7 @@ const useStyles = makeStyles(theme => ({
         color: 'white'
     },
     textalign: {
+        width: '50vw',
         textAlign: 'center' 
     },
     noborder: {

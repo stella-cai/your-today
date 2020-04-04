@@ -46,6 +46,14 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         marginBottom: theme.spacing(1)
     },
+    header: {
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center'
+    },
+    headerText: {
+        color: 'white'
+    },
     input: {
         width: '100%',
         marginBottom: theme.spacing(1)
@@ -62,10 +70,11 @@ export default function Inbox(props) {
     const sendMessage=props.sendMessage
     return (
         <div className={classes.root}>
-            <TableRow>
-                <Button className={classes.button} variant="outlined" href="https://www.gmail.com">
-                    Read More on Gmail
-           </Button>
+            <TableRow className={classes.header}>
+                <div className={classes.headerText}>COMPOSE</div>
+                {/* <Button className={classes.header} disabled>
+                    compose
+                </Button> */}
             </TableRow>
             <TableRow>
                 <InputField

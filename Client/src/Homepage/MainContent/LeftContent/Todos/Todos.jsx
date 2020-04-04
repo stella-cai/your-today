@@ -5,6 +5,7 @@ import TodoList from "./TodoList";
 
 const useStyles = makeStyles(theme => ({
   container: {
+    width: '50vw',
     display: 'flex',
     flexWrap: 'wrap',
   },
