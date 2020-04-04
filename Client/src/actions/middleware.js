@@ -1,3 +1,13 @@
+function logout() {
+    const url = "/credential/logout";
+
+    fetch(url)
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+
 async function getFrozenUsers() {
     const url = "/account/frozen";
 
@@ -266,4 +276,5 @@ export const Middleware = {
     completeTodo,
     getFrozenUsers,
     setUserMusic,
+    logout,
 }
