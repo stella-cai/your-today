@@ -81,7 +81,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function accountsEqual(list1, list2){
-  if(list1.length != list2.length)
+  if(!list1 || !list2 || list1.length != list2.length)
     return false
   
   for(let i = 0; i < list1.length; i++){
@@ -124,11 +124,12 @@ export default function AdminPage() {
   // Feedback.
   const [frozen, setFrozen] = React.useState([])
   Middleware.getFrozenUsers().then(function(result) {
+    console.log("comparing frozen users")
     console.log(result)
     console.log(frozen)
-    if(!accountsEqual(result.users, frozen)) {
-      console.log("setting result")
-      setFrozen(result.users)
+    if(!accountsEqual(result.accounts, frozen)) {
+      console.log("setting result inside getFrozenUsers")
+      setFrozen(result.accounts)
     }
   })
 
@@ -136,8 +137,8 @@ export default function AdminPage() {
   const [all, setAll] = React.useState([])
 
   Middleware.getActiveUsers().then(function(result) {
-    console.log(result)
-    console.log(all)
+    // console.log(result)
+    // console.log(all)
     if(!accountsEqual(result.users, all)) {
       console.log("setting result inside getActiveUsers")
       setAll(result.users)
@@ -156,7 +157,7 @@ export default function AdminPage() {
   const removeFromScreen = (index, method, data) => {
     const newData = [...data];
     newData.splice(index, 1);
-    console.log(newData)
+    // console.log(newData)
     method(newData);
   }
 

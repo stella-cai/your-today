@@ -24,17 +24,18 @@ const { User } = require('./../models/user')
 const { FrozenAccount } = require('./../models/frozenAccount')
 
 // Route to freeze an account
-// Request body: {id:..., reason: ...}
+// Request body: {id:..., username:..., reason: ...}
 accountRouter.post('/freeze', (req, res) => {
 
-    if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
+    if(!req.body.id || !req.body.reason || !req.body.username || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
     }
     
     const id = req.body.id
 
     const frozen = new FrozenAccount({
-        id: id,
+        account_id: id,
+        username: req.body.username,
         reason: req.body.reason,
         date: new Date()
     })
@@ -62,16 +63,26 @@ accountRouter.post('/freeze', (req, res) => {
 
 // Route to unfreeze an account
 accountRouter.delete('/unfreeze', (req, res) => {
-    if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
+    if(!req.body.id || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
     }
 
     const id = req.body.id
+    console.log("id inside router")
+    console.log(id)
 
-    FrozenAccount.findOneAndDelete({ id: id })
+    FrozenAccount.deleteOne({ account_id: id })
+    .then((account) => {
+        if (!account) {
+            res.status(404).send()
+        } else {
+            res.send(account)
+        }
+    }).catch((err) => {
+        res.status(500).send(err)
+    })
 
-    User.findByIdAndUpdate(
-        id,
+    User.findByIdAndUpdate( id,
         { status: 0},
         { new: true}
     ).then((user) => {

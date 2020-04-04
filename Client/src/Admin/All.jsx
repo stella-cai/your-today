@@ -62,7 +62,7 @@ export default function All(props) {
     //const [frozenReason, setFrozenReason] = React.useState("")
     console.log("all inside of All.jsx")
     console.log(all)
-    const toFrozen = (index, id) => {
+    const toFrozen = (index, id, username) => {
         // Some codes that communicate with the backend... (That's why we need ID here.)
         //let inputs = document.querySelectorAll('input')
         let input = document.getElementById(id)
@@ -72,7 +72,7 @@ export default function All(props) {
         console.log(item)
         log(id)
         log(input.value)
-        Middleware.freezeUser(id, input.value)
+        Middleware.freezeUser(id, username, input.value)
     }
 
     return (
@@ -85,7 +85,7 @@ export default function All(props) {
                         </span>
                         <div className={classes.buttons}>
                             {/* <InputField id={a.id} label="Reason to Freeze" /> */}
-                            <Button size="small" className={classes.button} onClick={() => toFrozen(index, a._id)}>Freeze</Button>
+                            <Button size="small" className={classes.button} onClick={() => toFrozen(index, a._id, a.username)}>Freeze</Button>
                         </div>
                 </div>
             ))}

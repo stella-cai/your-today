@@ -26,9 +26,10 @@ async function getActiveUsers() {
         });    
 }
 
-async function freezeUser(id, reason){
+async function freezeUser(id, username, reason){
     const url = "/account/freeze";
     const data = {"id": id,
+                  "username": username,
                   "reason": reason}
     console.log(JSON.stringify(data))
     const request = new Request(url, {
@@ -55,6 +56,28 @@ async function freezeUser(id, reason){
     })
 }
 
+function unfreezeUser(id) {
+    const url = "/account/unfreeze";
+    const data = {"id": id}
+    console.log(JSON.stringify(data))
+    const request = new Request(url, {
+        method: "delete",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return "success";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
 
 function completeTodo(todoId) {
     const url = "/todo/" + todoId;
@@ -311,5 +334,6 @@ export const Middleware = {
     getFrozenUsers,
     getActiveUsers,
     setUserMusic,
-    freezeUser
+    freezeUser,
+    unfreezeUser
 }
