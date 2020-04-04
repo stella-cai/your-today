@@ -13,9 +13,7 @@ import {Middleware} from "../actions/middleware";
 export function Homepage(props) {
   const [ws,setWs] = useState(webSocket(''))
 
-  // const connectWebSocket = () => {
-  //     setWs(webSocket('http://localhost:3000', {username: props.username}))
-  // }
+  const [readPosition, setReadPosition] = useState(1)
 
   useEffect(()=>{
     document.title = props.app.state.currentUser.fisrtname + " " + props.app.state.currentUser.lastname 
@@ -29,9 +27,10 @@ export function Homepage(props) {
     ws.send(JSON.stringify({type: "user-log-in", username: props.app.state.currentUser.username}))
       ws.on('getMessage', message => {
         console.log(message)
-          const newNewEmails = [...props.app.state.messages, message];
-          props.app.setState({ messages: newNewEmails });
-          console.log(props.app.state.messages)
+        alert(readPosition)
+          const newNewEmails = [...props.app.state.messages, message]
+          props.app.setState({ messages: newNewEmails })
+          setReadPosition(count => count + 1)
       })
   }
 
@@ -78,7 +77,6 @@ export function Homepage(props) {
 
   const deleteMessage = (index) => {
     const real_index = props.app.state.messages.length - 1 - index
-
     Middleware.removeMessageFromDatabase(props.app.state.messages[real_index]._id).then(function(result) {
       if (result == "success") {
         const newMessages = [...props.app.state.messages];
@@ -114,6 +112,8 @@ export function Homepage(props) {
            music = {music}
            setMusic = {setMusic}
            deleteMessage={deleteMessage}
+           readPosition={readPosition}
+           setReadPosition={setReadPosition}
            >
           </MainContent>
         </Box>

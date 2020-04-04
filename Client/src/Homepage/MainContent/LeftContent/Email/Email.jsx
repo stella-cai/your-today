@@ -36,7 +36,7 @@ export function Email(props) {
 
   return (
     <div className={classes.root}>
-      <Inbox deleteMessage={props.deleteMessage} newEmails = {props.messages} className={classes.inbox} id='inbox'></Inbox>
+      <Inbox setReadPosition={props.setReadPosition} readPosition={props.readPosition} deleteMessage={props.deleteMessage} newEmails = {props.messages} className={classes.inbox} id='inbox'></Inbox>
       <Compose sendMessage = {sendMessage} to={to} setTo={setTo} subject={subject} setSubject={setSubject} message={message} setMessage={setMessage} className={classes.compose}></Compose>
     </div>
   );
