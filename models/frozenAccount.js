@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
 
 const FrozenAccountSchema = new mongoose.Schema({
-    id: {
+    account_id: {
         type: String,
         required: true
+    },
+    username:{
+        type: String,
+        required:true
     },
     reason: {
         type: String,

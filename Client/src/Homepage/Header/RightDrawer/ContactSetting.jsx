@@ -4,11 +4,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
-
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+import {Middleware} from "../../../actions/middleware";
 
 function getModalStyle() {
   const top = 50;
@@ -114,6 +110,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2)
   }
 }));
+const log = console.log;
 
 export default function ContactSetting(props) {
   const classes = useStyles();
@@ -129,6 +126,9 @@ export default function ContactSetting(props) {
   const handleSubmit = e => {
     e.preventDefault();
     // log the comment to our database
+    log("comment")
+    log(comment)
+    Middleware.addFeedback(comment)
     handleClose();
   }
 

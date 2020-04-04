@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -80,7 +80,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function listsEqual(list1, list2){
+  if(!list1 || !list2 || list1.length != list2.length)
+    return false
+  
+  for(let i = 0; i < list1.length; i++){
+    if(list1[i]._id !== list2[i]._id){
+      return false
+    }
+  }
+  
+  return true
+}
+
 export default function AdminPage() {
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = "Admin | Today";
+  });
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -111,35 +128,43 @@ export default function AdminPage() {
   // Feedback.
   const [frozen, setFrozen] = React.useState([])
   Middleware.getFrozenUsers().then(function(result) {
+    console.log("comparing frozen users")
     console.log(result)
-    if(result) {
-      setFrozen(result)
+    console.log(frozen)
+    if(!listsEqual(result.accounts, frozen)) {
+      console.log("setting result inside getFrozenUsers")
+      setFrozen(result.accounts)
     }
   })
 
   // All Active Accounts.
-  const [all, setAll] = React.useState(
-    [
-      { id: 1, user: "Tom" },
-      { id: 2, user: "Jack" },
-      { id: 3, user: "Lucy" },
-      { id: 4, user: "Maria" },
-    ]
-  )
+  const [all, setAll] = React.useState([])
+
+  Middleware.getActiveUsers().then(function(result) {
+    // console.log(result)
+    // console.log(all)
+    if(!listsEqual(result.users, all)) {
+      console.log("setting result inside getActiveUsers")
+      setAll(result.users)
+    }
+  })
 
   // Feedback.
-  const [feedback, setFeedback] = React.useState(
-    [
-      { id: 1, user: "Jack", content: "Good" },
-      { id: 2, user: "Jack", content: "Wonderful" },
-      { id: 3, user: "Lucy", content: "So so" },
-    ]
-  )
+  const [feedback, setFeedback] = React.useState([])
+  Middleware.getFeedback().then(function(result) {
+    console.log("comparing feedback")
+    console.log(result.feedbacks)
+    console.log(feedback)
+    if(!listsEqual(result.feedbacks, feedback)) {
+      console.log("setting result inside getFeedback")
+      setFeedback(result.feedbacks)
+    }
+  })
 
   const removeFromScreen = (index, method, data) => {
     const newData = [...data];
     newData.splice(index, 1);
-    console.log(newData)
+    // console.log(newData)
     method(newData);
   }
 

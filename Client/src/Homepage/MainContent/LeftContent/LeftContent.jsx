@@ -25,7 +25,7 @@ export function LeftContent(props) {
     return(
         <div className = {classes.root}>
             <div className ={classes.leftContent}>
-                <Stepper ws={props.ws} messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></Stepper>
+                <Stepper setReadPosition={props.setReadPosition} readPosition={props.readPosition} deleteMessage={props.deleteMessage} ws={props.ws} messages = {props.messages} username = {props.username} todos = {props.todos} setTodos = {props.setTodos}></Stepper>
             </div>
         </div>
     )

@@ -63,7 +63,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function Inbox(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const value = props.readPosition
+  const setValue = props.setReadPosition
 
   const handleMove = (event, type) => {
       //type = 0 => Move Left, type = 1 => Move Right
@@ -82,15 +83,18 @@ export default function Inbox(props) {
   };
   const newEmails = props.newEmails
 
+  // const deleteMessage = (index) => {
+  //   alert(index)
+  // }
   return (
     <div className={classes.root} id='email-root'>
       <div className={classes.buttons}>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button}/></Button>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button}/></Button>
-      <Button><DeleteIcon className={classes.button}/></Button>
+      <Button><DeleteIcon onClick={() => {props.deleteMessage(value)}} className={classes.button}/></Button>
       </div>
       {
-      newEmails.map((newEmail, index) => (
+      newEmails.slice(0).reverse().map((newEmail, index) => (
           <TabPanel value={value} index={index}>
             <NewEmail sender = {newEmail.sender} date = {newEmail.date} content = {newEmail.content}> </NewEmail>
           </TabPanel>

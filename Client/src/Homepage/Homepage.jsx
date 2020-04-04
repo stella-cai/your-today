@@ -1,22 +1,22 @@
 /*  Full Queue component */
 // Everything here was previously in the App component.
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 
 // Importing components
 import {Header} from "./Header";
 import {MainContent} from "./MainContent";
 import webSocket from 'socket.io-client'
+import {Middleware} from "../actions/middleware";
 
 
 export function Homepage(props) {
   const [ws,setWs] = useState(webSocket(''))
 
-  // const connectWebSocket = () => {
-  //     setWs(webSocket('http://localhost:3000', {username: props.username}))
-  // }
+  const [readPosition, setReadPosition] = useState(0)
 
   useEffect(()=>{
+    document.title = props.app.state.currentUser.fisrtname + " " + props.app.state.currentUser.lastname 
       if(ws){
           console.log('success connect!')
           initWebSocket()
@@ -26,9 +26,10 @@ export function Homepage(props) {
   const initWebSocket = () => {
     ws.send(JSON.stringify({type: "user-log-in", username: props.app.state.currentUser.username}))
       ws.on('getMessage', message => {
-          const newNewEmails = [...props.app.state.messages, message];
-          props.app.setState({ messages: newNewEmails });
-          console.log(props.app.state.messages)
+        console.log(message)
+          const newNewEmails = [...props.app.state.messages, message]
+          props.app.setState({ messages: newNewEmails })
+          setReadPosition(count => count + 1)
       })
   }
 
@@ -73,6 +74,17 @@ export function Homepage(props) {
     }
   }
 
+  const deleteMessage = (index) => {
+    const real_index = props.app.state.messages.length - 1 - index
+    Middleware.removeMessageFromDatabase(props.app.state.messages[real_index]._id).then(function(result) {
+      if (result == "success") {
+        const newMessages = [...props.app.state.messages];
+        newMessages.splice(real_index, 1);
+        props.app.setState({ messages: newMessages });
+      }
+    })
+  }
+
 
   return(      
     <div style={bgStyle()}>
@@ -97,7 +109,11 @@ export function Homepage(props) {
            todos = {todos}
            setTodos = {setTodos}
            music = {music}
-           setMusic = {setMusic}>
+           setMusic = {setMusic}
+           deleteMessage={deleteMessage}
+           readPosition={readPosition}
+           setReadPosition={setReadPosition}
+           >
           </MainContent>
         </Box>
       </div>

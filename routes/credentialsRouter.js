@@ -25,9 +25,18 @@ const { User } = require('./../models/user')
 const { Message } = require('./../models/message')
 const Bcrypt = require("bcryptjs")
 
+
+credentialsRouter.get('/logout', function(req, res){
+    req.session.destroy()
+    res.status(200).send();
+  });
+
 credentialsRouter.get("/check-loggedin", (req, res) => {
     if (req.session.loggedin) {
-        res.send({ currentUser: req.session.user, messages: req.session.messages});
+        Message.find({to: req.session.user.username}, function(err, messages) {
+            req.session.messages = messages
+            res.send({ currentUser: req.session.user, messages: req.session.messages});
+        })
     } else {
         res.status(401).send();
     }
@@ -72,6 +81,26 @@ credentialsRouter.post('/auth', (req, res) => {
 
                 res.status(200).send("success")
             })
+        }
+    })
+})
+
+
+credentialsRouter.patch('/', (req, res) => {
+    res.status(200)
+    return 
+    User.findOne(req.body.username, function(err, user) {
+        if (err) return console.error(err)
+        
+        if (user === null) {
+            // res.send("The Username doesn't exist!")
+            res.status(404).send("wrong username")
+        }
+        // else if (!Bcrypt.compareSync(req.body.password, user.password)) {
+        //     res.status(400).send("wrong passwordsss")
+        // }
+        else {
+            res.status(200)
         }
     })
 })

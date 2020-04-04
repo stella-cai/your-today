@@ -24,13 +24,15 @@ const { Feedback } = require('./../models/feedback')
 
 // Route to post a new feedback
 feedbackRouter.post('/', (req, res) => {
-    if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
+    log("request body: ")
+    log(req.body)
+    if(!req.body.feedback) {
         res.status(400).send()
     }
-
     const feedback = new Feedback({
-        id: req.body.id,
-        reason: req.body.reason
+        user_id: req.session.user._id,
+        username: req.session.user.username,
+        feedback: req.body.feedback
     })
 
     feedback.save().then((feedback) => {
@@ -42,7 +44,7 @@ feedbackRouter.post('/', (req, res) => {
 
 // Route to get all feedbacks
 feedbackRouter.get('/', (req, res) => {
-    Feedback.find().then((feedbacks) => {
+    Feedback.find({read: 0}).then((feedbacks) => {
         res.send({ feedbacks })
     }).catch((err) => {
         res.status(500).send(err)
@@ -50,15 +52,16 @@ feedbackRouter.get('/', (req, res) => {
 })
 
 // Route for marking a feedback as read
-feedbackRouter.patch('/:id', (req, res) => {
-    const id = req.params.id
-
+feedbackRouter.delete('/', (req, res) => {
+    const id = req.body.id
+    log("feedback")
+    log(id)
     if (!ObjectID.isValid(id)) {
         res.status(404).send()
         return
     }
 
-    Feedback.findOneAndUpdate(
+    Feedback.findByIdAndUpdate(
         id,
         { read: 1 },
         { new: true }

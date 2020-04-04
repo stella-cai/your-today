@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import {Middleware} from "../actions/middleware";
 
 const useStyles = makeStyles(theme => ({
     text: {
@@ -19,6 +20,11 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
+const dateFormat = dateStr => {
+    const date = new Date(dateStr)
+    return date.toLocaleString()
+}
+
 
 export default function Frozen(props) {
     const classes = useStyles()
@@ -31,6 +37,8 @@ export default function Frozen(props) {
     const unFrozen = (index, id) => {
         // Some codes that communicate with the backend... (That's why we need ID here.)
         let item = {id: frozen[index].id, user: frozen[index].user}
+        console.log(id)
+        Middleware.unfreezeUser(id)
         removeFromScreen(index, setFrozen, frozen)
         addToScreen(setAll, all, item)
     }
@@ -42,9 +50,9 @@ export default function Frozen(props) {
     return (
         <div className={classes.root}>
                 {frozen.map((f, index) => (
-                <p className={classes.text} key = {index}>{f.user}: {f.reason} {f.date} 
+                <p className={classes.text} key = {index}>{f.username} &emsp; {f.reason} &emsp; {dateFormat(f.date)} 
                 <span className={classes.buttons}>
-                <Button size='small' className={classes.button} onClick = {()=> unFrozen(index, f.id)}>Unfreeze</Button>
+                <Button size='small' className={classes.button} onClick = {()=> unFrozen(index, f.account_id)}>Unfreeze</Button>
                 <Button size='small' className={classes.button} onClick = {()=> ignore(index, f.id)}>Ignore</Button>
                     </span></p>
                 ))}

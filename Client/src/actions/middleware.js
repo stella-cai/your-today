@@ -1,3 +1,18 @@
+function logout() {
+    const url = "/credential/logout";
+
+    fetch(url)
+    .then(res => {
+        if (res.status === 200) {
+            window.location.replace("/");
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+
 async function getFrozenUsers() {
     const url = "/account/frozen";
 
@@ -10,6 +25,73 @@ async function getFrozenUsers() {
         .catch(error => {
             console.log(error);
         });
+}
+
+async function getActiveUsers() {
+    const url = "/account/active";
+
+    return fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });    
+}
+
+async function freezeUser(id, username, reason){
+    const url = "/account/freeze";
+    const data = {"id": id,
+                  "username": username,
+                  "reason": reason}
+    console.log(JSON.stringify(data))
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json) {
+                return json
+            }
+        })
+        .catch(error => {
+            console.log(error);
+    })
+}
+
+function unfreezeUser(id) {
+    const url = "/account/unfreeze";
+    const data = {"id": id}
+    console.log(JSON.stringify(data))
+    const request = new Request(url, {
+        method: "delete",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return "success";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
 }
 
 function completeTodo(todoId) {
@@ -254,6 +336,91 @@ function setUserMusic(music_url){
         })
 }
 
+function addFeedback(feedback){
+    const url = "/feedback/"
+    const data = {"feedback": feedback}
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong adding feedback")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+function getFeedback(){
+    const url = "/feedback/";
+
+    return fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        }); 
+}
+
+function readFeedback(id){
+    console.log("middleware id: " + id)
+    const url = "/feedback/"
+    const data = {"id": id}
+    const request = new Request(url, {
+        method: "delete",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong reading feedback")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+function removeMessageFromDatabase(messageId) {
+    const url = "/message/" + messageId;
+    const request = new Request(url, {
+        method: "delete",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return "success";
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const Middleware = {
     userRegister,
     login,
@@ -265,5 +432,13 @@ export const Middleware = {
     addTodo,
     completeTodo,
     getFrozenUsers,
+    getActiveUsers,
     setUserMusic,
+    freezeUser,
+    unfreezeUser,
+    logout,
+    addFeedback,
+    getFeedback,
+    readFeedback,
+    removeMessageFromDatabase,
 }

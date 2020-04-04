@@ -44,6 +44,11 @@ messageRouter.post('/', (req, res) => {
     })
 
     message.save().then((message) => {
+<<<<<<< HEAD
+=======
+        console.log(message)
+        req.session.messages.push(message)
+>>>>>>> refs/remotes/origin/master
         res.send(message)
     }).catch((err) => {
         res.status(400).send(err)
