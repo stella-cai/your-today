@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import AdminPage from './AdminPage'
 
 // Importing components
-import {Header} from "../Homepage/Header";
+import {Header} from "./Header";
 
 
 export function Admin() {

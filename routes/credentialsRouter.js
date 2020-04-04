@@ -86,10 +86,8 @@ credentialsRouter.post('/auth', (req, res) => {
 })
 
 
-credentialsRouter.patch('/', (req, res) => {
-    res.status(200)
-    return 
-    User.findOne(req.body.username, function(err, user) {
+credentialsRouter.post('/reset', (req, res) => {
+    User.findOne({username: req.body.username}, function(err, user) {
         if (err) return console.error(err)
         
         if (user === null) {
@@ -100,7 +98,23 @@ credentialsRouter.patch('/', (req, res) => {
         //     res.status(400).send("wrong passwordsss")
         // }
         else {
-            res.status(200)
+            if(user.securityQuestions[0].question == req.body.securityQuestions[0].question && user.securityQuestions[0].answer == req.body.securityQuestions[0].answer && user.securityQuestions[1].question == req.body.securityQuestions[1].question && user.securityQuestions[1].answer == req.body.securityQuestions[1].answer && user.securityQuestions[2].question == req.body.securityQuestions[2].question && user.securityQuestions[2].answer == req.body.securityQuestions[2].answer) {
+                User.updateOne({_id: user._id}, { password: Bcrypt.hashSync(req.body.password, 10) }).then((result) => {
+                    res.status(200).send()
+                }), (error) => {
+                    res.status(500).send(error)
+                }
+                res.status(200).send("success")
+                // user.password = Bcrypt.hashSync(req.body.password, 10)
+                // user.save().then((result) => {
+                //     res.status(200).send()
+                // }, (error) => {
+                //     res.status(400).send(error) // 400 for bad request
+                // })
+            }
+            else {
+                res.status(404).send("security question answers wrong.")
+            }
         }
     })
 })

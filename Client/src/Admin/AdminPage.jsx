@@ -185,19 +185,19 @@ export default function AdminPage() {
             onChange={handleChange}
             aria-label="Admin Page Tabs"
           >
-            <LinkTab label="Recent Creations" href="/" {...a11yProps(0)} />
-            <LinkTab label="Requests" href="/" {...a11yProps(1)} />
+            {/* <LinkTab label="Recent Creations" href="/" {...a11yProps(0)} />
+            <LinkTab label="Requests" href="/" {...a11yProps(1)} /> */}
             <LinkTab label="Frozen Accounts" href="/" {...a11yProps(2)} />
             <LinkTab label="All Accounts" href="/" {...a11yProps(3)} />
             <LinkTab label="Feedbacks" href="/" {...a11yProps(4)} />
           </Tabs>
         </AppBar>
-        <TabPanel value={value} index={0} className={classes.tab}>
+        {/* <TabPanel value={value} index={0} className={classes.tab}>
           <Creation removeFromScreen={removeFromScreen} creation={creation} setCreation={setCreation}></Creation>
         </TabPanel>
         <TabPanel value={value} index={1} className={classes.tab}>
           <Request removeFromScreen={removeFromScreen} request={request} setRequest={setRequest}></Request>
-        </TabPanel>
+        </TabPanel> */}
         <TabPanel value={value} index={2} className={classes.tab}>
           <Frozen all={all} setAll={setAll} addToScreen={addToScreen} removeFromScreen={removeFromScreen} frozen={frozen} setFrozen={setFrozen}></Frozen>
         </TabPanel>
