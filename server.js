@@ -37,8 +37,8 @@ app.use('/settings', settingsRouter)
 const feedbackRouter = require('./routes/feedbackRouter')
 app.use('/feedback', feedbackRouter)
 
-const frozenAccountRouter = require('./routes/frozenAccountRouter')
-app.use('/account', frozenAccountRouter)
+const accountRouter = require('./routes/accountRouter')
+app.use('/account', accountRouter)
 
 const messageRouter = require('./routes/messageRouter')
 app.use('/message', messageRouter)

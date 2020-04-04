@@ -3,16 +3,16 @@ const log = console.log
 var bodyParser = require('body-parser')
 const express = require('express')
 
-const frozenAccountRouter = express.Router()
+const accountRouter = express.Router()
 var session = require('express-session')
 
-frozenAccountRouter.use(express.static(__dirname + '/pub'))
-frozenAccountRouter.use(bodyParser.urlencoded({
+accountRouter.use(express.static(__dirname + '/pub'))
+accountRouter.use(bodyParser.urlencoded({
     extended: true
 }))
 
-frozenAccountRouter.use(bodyParser.json())
-frozenAccountRouter.use(session({
+accountRouter.use(bodyParser.json())
+accountRouter.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true
@@ -25,7 +25,7 @@ const { FrozenAccount } = require('./../models/frozenAccount')
 
 // Route to freeze an account
 // Request body: {id:..., reason: ...}
-frozenAccountRouter.post('/freeze', (req, res) => {
+accountRouter.post('/freeze', (req, res) => {
 
     if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
@@ -61,7 +61,7 @@ frozenAccountRouter.post('/freeze', (req, res) => {
 })
 
 // Route to unfreeze an account
-frozenAccountRouter.delete('/unfreeze', (req, res) => {
+accountRouter.delete('/unfreeze', (req, res) => {
     if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
     }
@@ -86,7 +86,7 @@ frozenAccountRouter.delete('/unfreeze', (req, res) => {
 })
 
 // Route to get all frozen accounts
-frozenAccountRouter.get('/frozen', (req, res) => {
+accountRouter.get('/frozen', (req, res) => {
     FrozenAccount.find().then((accounts) => {
         res.send({ accounts })
     }).catch((err) => {
@@ -95,7 +95,7 @@ frozenAccountRouter.get('/frozen', (req, res) => {
 }) 
 
 // Route to get all active accounts
-frozenAccountRouter.get('/active', (req, res) => {
+accountRouter.get('/active', (req, res) => {
     User.find({ status: 0} ).then((users) => {
         res.send({ users })
     }).catch((err) => {
@@ -103,4 +103,4 @@ frozenAccountRouter.get('/active', (req, res) => {
     })
 })
 
-module.exports = frozenAccountRouter
+module.exports = accountRouter
