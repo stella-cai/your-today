@@ -35,16 +35,19 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch> { /* Similar to a switch statement - shows the component depending on the URL path */ }
             { /* Each Route below shows a different component depending on the exact path in the URL  */ }
-            <Route exact path='/' render={() =>
-             (!currentUser  ? <Loading state={this.state} /> : <Homepage app = {this} state={this.state} />)}/>
+            {currentUser&&currentUser.status==0&&<Route exact path="/" render={() => (<Homepage app = {this} state={this.state} />)} />}
+            {currentUser&&currentUser.status==2&&<Route exact path="/" render={() => (<Loading app = {this} state={this.state} />)} />}
+            {currentUser&&currentUser.status==1&&<Route exact path="/" render={() => (<Redirect to="/" />)} />}
+            {!currentUser&&<Route exact path="/" render={() => (<Loading app = {this} state={this.state} />)} />}
+
             <Route exact path='/login' render={() => 
                             (currentUser ? <Redirect to="/" /> : <Login state={this.state}/>)}/>
             <Route exact path='/register' render={() => 
                             (<Register state={this.state}/>)}/>
             <Route exact path='/recoverpassword' render={() => 
                             (<RecoverPassword state={this.state}/>)}/>
-            <Route exact path='/admin' render={() => 
-                            (currentUser&&currentUser.status==2 ? <Admin state={this.state}/> : <Redirect to="/" />)}/>
+            {/* <Route exact path='/admin' render={() => 
+                            (currentUser&&currentUser.status==2 ? <Admin state={this.state}/> : <Redirect to="/" />)}/> */}
           </Switch>
         </BrowserRouter>
       </div>
