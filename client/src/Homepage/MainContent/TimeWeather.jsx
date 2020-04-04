@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 
 import { makeStyles } from '@material-ui/core/styles';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 const log = console.log
 
+import AcUnitIcon from '@material-ui/icons/AcUnit'; // snow icon
+import WbSunnyIcon from '@material-ui/icons/WbSunny'; // sunny icon
+import CloudIcon from '@material-ui/icons/Cloud'; // cloud icon
+import Brightness3Icon from '@material-ui/icons/Brightness3'; // sunny moon icon
+import NightsStayIcon from '@material-ui/icons/NightsStay'; // cloudly moon icon
+import FlashOnIcon from '@material-ui/icons/FlashOn'; // thunder icon
+import InvertColorsIcon from '@material-ui/icons/InvertColors'; // rain icon
+import WavesIcon from '@material-ui/icons/Waves'; // mist icon
 
 const useStyles = makeStyles(theme => ({
   root: {
