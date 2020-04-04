@@ -10,7 +10,7 @@ import webSocket from 'socket.io-client'
 
 
 export function Homepage(props) {
-  const [ws,setWs] = useState(webSocket('http://localhost:3000'))
+  const [ws,setWs] = useState(webSocket(''))
 
   // const connectWebSocket = () => {
   //     setWs(webSocket('http://localhost:3000', {username: props.username}))

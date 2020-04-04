@@ -49,13 +49,13 @@ app.get("*", (req, res) => {
     res.sendFile(__dirname + "/Client/build/index.html");
 });
 
-const port = process.env.PORT || 5000
-app.listen(port, () => {
-	log(`Listening on port ${port}...`)
-})
+const port = process.env.PORT || 40000
+// app.listen(port, () => {
+// 	log(`Listening on port ${port}...`)
+// })
 
-const server = require('http').Server(app)
-    .listen(3000,()=>{console.log('open server!')})
+const server = require('http').createServer(app)
+server.listen(process.env.PORT || 40000);
 
 
 const { Message } = require('./models/message')
