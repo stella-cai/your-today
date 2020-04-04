@@ -4,8 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import { publicIp } from 'public-ip';
-
 const log = console.log
 
 
@@ -46,8 +44,8 @@ export default function TimeWeather() {
   const classes = useStyles();
   const [hour, setHour] = useState()
   const [minute, setMinute] = useState()
-
-  const [temp, setTemp] = useState('');
+  const [weatherLink, setWeatherLink] = useState()
+  const [temp, setTemp] = useState('')
 
   const updateTime = () => {
     setInterval(
@@ -68,39 +66,53 @@ export default function TimeWeather() {
   } 
   
   
-  const getWeatherInfo = () => {
+  const getWeatherInfo = async () => {
     let latitude;
     let longitude;
+    log('getting weather info')
 
-    const ipAddress = publicIp.v4()
+    const publicIp = require('public-ip');
+
+    const ipAddress = await publicIp.v4()
+
+    log(ipAddress)
     fetch('https://ipapi.co/' + ipAddress + '/json/')
-      .then(function(resp){
-        log(resp.json())
-        return resp.json()
-      })
+      .then(resp => resp.json())
       .then(function(data){
+        log("this is the data")
+        log(data)
         latitude = data.latitude
         longitude = data.longitude
-      })
-    const key = 'b670e8e2fd850cc641897211bf6a2252';
-    fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + key)  
-    .then(function(resp) { return resp.json() }) // Convert data to json
-    .then(function(data) {
-      const temp = Math.round(data.main.temp - 273.15)
-      setTemp(temp)
-    })
-    .catch(function() {
-    // catch any errors
-    });
+
+        const key = 'b670e8e2fd850cc641897211bf6a2252';
+        log("latitude: " + latitude)
+        log("longitude: " + longitude)
+        setWeatherLink("https://darksky.net/forecast/" + latitude + "," + longitude + "/ca12/en");
+
+        fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + key)  
+          .then(function(resp) { return resp.json() }) // Convert data to json
+          .then(function(data) {
+            const temp = Math.round(data.main.temp - 273.15)
+            setTemp(temp)
+          })
+          .catch(function() {
+          // catch any errors
+            log('error in getting weather')
+          });
+          })
+        .catch(function() {
+          // catch any errors
+          log('something bad happened in getting long/lat')
+        });
   }
 
   //For know, we will pase the city id of Toronto. Later, we will fetch the city id dependong on where the user is located.
-  getWeatherInfo(6167865)
+  getWeatherInfo()
   updateTime()
   return (
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
-        <a href ="https://openweathermap.org/city/6167865" target="_blank">
+        <a href = {weatherLink} target="_blank">
           <AcUnitIcon className = {classes.weatherIcon} />
         </a>
         <div className = {classes.weatherValue}>{temp}&#176;C</div>
