@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import LinkSetting from './LinkSetting';
 import WallpaperSetting from './WallpaperSetting';
 import ContactSetting from './ContactSetting';
+import {Middleware} from "../../../actions/middleware";
 
 
 import './RightDrawer.css';
@@ -93,7 +94,7 @@ export function RightDrawer(props) {
         <Button onClick={handleOpen} variant="outlined" id="linkBtn" size="large" className={classes.button}>Favourite Links</Button>
         {/* <Button variant="outlined" size="large" className={classes.button}>Manage Features</Button> */}
         <Button onClick={handleOpen} variant="outlined" size="large" id="contactBtn" className={classes.button}>Contact us</Button>
-        <Button variant="outlined" size="large" id="logoutBtn" className={classes.button} href="./../../../">Log Out</Button>
+        <Button variant="outlined" size="large" id="logoutBtn" className={classes.button} onClick={Middleware.logout}>Log Out</Button>
       </div>
     </div>
   );

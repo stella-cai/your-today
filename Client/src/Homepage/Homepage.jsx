@@ -1,6 +1,6 @@
 /*  Full Queue component */
 // Everything here was previously in the App component.
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 
 // Importing components
@@ -17,6 +17,7 @@ export function Homepage(props) {
   // }
 
   useEffect(()=>{
+    document.title = props.app.state.currentUser.fisrtname + " " + props.app.state.currentUser.lastname 
       if(ws){
           console.log('success connect!')
           initWebSocket()

@@ -1,3 +1,18 @@
+function logout() {
+    const url = "/credential/logout";
+
+    fetch(url)
+    .then(res => {
+        if (res.status === 200) {
+            window.location.replace("/");
+        }
+    })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+
 async function getFrozenUsers() {
     const url = "/account/frozen";
 
@@ -335,5 +350,6 @@ export const Middleware = {
     getActiveUsers,
     setUserMusic,
     freezeUser,
-    unfreezeUser
+    unfreezeUser,
+    logout,
 }

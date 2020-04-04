@@ -14,6 +14,9 @@ import {Middleware} from "../actions/middleware";
 
 
 class Register extends React.Component {
+    componentDidMount(){ 
+        document.title = "Register | Today" 
+        } 
 
     constructor(props) {
         super(props);

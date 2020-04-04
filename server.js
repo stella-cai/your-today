@@ -84,11 +84,14 @@ io.on('connection', socket => {
         console.log(usersOnline)
         const newMessage = new Message(message)
         newMessage.save().then((result) => {
-            const receiver = usersOnline.find(user => user.username == message.to)
+            const receiver = usersOnline.filter(user => user.username == message.to)
             if(receiver) {
-                console.log(receiver.socket_id)
                 // the user is online
-                io.to(`${receiver.socket_id}`).emit('getMessage', result)
+                for(let i = 0; i<receiver.length; i++) {
+                    // maybe the user has loggined in multiple devices.
+                    io.to(`${receiver[i].socket_id}`).emit('getMessage', result)
+
+                }
             }
         })
     })

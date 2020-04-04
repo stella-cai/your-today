@@ -11,6 +11,9 @@ import Alert from '@material-ui/lab/Alert';
 
 
 class RecoverPassword extends React.Component{
+    componentDidMount(){ 
+        document.title = "Recover Password | Today" 
+        } 
     rootStyle = () => {
         return {
             height: '100vh',

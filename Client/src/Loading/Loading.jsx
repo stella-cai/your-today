@@ -6,6 +6,9 @@ import "./Loading.css";
 
 /* Component for the Home page */
 class Loading extends React.Component {
+  componentDidMount(){ 
+    document.title = "Today | Project for CSC309" 
+    } 
   render() {
     return (
       <div className="home__bg-image center">
