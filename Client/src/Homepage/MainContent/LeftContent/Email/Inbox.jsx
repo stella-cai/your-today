@@ -90,7 +90,7 @@ export default function Inbox(props) {
       <Button><DeleteIcon className={classes.button}/></Button>
       </div>
       {
-      newEmails.map((newEmail, index) => (
+      newEmails.slice(0).reverse().map((newEmail, index) => (
           <TabPanel value={value} index={index}>
             <NewEmail sender = {newEmail.sender} date = {newEmail.date} content = {newEmail.content}> </NewEmail>
           </TabPanel>

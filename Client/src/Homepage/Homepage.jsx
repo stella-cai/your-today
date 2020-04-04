@@ -27,7 +27,8 @@ export function Homepage(props) {
   const initWebSocket = () => {
     ws.send(JSON.stringify({type: "user-log-in", username: props.app.state.currentUser.username}))
       ws.on('getMessage', message => {
-          const newNewEmails = [message, ...props.app.state.messages];
+        console.log(message)
+          const newNewEmails = [...props.app.state.messages, message];
           props.app.setState({ messages: newNewEmails });
           console.log(props.app.state.messages)
       })

@@ -52,11 +52,6 @@ app.get("*", (req, res) => {
     res.sendFile(__dirname + "/Client/build/index.html");
 });
 
-const port = process.env.PORT || 40000
-// app.listen(port, () => {
-// 	log(`Listening on port ${port}...`)
-// })
-
 const server = require('http').createServer(app)
 server.listen(process.env.PORT || 40000);
 
