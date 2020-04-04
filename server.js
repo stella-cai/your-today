@@ -78,6 +78,7 @@ io.on('connection', socket => {
     console.log('success connect!')
     socket.on('getMessage', message => {
         console.log(socket.id)
+        console.log(usersOnline)
         const newMessage = new Message(message)
         newMessage.save().then((result) => {
             const receiver = usersOnline.find(user => user.username == message.to)
