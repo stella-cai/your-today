@@ -46,17 +46,15 @@ accountRouter.post('/freeze', (req, res) => {
         res.status(400).send(err)
     })
 
-    User.findByIdAndUpdate(
-        id,
-        { status: 1},
-        { new: true}
-    ).then((user) => {
+    User.findByIdAndUpdate(id, { status: 1}, { new: true})
+    .then((user) => {
         if (!user) {
             res.status(404).send()
         } else {
             res.send(user)
         }
-    }).catch((err) => {
+    })
+    .catch((err) => {
         res.status(500).send(err)
     })
 })
