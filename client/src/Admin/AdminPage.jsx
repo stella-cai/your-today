@@ -141,8 +141,6 @@ export default function AdminPage() {
   const [all, setAll] = React.useState([])
 
   Middleware.getActiveUsers().then(function(result) {
-    // console.log(result)
-    // console.log(all)
     if(!listsEqual(result.users, all)) {
       console.log("setting result inside getActiveUsers")
       setAll(result.users)

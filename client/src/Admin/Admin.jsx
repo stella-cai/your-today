@@ -1,5 +1,3 @@
-/*  Full Queue component */
-// Everything here was previously in the App component.
 import React, { useState } from "react";
 import Box from '@material-ui/core/Box';
 import AdminPage from './AdminPage'
