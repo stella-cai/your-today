@@ -78,3 +78,5 @@ messageRouter.delete('/:id', (req, res) => {
         }
     })
 })
+
+module.exports = messageRouter
