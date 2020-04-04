@@ -141,7 +141,7 @@ class RecoverPassword extends React.Component {
                                         label="Verify New Password" type="password" id="verify-password" required />
                                 </Grid>
                             </Grid>
-                            <Button ype="submit" variant="contained" id="goback-button" style={this.lbuttonStyle()} href="./../Login">Go Back</Button>
+                            <Button ype="submit" variant="contained" id="goback-button" style={this.lbuttonStyle()} href="./../">Go Back</Button>
                             <Button type="submit" variant="contained" color="primary" id="signup-button" style={this.rbuttonStyle()}
                                 onClick={(e) => this.submitRecover(e)}>
                                 Recover
