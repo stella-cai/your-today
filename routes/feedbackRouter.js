@@ -24,7 +24,7 @@ const { Feedback } = require('./../models/feedback')
 
 // Route to post a new feedback
 feedbackRouter.post('/', (req, res) => {
-    if(!req.body.id || !req.body.reason) {
+    if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
     }
 
