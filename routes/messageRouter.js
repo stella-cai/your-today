@@ -25,19 +25,19 @@ const { Message } = require('./../models/message')
 // Route to POST a new message
 // expected request body:
 // {
-//      receiver:...,
+//      to:...,
 //      subject:...,
 //      content:...,
 // }
-// NOTE: receiver is username of the receiving user
+// NOTE: to is username of the receiving user
 messageRouter.post('/', (req, res) => {
-    if (!req.body.receiver || !req.body.subject || !req.body.content) {
+    if (!req.body.to || !req.body.subject || !req.body.content) {
         res.status(400).send()
     }
 
     const message = new Message({
         sender: req.body.sender,
-        receiver: req.body.receiver,
+        to: req.body.to,
         subject: req.body.subject,
         content: req.body.content,
         date: new Date()
@@ -52,9 +52,9 @@ messageRouter.post('/', (req, res) => {
 
 // Route to GET all messages sent to a user
 messageRouter.get('/', (req, res) => {
-    const receiver = req.session.user.username
+    const username = req.session.user.username
     
-    Message.find({ username: receiver }).sort('-date').then((messages) => {
+    Message.find({ to: username }).sort('-date').then((messages) => {
         res.send({ messages })
     }).catch((err) => {
         res.status(500).send()
