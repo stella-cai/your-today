@@ -122,16 +122,16 @@ export default function SimpleTabs(props) {
   const handleMove = (event, type) => {
     //type = 0 => Move Left, type = 1 => Move Right
     if (value == 0 && type == 0) {
-      alert("Already Leftmost")
+      setValue(2)
     }
     else if (value == 2 && type == 1) {
-      alert("Already Rightmost")
+      setValue(0)
     }
     else if (type == 0) {
-      setValue(value - 1);
+      setValue(value - 1)
     }
     else if (type == 1) {
-      setValue(value + 1);
+      setValue(value + 1)
     }
   };
 
@@ -144,13 +144,13 @@ export default function SimpleTabs(props) {
   return (
     <div className={classes.root}>
       <div className={classes.tabs}>
-        <TabPanel className={classes.tabPanel} value={value} index={0}>
+        <TabPanel style={{minHeight: "420px", maxHeight: "420px"}} className={classes.tabPanel} value={value} index={0}>
           <Focus setCountdown={setCountdown} countdown={countdown}></Focus>
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel style={{minHeight: "420px", maxHeight: "420px"}} value={value} index={1}>
           <Todos className={classes.tabPanel} todos = {props.todos} setTodos = {props.setTodos}></Todos>
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel style={{minHeight: "420px", maxHeight: "420px"}} value={value} index={2}>
           <Email setReadPosition={props.setReadPosition} readPosition={props.readPosition} deleteMessage={props.deleteMessage} ws={props.ws} className={classes.tabPanel} messages = {props.messages} username = {props.username}></Email>
         </TabPanel>
       </div>
