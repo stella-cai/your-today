@@ -13,7 +13,7 @@ function logout() {
 }
 
 
-async function getFrozenUsers() {
+function getFrozenUsers() {
     const url = "/account/frozen";
 
     return fetch(url)
@@ -27,7 +27,7 @@ async function getFrozenUsers() {
         });
 }
 
-async function getActiveUsers() {
+function getActiveUsers() {
     const url = "/account/active";
 
     return fetch(url)
@@ -41,7 +41,7 @@ async function getActiveUsers() {
         });    
 }
 
-async function freezeUser(id, username, reason){
+function freezeUser(id, username, reason){
     const url = "/account/freeze";
     const data = {"id": id,
                   "username": username,

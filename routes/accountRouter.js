@@ -48,7 +48,8 @@ accountRouter.post('/freeze', (req, res) => {
         if (!user) {
             res.status(404).send()
         }
-    }).catch((err) => {
+    })
+    .catch((err) => {
         res.status(500).send(err)
     })
 

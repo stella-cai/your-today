@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-const log = console.log
-
 import AcUnitIcon from '@material-ui/icons/AcUnit'; // snow icon
 import WbSunnyIcon from '@material-ui/icons/WbSunny'; // sunny icon
 import CloudIcon from '@material-ui/icons/Cloud'; // cloud icon
@@ -13,6 +11,8 @@ import NightsStayIcon from '@material-ui/icons/NightsStay'; // cloudly moon icon
 import FlashOnIcon from '@material-ui/icons/FlashOn'; // thunder icon
 import InvertColorsIcon from '@material-ui/icons/InvertColors'; // rain icon
 import WavesIcon from '@material-ui/icons/Waves'; // mist icon
+
+const log = console.log
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -113,6 +113,27 @@ export default function TimeWeather() {
         });
   }
 
+  function chooseIcon(){
+    let date = new Date();
+    let hh = date.getHours();
+    console.log(hh)
+    if (hh > 9 && hh < 18){
+    if (temp < 0){
+      return <AcUnitIcon className = {classes.weatherIcon} />
+    }else if(temp < 9){
+      return <CloudIcon className = {classes.weatherIcon} />
+    }else if(temp < 15){
+      return <WbSunnyIcon className = {classes.weatherIcon} />
+    }else{
+      return <Brightness3Icon className = {classes.weatherIcon} />
+    }
+  }else{
+      return <NightsStayIcon className = {classes.weatherIcon} />
+
+  }
+}
+
+
   //For know, we will pase the city id of Toronto. Later, we will fetch the city id dependong on where the user is located.
   getWeatherInfo()
   updateTime()
@@ -120,7 +141,7 @@ export default function TimeWeather() {
     <div className={classes.timeWeather}>
       <Grid className={classes.weather}>
         <a href = {weatherLink} target="_blank">
-          <AcUnitIcon className = {classes.weatherIcon} />
+          {chooseIcon}}
         </a>
         <div className = {classes.weatherValue}>{temp}&#176;C</div>
       </Grid>
