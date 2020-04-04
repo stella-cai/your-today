@@ -87,7 +87,7 @@ export function RightDrawer(props) {
   const sideList = side => (
     <div className={classes.root}>
       <div className={classes.div}>
-        <span className={classes.header}>Setting</span>
+        <span className={classes.header}>Settings</span>
       </div>
       <div className={classes.buttons}>
         <Button onClick={handleOpen} variant="outlined" size="large" id="wallpaperBtn" className={classes.button}>Wallpaper</Button>
