@@ -21,10 +21,12 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function All(props) {
+export default function Feedback(props) {
     const classes = useStyles()
     const feedback = props.feedback
     const setFeedback = props.setFeedback
+    console.log("in Feedback.jsx, feedback list:")
+    console.log(feedback)
     const removeFromScreen = props.removeFromScreen
     const read = (index, id) => {
         // Some codes that communicate with the backend... (That's why we need ID here.)
@@ -40,7 +42,7 @@ export default function All(props) {
                     <Button size='small' className={classes.button} onClick={() => read(index, f._id)}>Mark As Read</Button>
                     </span>
                 </p>
-                    ))}
+            ))}
         </div>
             )
 }
