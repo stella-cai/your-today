@@ -336,6 +336,31 @@ function setUserMusic(music_url){
         })
 }
 
+function addFeedback(feedback){
+    const url = "/feedback/"
+    const data = {"feedback": feedback}
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong adding feedback")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const Middleware = {
     userRegister,
     login,
@@ -352,4 +377,5 @@ export const Middleware = {
     freezeUser,
     unfreezeUser,
     logout,
+    addFeedback,
 }

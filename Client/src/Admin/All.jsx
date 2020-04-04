@@ -59,9 +59,7 @@ export default function All(props) {
     const addToScreen = props.addToScreen
     const frozen = props.frozen
     const setFrozen = props.setFrozen
-    //const [frozenReason, setFrozenReason] = React.useState("")
-    console.log("all inside of All.jsx")
-    console.log(all)
+
     const toFrozen = (index, id, username) => {
         // Some codes that communicate with the backend... (That's why we need ID here.)
         //let inputs = document.querySelectorAll('input')
