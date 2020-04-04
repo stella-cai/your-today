@@ -20,9 +20,12 @@ export function RightContent(props) {
     const classes = useStyles();
     const links = props.links;
     const setLinks = props.setLinks;
+    const music = props.music;
+    const setMusic = props.setMusic;
     return(
         <div className={classes.root}>
-            <MusicPlayer></MusicPlayer>
+            <MusicPlayer music = {music}
+           setMusic = {setMusic}></MusicPlayer>
             <MostVisitedLinks links = {links} setLinks = {setLinks}></MostVisitedLinks>
         </div>
     );

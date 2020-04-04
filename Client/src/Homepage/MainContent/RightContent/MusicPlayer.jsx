@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
+import {Middleware} from '../../../actions/middleware'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,10 +67,14 @@ const useStyles = makeStyles(theme => ({
 
 }))
 
-export default function MediaControlCard() {
+export default function MediaControlCard(props) {
   const classes = useStyles();
+  const searchKey = props.music;
+  const setSearchKey = props.setMusic;
+  if (!searchKey){
+    setSearchKey('https://open.spotify.com/embed/playlist/37i9dQZF1DX8NTLI2TtZa6')
+  }
 
-  const [searchKey, setSearchKey] = useState("https://open.spotify.com/embed/playlist/37i9dQZF1DX8NTLI2TtZa6");
   var a = ""
 
   const searchButtonClickHandler = (e) => {
@@ -77,6 +82,7 @@ export default function MediaControlCard() {
     var temp = a.split("/")
     temp = temp[0] + "//" + temp[2] + "/embed/playlist/" + temp[4]
     setSearchKey(temp)
+    Middleware.setUserMusic(temp)
     console.log(searchKey)
   }
 

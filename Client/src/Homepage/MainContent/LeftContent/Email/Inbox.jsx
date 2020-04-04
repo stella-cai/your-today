@@ -79,7 +79,6 @@ export default function Inbox(props) {
       }
   };
   const newEmails = props.newEmails
-  const setNewEmails = props.setNewEmails
 
   return (
     <div className={classes.root} id='email-root'>
