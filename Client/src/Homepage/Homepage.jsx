@@ -27,6 +27,7 @@ export function Homepage(props) {
     ws.send(JSON.stringify({type: "user-log-in", username: props.app.state.currentUser.username}))
       ws.on('getMessage', message => {
         console.log(message)
+        console.log("INIT WEB SOCKET!!!!")
           const newNewEmails = [...props.app.state.messages, message]
           props.app.setState({ messages: newNewEmails })
           setReadPosition(count => count + 1)

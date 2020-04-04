@@ -77,6 +77,7 @@ io.on('connection', socket => {
     socket.on('getMessage', message => {
         console.log(socket.id)
         console.log(usersOnline)
+        console.log("SOCKET IN SERVER.JS")
         const newMessage = new Message(message)
         newMessage.save().then((result) => {
             const receiver = usersOnline.filter(user => user.username == message.to)

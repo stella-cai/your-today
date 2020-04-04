@@ -7,7 +7,10 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DeleteIcon from '@material-ui/icons/Delete';
-import NewEmail from './NewEmail'
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import { uid } from "react-uid";
+import Message from './message'
 import {Middleware} from "../../../../actions/middleware";
 
 function TabPanel(props) {
@@ -71,7 +74,7 @@ export default function Inbox(props) {
       if(value == 0 && type == 0) {
           alert("Already Leftmost")
       }
-      else if (value == newEmails.length - 1 && type == 1) {
+      else if (value == props.newEmails.length - 1 && type == 1) {
         alert("Already Rightmost")
       }
       else if(type == 0) {
@@ -81,29 +84,39 @@ export default function Inbox(props) {
           setValue(value + 1);
       }
   };
-  const newEmails = props.newEmails
+  console.log("props.newEmails")
+  console.log(props.newEmails)
+  console.log("reversed")
+  const newEmails = props.newEmails.reverse()
+  console.log("viewEmails")
+  const viewEmails = newEmails.slice(0, 5)
+  console.log(viewEmails)
 
   // const deleteMessage = (index) => {
   //   alert(index)
   // }
   return (
     <div className={classes.root} id='email-root'>
-      <div className={classes.buttons}>
+      {/* <div className={classes.buttons}>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button}/></Button>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button}/></Button>
       <Button><DeleteIcon onClick={() => {props.deleteMessage(value)}} className={classes.button}/></Button>
-      </div>
-      {
+      </div> */}
+      {/* {
       newEmails.slice(0).reverse().map((newEmail, index) => (
           <TabPanel value={value} index={index}>
             <NewEmail sender = {newEmail.sender} date = {newEmail.date} content = {newEmail.content}> </NewEmail>
           </TabPanel>
         ))
-      }
-      {/* <div className={classes.keepFooter}>
-      <div className={classes.footer}> */}
-      {/* </div>
-      </div> */}
+      } */}
+      <Table className={classes.messageList}>
+        <TableBody className={classes.messageTable}>
+                  {viewEmails.map((message, index) => (
+                  <Message key={uid(message)} message = {message} index = {index} />
+                  ))}
+        </TableBody>
+      </Table>
+      
     </div>
   );
 }

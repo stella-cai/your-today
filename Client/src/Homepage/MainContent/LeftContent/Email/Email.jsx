@@ -30,6 +30,7 @@ export function Email(props) {
   const ws = props.ws
 
   const sendMessage = () => {
+    console.log("sendMessage is called in email")
       ws.emit('getMessage', {sender: props.username, to: to, subject: subject, content: message, date: new Date()})
   }
 
