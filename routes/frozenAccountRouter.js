@@ -21,14 +21,28 @@ frozenAccountRouter.use(session({
 const { ObjectID } = require('mongodb')
 const mongoose = require('../mongoose.js')
 const { User } = require('./../models/user')
+const { FrozenAccount } = require('./../models/frozenAccount')
 
 // Route to freeze an account
-frozenAccountRouter.patch('/freeze/:id', (req, res) => {
-    const id = req.params.id
+// Request body: {id:..., reason: ...}
+frozenAccountRouter.post('/freeze', (req, res) => {
 
-    if (!ObjectID.isValid(id)) {
+    if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
     }
+    
+    const id = req.body.id
+
+    const frozen = new FrozenAccount({
+        id: id,
+        reason: req.body.reason
+    })
+
+    frozen.save().then((frozen) => {
+        res.send(frozen)
+    }).catch((err) => {
+        res.status(400).send(err)
+    })
 
     User.findByIdAndUpdate(
         id,
@@ -46,12 +60,14 @@ frozenAccountRouter.patch('/freeze/:id', (req, res) => {
 })
 
 // Route to unfreeze an account
-frozenAccountRouter.patch('/unfreeze/:id', (req, res) => {
-    const id = req.params.id
-
-    if(!ObjectID.isValid(id)) {
+frozenAccountRouter.delete('/unfreeze', (req, res) => {
+    if(!req.body.id || !req.body.reason || !ObjectID.isValid(req.body.id)) {
         res.status(400).send()
     }
+
+    const id = req.body.id
+
+    FrozenAccount.findOneAndDelete({ id: id })
 
     User.findByIdAndUpdate(
         id,
@@ -85,4 +101,5 @@ frozenAccountRouter.get('/active', (req, res) => {
         res.status(500).send(err)
     })
 })
+
 module.exports = frozenAccountRouter
