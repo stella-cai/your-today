@@ -40,12 +40,6 @@ accountRouter.post('/freeze', (req, res) => {
         date: new Date()
     })
 
-    frozen.save().then((frozen) => {
-        res.send(frozen)
-    }).catch((err) => {
-        res.status(400).send(err)
-    })
-
     User.findByIdAndUpdate(
         id,
         { status: 1},
@@ -53,12 +47,17 @@ accountRouter.post('/freeze', (req, res) => {
     ).then((user) => {
         if (!user) {
             res.status(404).send()
-        } else {
-            res.send(user)
         }
     }).catch((err) => {
         res.status(500).send(err)
     })
+
+    frozen.save().then((frozen) => {
+        res.send(frozen)
+    }).catch((err) => {
+        res.status(400).send(err)
+    })
+
 })
 
 // Route to unfreeze an account
@@ -71,6 +70,17 @@ accountRouter.delete('/unfreeze', (req, res) => {
     console.log("id inside router")
     console.log(id)
 
+    User.findByIdAndUpdate( id,
+        { status: 0},
+        { new: true}
+    ).then((user) => {
+        if (!user) {
+            res.status(404).send()
+        }
+    }).catch((err) => {
+        res.status(500).send(err)
+    })
+
     FrozenAccount.deleteOne({ account_id: id })
     .then((account) => {
         if (!account) {
@@ -82,18 +92,6 @@ accountRouter.delete('/unfreeze', (req, res) => {
         res.status(500).send(err)
     })
 
-    User.findByIdAndUpdate( id,
-        { status: 0},
-        { new: true}
-    ).then((user) => {
-        if (!user) {
-            res.status(404).send()
-        } else {
-            res.send(user)
-        }
-    }).catch((err) => {
-        res.status(500).send(err)
-    })
 })
 
 // Route to get all frozen accounts
