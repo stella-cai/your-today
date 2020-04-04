@@ -105,25 +105,6 @@ export default function AdminPage() {
     setValue(newValue);
   };
 
-  // lATER WE WILL FETCH ALL THE DATA FROM THE SERVER.
-
-  // Recent Creation.
-  const [creation, setCreation] = React.useState(
-    [
-      { id: 1, user: "Tom", date: "2020-03-03" },
-      { id: 2, user: "Jack", date: "2020-03-02" },
-    ]
-  )
-
-  // Recent Creation.
-  const [request, setRequest] = React.useState(
-    [
-      { id: 3, user: "Lucy", reason: "I forgot my password", date: "2020-03-03" },
-      { id: 4, user: "Maria", reason: "I registered my account last month.", date: "2020-03-02" },
-    ]
-  )
-
-
   // Frozen.
   // Feedback.
   const [frozen, setFrozen] = React.useState([])
@@ -185,9 +166,9 @@ export default function AdminPage() {
           >
             {/* <LinkTab label="Recent Creations" href="/" {...a11yProps(0)} />
             <LinkTab label="Requests" href="/" {...a11yProps(1)} /> */}
-            <LinkTab label="Frozen Accounts" href="/" {...a11yProps(2)} />
-            <LinkTab label="All Accounts" href="/" {...a11yProps(3)} />
-            <LinkTab label="Feedbacks" href="/" {...a11yProps(4)} />
+            <LinkTab label="Frozen Accounts" href="/" {...a11yProps(0)} />
+            <LinkTab label="Active Accounts" href="/" {...a11yProps(1)} />
+            <LinkTab label="Feedbacks" href="/" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
         {/* <TabPanel value={value} index={0} className={classes.tab}>
@@ -196,13 +177,13 @@ export default function AdminPage() {
         <TabPanel value={value} index={1} className={classes.tab}>
           <Request removeFromScreen={removeFromScreen} request={request} setRequest={setRequest}></Request>
         </TabPanel> */}
-        <TabPanel value={value} index={2} className={classes.tab}>
+        <TabPanel value={value} index={0} className={classes.tab}>
           <Frozen all={all} setAll={setAll} addToScreen={addToScreen} removeFromScreen={removeFromScreen} frozen={frozen} setFrozen={setFrozen}></Frozen>
         </TabPanel>
-        <TabPanel value={value} index={3} className={classes.tab}>
+        <TabPanel value={value} index={1} className={classes.tab}>
           <All frozen={frozen} setFrozen={setFrozen} addToScreen={addToScreen} removeFromScreen={removeFromScreen} all={all} setAll={setAll}></All>
         </TabPanel>
-        <TabPanel value={value} index={4} className={classes.tab}>
+        <TabPanel value={value} index={2} className={classes.tab}>
           <Feedback removeFromScreen={removeFromScreen} feedback={feedback} setFeedback={setFeedback}></Feedback>
         </TabPanel>
       </Box>

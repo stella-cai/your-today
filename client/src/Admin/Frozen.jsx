@@ -53,7 +53,6 @@ export default function Frozen(props) {
                 <p className={classes.text} key = {index}>{f.username} &emsp; {f.reason} &emsp; {dateFormat(f.date)} 
                 <span className={classes.buttons}>
                 <Button size='small' className={classes.button} onClick = {()=> unFrozen(index, f.account_id)}>Unfreeze</Button>
-                <Button size='small' className={classes.button} onClick = {()=> ignore(index, f.id)}>Ignore</Button>
                     </span></p>
                 ))}
         </div>
