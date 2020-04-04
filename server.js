@@ -40,6 +40,9 @@ app.use('/feedback', feedbackRouter)
 const frozenAccountRouter = require('./routes/frozenAccountRouter')
 app.use('/account', frozenAccountRouter)
 
+const messageRouter = require('./routes/messageRouter')
+app.use('/message', messageRouter)
+
 /*** Webpage routes below **********************************/
 // Serve the build
 app.use(express.static(__dirname + "/Client/build"));
