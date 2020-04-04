@@ -82,16 +82,9 @@ accountRouter.delete('/unfreeze', (req, res) => {
         res.status(500).send(err)
     })
 
-<<<<<<< HEAD
-    User.findByIdAndUpdate(
-        id,
-        { status: 0 },
-        { new: true }
-=======
     User.findByIdAndUpdate( id,
         { status: 0},
         { new: true}
->>>>>>> refs/remotes/origin/master
     ).then((user) => {
         if (!user) {
             res.status(404).send()
