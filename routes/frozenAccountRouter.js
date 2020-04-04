@@ -51,7 +51,7 @@ frozenAccountRouter.post('/freeze', (req, res) => {
         { new: true}
     ).then((user) => {
         if (!user) {
-            res.status(404).send()·
+            res.status(404).send()
         } else {
             res.send(user)
         }
