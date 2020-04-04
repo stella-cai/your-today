@@ -87,8 +87,8 @@ frozenAccountRouter.delete('/unfreeze', (req, res) => {
 
 // Route to get all frozen accounts
 frozenAccountRouter.get('/frozen', (req, res) => {
-    User.find({ status: 1} ).then((users) => {
-        res.send({ users })
+    FrozenAccount.find().then((accounts) => {
+        res.send({ accounts })
     }).catch((err) => {
         res.status(500).send(err)
     })
