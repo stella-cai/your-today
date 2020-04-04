@@ -35,7 +35,8 @@ frozenAccountRouter.post('/freeze', (req, res) => {
 
     const frozen = new FrozenAccount({
         id: id,
-        reason: req.body.reason
+        reason: req.body.reason,
+        date: new Date()
     })
 
     frozen.save().then((frozen) => {

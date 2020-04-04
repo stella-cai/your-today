@@ -8,6 +8,10 @@ const FrozenAccountSchema = new mongoose.Schema({
     reason: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        required: true
     }
 })
 
