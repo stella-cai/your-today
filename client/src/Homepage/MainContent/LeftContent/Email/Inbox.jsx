@@ -7,7 +7,10 @@ import Button from '@material-ui/core/Button';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DeleteIcon from '@material-ui/icons/Delete';
-import NewEmail from './NewEmail'
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import { uid } from "react-uid";
+import Message from './message'
 import {Middleware} from "../../../../actions/middleware";
 
 function TabPanel(props) {
@@ -71,7 +74,7 @@ export default function Inbox(props) {
       if(value == 0 && type == 0) {
           alert("Already Leftmost")
       }
-      else if (value == newEmails.length - 1 && type == 1) {
+      else if (value == props.newEmails.length - 1 && type == 1) {
         alert("Already Rightmost")
       }
       else if(type == 0) {
@@ -81,29 +84,30 @@ export default function Inbox(props) {
           setValue(value + 1);
       }
   };
-  const newEmails = props.newEmails
-
-  // const deleteMessage = (index) => {
-  //   alert(index)
-  // }
   return (
     <div className={classes.root} id='email-root'>
-      <div className={classes.buttons}>
+      {/* <div className={classes.buttons}>
       <Button onClick={(e) => handleMove(e, 0)}><ArrowBackIosIcon className={classes.button}/></Button>
       <Button onClick={(e) => handleMove(e, 1)}><ArrowForwardIosIcon className={classes.button}/></Button>
       <Button><DeleteIcon onClick={() => {props.deleteMessage(value)}} className={classes.button}/></Button>
-      </div>
-      {
+      </div> */}
+      {/* {
       newEmails.slice(0).reverse().map((newEmail, index) => (
           <TabPanel value={value} index={index}>
             <NewEmail sender = {newEmail.sender} date = {newEmail.date} content = {newEmail.content}> </NewEmail>
           </TabPanel>
         ))
-      }
-      {/* <div className={classes.keepFooter}>
-      <div className={classes.footer}> */}
-      {/* </div>
-      </div> */}
+      } */}
+      <Table className={classes.messageList}>
+      <div style={{ overflow: "auto", minWidth: "420px",maxWidth: "420px", maxHeight:"280px", minHeight: "280px" }}>
+        <TableBody className={classes.messageTable}>
+                  {props.newEmails.slice(0).reverse().map((message, index) => (
+                  <Message style={{width: "420px"}} setTo={props.setTo} key={uid(message)} message = {message} index = {index} deleteMessage = {props.deleteMessage}/>
+                  ))}
+        </TableBody>
+        </div>
+      </Table>
+      
     </div>
   );
 }

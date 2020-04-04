@@ -30,13 +30,17 @@ export function Email(props) {
   const ws = props.ws
 
   const sendMessage = () => {
-      ws.emit('getMessage', {sender: props.username, to: to, subject: subject, content: message, date: new Date()})
+    console.log("sendMessage is called in email")
+    ws.emit('getMessage', {sender: props.username, to: to, subject: subject, content: message, date: new Date()})
+    setTo("")
+    setSubject("")
+    setMessage("")
   }
 
 
   return (
     <div className={classes.root}>
-      <Inbox setReadPosition={props.setReadPosition} readPosition={props.readPosition} deleteMessage={props.deleteMessage} newEmails = {props.messages} className={classes.inbox} id='inbox'></Inbox>
+      <Inbox setTo={setTo} setReadPosition={props.setReadPosition} readPosition={props.readPosition} deleteMessage={props.deleteMessage} newEmails = {props.messages} className={classes.inbox} id='inbox'></Inbox>
       <Compose sendMessage = {sendMessage} to={to} setTo={setTo} subject={subject} setSubject={setSubject} message={message} setMessage={setMessage} className={classes.compose}></Compose>
     </div>
   );
