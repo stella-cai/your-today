@@ -72,8 +72,8 @@ accountRouter.delete('/unfreeze', (req, res) => {
 
     User.findByIdAndUpdate(
         id,
-        { status: 0},
-        { new: true}
+        { status: 0 },
+        { new: true }
     ).then((user) => {
         if (!user) {
             res.status(404).send()

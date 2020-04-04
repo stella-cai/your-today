@@ -43,7 +43,7 @@ messageRouter.post('/', (req, res) => {
         date: new Date()
     })
 
-    message.sage().then((message) => {
+    message.save().then((message) => {
         res.send(message)
     }).catch((err) => {
         res.status(400).send(err)
