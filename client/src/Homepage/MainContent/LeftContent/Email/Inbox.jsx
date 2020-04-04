@@ -10,7 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import { uid } from "react-uid";
-import Message from './message'
+import Message from './Message'
 import {Middleware} from "../../../../actions/middleware";
 
 function TabPanel(props) {
