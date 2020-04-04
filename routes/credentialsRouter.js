@@ -85,4 +85,24 @@ credentialsRouter.post('/auth', (req, res) => {
     })
 })
 
+
+credentialsRouter.patch('/', (req, res) => {
+    res.status(200)
+    return 
+    User.findOne(req.body.username, function(err, user) {
+        if (err) return console.error(err)
+        
+        if (user === null) {
+            // res.send("The Username doesn't exist!")
+            res.status(404).send("wrong username")
+        }
+        // else if (!Bcrypt.compareSync(req.body.password, user.password)) {
+        //     res.status(400).send("wrong passwordsss")
+        // }
+        else {
+            res.status(200)
+        }
+    })
+})
+
 module.exports = credentialsRouter
