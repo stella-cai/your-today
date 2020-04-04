@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Alert from '@material-ui/lab/Alert';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -15,7 +15,7 @@ import {Middleware} from "../actions/middleware";
 
 class RecoverPassword extends React.Component {
     componentDidMount(){ 
-        document.title = "Register | Today" 
+        document.title = "Recover Password | Today" 
         } 
 
     constructor(props) {
@@ -69,6 +69,17 @@ class RecoverPassword extends React.Component {
                 ]
             }
             // TODO check username exists and security question.
+            Middleware.resetPassword(user).then(function(result) {
+                if(result == "success") {
+                    document.querySelector("#wrongPassword").style.display = "none"
+                    document.querySelector("#loginSuccess").style.display = "block"
+                    alert("Reset Successfully. Please use the new password to log in.")
+                    window.location.replace(".././");
+                }
+                else {
+                    alert("Answers to Security Questions not corrct!")
+                }
+            });
         }
         else {
             alert("New Passwords don't match!")

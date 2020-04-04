@@ -13,7 +13,7 @@ import {Middleware} from "../actions/middleware";
 export function Homepage(props) {
   const [ws,setWs] = useState(webSocket(''))
 
-  const [readPosition, setReadPosition] = useState(1)
+  const [readPosition, setReadPosition] = useState(0)
 
   useEffect(()=>{
     document.title = props.app.state.currentUser.fisrtname + " " + props.app.state.currentUser.lastname 
@@ -27,7 +27,6 @@ export function Homepage(props) {
     ws.send(JSON.stringify({type: "user-log-in", username: props.app.state.currentUser.username}))
       ws.on('getMessage', message => {
         console.log(message)
-        alert(readPosition)
           const newNewEmails = [...props.app.state.messages, message]
           props.app.setState({ messages: newNewEmails })
           setReadPosition(count => count + 1)

@@ -44,7 +44,7 @@ class App extends React.Component {
             <Route exact path='/recoverpassword' render={() => 
                             (<RecoverPassword state={this.state}/>)}/>
             <Route exact path='/admin' render={() => 
-                            (currentUser ? <Admin state={this.state}/> : <Redirect to="/" />)}/>
+                            (currentUser&&currentUser.status==2 ? <Admin state={this.state}/> : <Redirect to="/" />)}/>
           </Switch>
         </BrowserRouter>
       </div>
