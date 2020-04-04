@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -81,6 +81,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function AdminPage() {
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = "Admin | Today";
+  });
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 

@@ -6,6 +6,9 @@ import LoginRight from "./LoginRight";
 import "./Login.css"
 
 class Login extends React.Component {
+    componentDidMount(){ 
+        document.title = "Login | Today" 
+        } 
     rootStyle = () => {
         return {
             height: '100vh',
