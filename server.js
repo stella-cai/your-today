@@ -45,11 +45,11 @@ app.use('/message', messageRouter)
 
 /*** Webpage routes below **********************************/
 // Serve the build
-app.use(express.static(__dirname + "/Client/build"));
+app.use(express.static(__dirname + "/client/build"));
 
 // All routes other than above will go to index.html
 app.get("*", (req, res) => {
-    res.sendFile(__dirname + "/Client/build/index.html");
+    res.sendFile(__dirname + "/client/build/index.html");
 });
 
 const server = require('http').createServer(app)
