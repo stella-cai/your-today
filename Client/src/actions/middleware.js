@@ -12,6 +12,50 @@ async function getFrozenUsers() {
         });
 }
 
+async function getActiveUsers() {
+    const url = "/account/active";
+
+    return fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });    
+}
+
+async function freezeUser(id, reason){
+    const url = "/account/freeze";
+    const data = {"id": id,
+                  "reason": reason}
+    console.log(JSON.stringify(data))
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json) {
+                return json
+            }
+        })
+        .catch(error => {
+            console.log(error);
+    })
+}
+
+
 function completeTodo(todoId) {
     const url = "/todo/" + todoId;
     const request = new Request(url, {
@@ -265,5 +309,7 @@ export const Middleware = {
     addTodo,
     completeTodo,
     getFrozenUsers,
+    getActiveUsers,
     setUserMusic,
+    freezeUser
 }

@@ -80,6 +80,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function accountsEqual(list1, list2){
+  if(list1.length != list2.length)
+    return false
+  
+  for(let i = 0; i < list1.length; i++){
+    if(list1[i]._id !== list2[i]._id){
+      return false
+    }
+  }
+  
+  return true
+}
+
 export default function AdminPage() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -112,20 +125,24 @@ export default function AdminPage() {
   const [frozen, setFrozen] = React.useState([])
   Middleware.getFrozenUsers().then(function(result) {
     console.log(result)
-    if(result) {
-      setFrozen(result)
+    console.log(frozen)
+    if(!accountsEqual(result.users, frozen)) {
+      console.log("setting result")
+      setFrozen(result.users)
     }
   })
 
   // All Active Accounts.
-  const [all, setAll] = React.useState(
-    [
-      { id: 1, user: "Tom" },
-      { id: 2, user: "Jack" },
-      { id: 3, user: "Lucy" },
-      { id: 4, user: "Maria" },
-    ]
-  )
+  const [all, setAll] = React.useState([])
+
+  Middleware.getActiveUsers().then(function(result) {
+    console.log(result)
+    console.log(all)
+    if(!accountsEqual(result.users, all)) {
+      console.log("setting result inside getActiveUsers")
+      setAll(result.users)
+    }
+  })
 
   // Feedback.
   const [feedback, setFeedback] = React.useState(
