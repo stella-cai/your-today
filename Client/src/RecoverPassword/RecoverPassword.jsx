@@ -71,8 +71,6 @@ class RecoverPassword extends React.Component {
             // TODO check username exists and security question.
             Middleware.resetPassword(user).then(function(result) {
                 if(result == "success") {
-                    document.querySelector("#wrongPassword").style.display = "none"
-                    document.querySelector("#loginSuccess").style.display = "block"
                     alert("Reset Successfully. Please use the new password to log in.")
                     window.location.replace(".././");
                 }
