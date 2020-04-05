@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0'
   },
   compose: {
-    width: '30%',
+    width: '28%',
     display: 'flex',
     justifyContent: 'flex-end'
   }
