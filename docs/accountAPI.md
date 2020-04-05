@@ -37,8 +37,9 @@
     "email": SOME_EMAIL_ADDRESS,
     "password": SOME_HASHED_STRING,
     "firstname": SOME_WORDS,
-    "lastname": SOME_WORDS
+    "lastname": SOME_WORDS,
     "birthday": TIMESTAMP,
+    "playlist": SOME_URL,
     "securityQuestions": [
         {
             "question": SOME_WORDS,
