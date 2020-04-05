@@ -37,6 +37,7 @@ musicRouter.post('/', (req, res) => {
         if (!user) {
             res.status(404).send() // could not find user
         } else {
+            req.session.user.playlist = req.body.url
             res.send(req.session.user)
         }
     }).catch((err) => {
