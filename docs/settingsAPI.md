@@ -4,7 +4,7 @@
 ### Supported HTTP Verbs: ```POST```
 ---
 
-### ```POST```: Route to change default wall paper in the logged-in account
+### ```POST```: Route to change default wallpaper in the logged-in account
 **Route: /set-wallpaper**
 
 **request**: 

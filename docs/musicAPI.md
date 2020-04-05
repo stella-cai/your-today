@@ -4,7 +4,7 @@
 ### Supported HTTP Verbs: ```POST```
 ---
 
-### ```POST```: Route to change the playlist in the logged-in account
+### ```POST```: Route to add or change the playlist in the logged-in account
 **Route: /**
 
 **request**: 
