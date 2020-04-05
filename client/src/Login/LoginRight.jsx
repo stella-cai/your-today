@@ -69,7 +69,7 @@ class LoginRight extends React.Component {
                 }
             }
             else {
-                alert("logging fail")
+                alert("login fail")
             }
         });
     }

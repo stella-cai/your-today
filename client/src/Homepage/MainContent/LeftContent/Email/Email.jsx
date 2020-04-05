@@ -11,11 +11,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between'
   },
   inbox: {
-    width: '70%',
-    padding: '0'
+    width: '35vw',
+    padding: '0',
+    display: 'flex',
+    justifyContent: 'flex-start'
   },
   compose: {
-    width: '30%',
+    width: '14wv',
     display: 'flex',
     justifyContent: 'flex-end'
   }
