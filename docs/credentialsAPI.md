@@ -1,6 +1,6 @@
 # Credentials API
 ### Path: /credential
-### Related Model: [User](../models/user.js)
+### Related Model: [User](../models/user.js), [Message](../models/message.js)
 ### Supported HTTP Verbs: ```GET```, ```POST```
 ---
 ### ```GET```: Route logout of an account
@@ -10,7 +10,7 @@
 
 **Response:** does not have a body (code 200 if successful)
 
-### ```GET```: Route to get all active accounts
+### ```GET```: Route to get information for logged-in account
 **Route: /check-loggedin**
 
 **Request:** does not have a body
