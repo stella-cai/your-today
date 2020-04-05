@@ -81,8 +81,11 @@ export default function MediaControlCard(props) {
     e.preventDefault();
     var temp = a.split("/")
     temp = temp[0] + "//" + temp[2] + "/embed/playlist/" + temp[4]
-    setSearchKey(temp)
-    Middleware.setUserMusic(temp)
+    if(temp != searchKey){
+      console.log("resetting playlist")
+      setSearchKey(temp)
+    }
+    // Middleware.updatePlaylist(temp)
     console.log(searchKey)
   }
 

@@ -447,6 +447,32 @@ function resetPassword(user) {
         })
 }
 
+function updatePlaylist(playlist){
+    const data = {url: playlist}
+    console.log(JSON.stringify(data))
+    const url = "/music/"
+    const request = new Request(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+    return fetch(request)
+        .then(function (res) {
+            if(res.status === 200) {
+                return("success")
+            }
+            else {
+                return("something is wrong. check your playlist")
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
 export const Middleware = {
     userRegister,
     login,
@@ -467,5 +493,6 @@ export const Middleware = {
     getFeedback,
     readFeedback,
     removeMessageFromDatabase,
-    resetPassword
+    resetPassword,
+    updatePlaylist
 }
