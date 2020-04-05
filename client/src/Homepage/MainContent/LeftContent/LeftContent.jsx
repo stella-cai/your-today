@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2)
     },
     leftContent: {
-        marginRight: "25px",
+        marginRight: "15px",
     },
   }));
 

@@ -311,31 +311,6 @@ function setUserMood(mood) {
         })
 }
 
-function setUserMusic(music_url){
-    const url = "/set-music";
-    const data = {"music_url": music_url}
-    const request = new Request(url, {
-        method: "post",
-        body: JSON.stringify(data),
-        headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
-        }
-    })
-    return fetch(request)
-        .then(function (res) {
-            if(res.status === 200) {
-                return("success")
-            }
-            else {
-                return("something is wrong. check your username / password")
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        })
-}
-
 function addFeedback(feedback){
     const url = "/feedback/"
     const data = {"feedback": feedback}
@@ -485,7 +460,6 @@ export const Middleware = {
     completeTodo,
     getFrozenUsers,
     getActiveUsers,
-    setUserMusic,
     freezeUser,
     unfreezeUser,
     logout,

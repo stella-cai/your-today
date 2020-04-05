@@ -76,24 +76,18 @@ export default function TimeWeather() {
   const getWeatherInfo = async () => {
     let latitude;
     let longitude;
-    log('getting weather info')
 
     const publicIp = require('public-ip');
 
     const ipAddress = await publicIp.v4()
 
-    log(ipAddress)
     fetch('https://ipapi.co/' + ipAddress + '/json/')
       .then(resp => resp.json())
       .then(function(data){
-        log("this is the data")
-        log(data)
         latitude = data.latitude
         longitude = data.longitude
 
-        const key = 'b670e8e2fd850cc641897211bf6a2252';
-        log("latitude: " + latitude)
-        log("longitude: " + longitude)
+        const key = 'b670e8e2fd850cc641897211bf6a2252'; 
         setWeatherLink("https://darksky.net/forecast/" + latitude + "," + longitude + "/ca12/en");
 
         fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + key)  

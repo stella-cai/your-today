@@ -44,19 +44,6 @@ musicRouter.post('/', (req, res) => {
     })
 })
 
-// Route for getting playlist
-musicRouter.get('/', (req, res) => {
-    User.find({ username: req.session.user.username }).then((user) => {
-        if (!user) {
-            res.status(404).send() // could not find user
-        } else {
-            res.send(user.playlist)
-        }
-    }).catch((err) => {
-        res.status(500).send(err)
-    })
-})
-
 // // Route for deleting a link
 // musicRouter.delete('/:id', (req, res) => {
 //     const id = req.params.id
