@@ -22,7 +22,7 @@
 ] -- a list of Message models
 ```
 
-### ```DELETE```: Route to delete a link in the logged-in account
+### ```DELETE```: Route to delete a message in the logged-in account
 **Route: /**
 
 **request**: ```?id=MESSAGE_ID```
