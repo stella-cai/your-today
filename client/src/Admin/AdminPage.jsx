@@ -6,12 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Creation from './Creation'
-import Request from './Request'
 import Frozen from './Frozen'
 import All from './All'
 import Feedback from './Feedback'
-import { mergeClasses } from '@material-ui/styles';
 import {Middleware} from "../actions/middleware";
 
 function TabPanel(props) {
@@ -164,19 +161,12 @@ export default function AdminPage() {
             onChange={handleChange}
             aria-label="Admin Page Tabs"
           >
-            {/* <LinkTab label="Recent Creations" href="/" {...a11yProps(0)} />
-            <LinkTab label="Requests" href="/" {...a11yProps(1)} /> */}
             <LinkTab label="Frozen Accounts" href="/" {...a11yProps(0)} />
             <LinkTab label="Active Accounts" href="/" {...a11yProps(1)} />
             <LinkTab label="Feedbacks" href="/" {...a11yProps(2)} />
           </Tabs>
         </AppBar>
-        {/* <TabPanel value={value} index={0} className={classes.tab}>
-          <Creation removeFromScreen={removeFromScreen} creation={creation} setCreation={setCreation}></Creation>
-        </TabPanel>
-        <TabPanel value={value} index={1} className={classes.tab}>
-          <Request removeFromScreen={removeFromScreen} request={request} setRequest={setRequest}></Request>
-        </TabPanel> */}
+
         <TabPanel value={value} index={0} className={classes.tab}>
           <Frozen all={all} setAll={setAll} addToScreen={addToScreen} removeFromScreen={removeFromScreen} frozen={frozen} setFrozen={setFrozen}></Frozen>
         </TabPanel>
