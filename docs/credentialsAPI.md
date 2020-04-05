@@ -31,26 +31,31 @@
         "playlist": SOME_URL,
         "securityQuestions": [
             {
+                "_id": SECURITYQUESTION_ID,
                 "question": SOME_WORDS,
                 "answer": SOME_WORDS
             },
             {
+                "_id": SECURITYQUESTION_ID,
                 "question": SOME_WORDS,
                 "answer": SOME_WORDS
             },
             {
+                "_id": SECURITYQUESTION_ID,
                 "question": SOME_WORDS,
                 "answer": SOME_WORDS
             }
         ],
         "todoList": [
             {
+                "_id": TODO_ID,
                 "what": SOME_WORDS,
                 "when": TIMESTAMP
             }, ...
         ],
         "linkList": [
             {
+                "_id": LINK_ID,
                 "url": SOME_URL,
                 "displayName": SOME_WORDS
             }, ...

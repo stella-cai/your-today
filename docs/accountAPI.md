@@ -42,14 +42,17 @@
     "playlist": SOME_URL,
     "securityQuestions": [
         {
+            "_id": SECURITYQUESTION_ID,
             "question": SOME_WORDS,
             "answer": SOME_WORDS
         },
         {
+            "_id": SECURITYQUESTION_ID,
             "question": SOME_WORDS,
             "answer": SOME_WORDS
         },
         {
+            "_id": SECURITYQUESTION_ID,
             "question": SOME_WORDS,
             "answer": SOME_WORDS
         }
