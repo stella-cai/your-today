@@ -84,6 +84,11 @@ const UserSchema = new mongoose.Schema({
     default: "https://source.unsplash.com/T_Qe4QlMIvQ"
   },
 
+  playlist: {
+    type: String,
+    default: "https://open.spotify.com/playlist/0vvXsWCC9xrXsKd4FyS8kM"
+  },
+
   securityQuestions: [SecurityQuestionsSchema],
 
   todoList: [TodoListSchema],

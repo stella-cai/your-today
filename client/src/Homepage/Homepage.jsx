@@ -48,9 +48,10 @@ export function Homepage(props) {
   const [todos, setTodos] = useState(
     props.app.state.currentUser.todoList
   );
-
+  
   const [music, setMusic] = useState(
-    props.app.state.currentUser.music_url
+    props.app.state.currentUser.playlist
+    // "https://open.spotify.com/embed/playlist/6dFMt1qgTA3zz53WfuXOqx"
   );
 
   console.log(wallpaper);
