@@ -22,36 +22,6 @@ const { ObjectID } = require('mongodb')
 const mongoose = require('../mongoose.js')
 const { Message } = require('./../models/message')
 
-// Route to POST a new message
-// expected request body:
-// {
-//      to:...,
-//      subject:...,
-//      content:...,
-// }
-// NOTE: to is username of the receiving user
-messageRouter.post('/', (req, res) => {
-    if (!req.body.to || !req.body.subject || !req.body.content) {
-        res.status(400).send()
-    }
-
-    const message = new Message({
-        sender: req.body.sender,
-        to: req.body.to,
-        subject: req.body.subject,
-        content: req.body.content,
-        date: new Date()
-    })
-
-    message.save().then((message) => {
-        console.log(message)
-        req.session.messages.push(message)
-        res.send(message)
-    }).catch((err) => {
-        res.status(400).send(err)
-    })
-})
-
 // Route to GET all messages sent to a user
 messageRouter.get('/', (req, res) => {
     const username = req.session.user.username

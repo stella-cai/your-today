@@ -16,7 +16,7 @@
     "account_id": USER_ID,
     "username": USERNAME,
     "reason": SOME_WORDS,
-    "date": TIMESTAMP,
+    "date": TIMESTAMP
   }, ...
 ] -- a list of FrozenAccount models
 ```
@@ -76,25 +76,24 @@
 ```json
 {
   "id": USER_ID,
-  "username": USERNAME
+  "username": USERNAME,
   "reason": SOME_WORDS
 }
 ```
 
 **response**:
 ```json
-[
-  {
+
+{
     "_id": FROZENACCOUNT_ID,
     "account_id": USER_ID,
     "username": USERNAME,
     "reason": SOME_WORDS,
     "date": TIMESTAMP,
-  }
-] -- the FrozenAccount model added
+} -- the FrozenAccount model added
 ```
 
-### ```POST```: Route to unfreeze an account
+### ```DELETE```: Route to unfreeze an account
 **Route: /unfreeze**
 
 **request**:
@@ -106,13 +105,11 @@
 
 **response**:
 ```json
-[
-  {
+{
     "_id": FROZENACCOUNT_ID,
     "account_id": USER_ID,
     "username": USERNAME,
     "reason": SOME_WORDS,
-    "date": TIMESTAMP,
-  }
-] -- the FrozenAccount model deleted
+    "date": TIMESTAMP
+  } -- the FrozenAccount model deleted
 ```
