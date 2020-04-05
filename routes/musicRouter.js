@@ -37,52 +37,12 @@ musicRouter.post('/', (req, res) => {
         if (!user) {
             res.status(404).send() // could not find user
         } else {
+            req.session.user.playlist = req.body.url
             res.send(req.session.user)
         }
     }).catch((err) => {
         res.status(500).send(err)
     })
 })
-
-// // Route for deleting a link
-// musicRouter.delete('/:id', (req, res) => {
-//     const id = req.params.id
-//     console.log(id)
-
-//     if (!ObjectID.isValid(id)) {
-//         res.status(404).send()
-//     }
-
-//     User.findOne({ username: req.session.user.username }).then((user) => {
-//         if (!user) {
-//             res.status(404).send()
-//         } 
-//         else {
-//             const deletedLink = user.linkList.find((link) => {
-//                 return link._id == id
-//             })
-//             console.log(user.linkList)
-//             if (!deletedLink) {
-//                 res.status(404).send()
-//             } else {
-//                 const updatedLink = user.linkList.filter((link) => {
-//                     return link._id != id
-//                 }
-//                 )
-//                 User.findOneAndUpdate(
-//                     { username: req.session.user.username },
-//                     { linkList: updatedLink },
-//                     { new: true }
-//                 ).then(() => {
-//                     req.session.user.linkList = updatedLink
-//                     res.send({ deletedLink })
-//                 })
-//             }
-//         }
-//     }).catch((err) => {
-//         console.log(err)
-//         res.status(500).send(err)
-//     })
-// })
 
 module.exports = musicRouter

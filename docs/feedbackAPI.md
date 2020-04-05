@@ -12,7 +12,7 @@
 ```json
 [
   {
-    "_id": MESSAGE_ID,
+    "_id": FEEDBACK_ID,
     "user_id": USER_ID,
     "username": USERNAME,
     "feedback": SOME_WORDS,
@@ -34,7 +34,7 @@
 **response**:
 ```json
 {
-    "_id": MESSAGE_ID,
+    "_id": FEEDBACK_ID,
     "user_id": USER_ID,
     "username": USERNAME,
     "feedback": SOME_WORDS,
@@ -42,20 +42,20 @@
 } -- the Message model added
 ```
 
-### ```DELETE```: Route to mark a feedback as read
-**Route: /**
+### ```POST```: Route to mark a feedback as read
+**Route: /read**
 
 **request**:
 ```json
 {
-  "id": MESSAGE_ID
+  "id": FEEDBACK_ID
 }
 ```
 
 **response**:
 ```json
 {
-    "_id": MESSAGE_ID,
+    "_id": FEEDBACK_ID,
     "user_id": USER_ID,
     "username": USERNAME,
     "feedback": SOME_WORDS,
@@ -64,5 +64,3 @@
 ```
 
 ---
-### Additional Notes:
-- The last route is a ```DELETE``` instead of a ```PATCH``` since we are considering the potential of viewing read feedbacks & deleting selected feedbacks in the future. 
