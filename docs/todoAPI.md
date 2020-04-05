@@ -19,7 +19,7 @@
 ] -- a list of Todo models
 ```
 
-### ```POST```: Route to add a new link to the logged-in acount
+### ```POST```: Route to add a new todo to the logged-in acount
 **Route: /**
 
 **request**:
@@ -39,7 +39,7 @@
 } -- the Todo model added
 ```
 
-### ```DELETE```: Route to delete a link in the logged-in account
+### ```DELETE```: Route to delete a todo in the logged-in account
 **Route: /**
 
 **request**: ```?id=TODO_ID```
