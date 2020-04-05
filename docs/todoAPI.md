@@ -19,7 +19,7 @@
 ] -- a list of Todo models
 ```
 
-### ```POST```: Route to add a new link to the logged-in acount
+### ```POST```: Route to add a new todo to the logged-in acount
 **Route: /**
 
 **request**:
