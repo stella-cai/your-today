@@ -16,7 +16,7 @@
     "account_id": USER_ID,
     "username": USERNAME,
     "reason": SOME_WORDS,
-    "date": TIMESTAMP,
+    "date": TIMESTAMP
   }, ...
 ] -- a list of FrozenAccount models
 ```
@@ -76,7 +76,7 @@
 ```json
 {
   "id": USER_ID,
-  "username": USERNAME
+  "username": USERNAME,
   "reason": SOME_WORDS
 }
 ```
@@ -112,7 +112,7 @@
     "account_id": USER_ID,
     "username": USERNAME,
     "reason": SOME_WORDS,
-    "date": TIMESTAMP,
+    "date": TIMESTAMP
   }
 ] -- the FrozenAccount model deleted
 ```
