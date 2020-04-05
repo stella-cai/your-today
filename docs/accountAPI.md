@@ -56,12 +56,14 @@
     ],
     "todoList": [
         {
+            "_id": TODO_ID,
             "what": SOME_WORDS,
             "when": TIMESTAMP
         }, ...
     ],
     "linkList": [
         {
+            "_id": LINK_ID,
             "url": SOME_URL,
             "displayName": SOME_WORDS
         }, ...
