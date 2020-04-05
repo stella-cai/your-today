@@ -33,11 +33,15 @@ credentialsRouter.get('/logout', function(req, res){
 
 credentialsRouter.get("/check-loggedin", (req, res) => {
     if (req.session.loggedin) {
+        User.findById(req.session.user._id, function(err, user) {
+            req.session.user = user
+        })
         Message.find({to: req.session.user.username}, function(err, messages) {
             req.session.messages = messages
-            res.send({ currentUser: req.session.user, messages: req.session.messages});
         })
-    } else {
+        res.send({ currentUser: req.session.user, messages: req.session.messages})
+    }
+    else {
         res.status(401).send();
     }
 });

@@ -52,10 +52,8 @@ feedbackRouter.get('/', (req, res) => {
 })
 
 // Route for marking a feedback as read
-feedbackRouter.delete('/', (req, res) => {
+feedbackRouter.post('/read', (req, res) => {
     const id = req.body.id
-    log("feedback")
-    log(id)
     if (!ObjectID.isValid(id)) {
         res.status(404).send()
         return
