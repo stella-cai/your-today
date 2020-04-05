@@ -377,10 +377,10 @@ function getFeedback(){
 
 function readFeedback(id){
     console.log("middleware id: " + id)
-    const url = "/feedback/"
+    const url = "/feedback/read"
     const data = {"id": id}
     const request = new Request(url, {
-        method: "delete",
+        method: "post",
         body: JSON.stringify(data),
         headers: {
             Accept: "application/json, text/plain, */*",

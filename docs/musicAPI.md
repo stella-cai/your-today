@@ -1,7 +1,7 @@
 # Music API
 ### Path: /music
 ### Related Models: [User](../models/user.js)
-### Supported HTTP Verbs: ```GET```, ```POST```
+### Supported HTTP Verbs: ```POST```
 ---
 
 ### ```POST```: Route to change the playlist in the logged-in account
