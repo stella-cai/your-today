@@ -42,7 +42,7 @@
 ### ```DELETE```: Route to delete a link in the logged-in account
 **Route: /**
 
-**request**: ```?id=MESSAGE_ID```
+**request**: ```?id=LINK_ID```
 
 **response**:
 ```json

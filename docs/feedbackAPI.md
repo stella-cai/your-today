@@ -12,7 +12,7 @@
 ```json
 [
   {
-    "_id": MESSAGE_ID,
+    "_id": FEEDBACK_ID,
     "user_id": USER_ID,
     "username": USERNAME,
     "feedback": SOME_WORDS,
@@ -34,7 +34,7 @@
 **response**:
 ```json
 {
-    "_id": MESSAGE_ID,
+    "_id": FEEDBACK_ID,
     "user_id": USER_ID,
     "username": USERNAME,
     "feedback": SOME_WORDS,
@@ -48,14 +48,14 @@
 **request**:
 ```json
 {
-  "id": MESSAGE_ID
+  "id": FEEDBACK_ID
 }
 ```
 
 **response**:
 ```json
 {
-    "_id": MESSAGE_ID,
+    "_id": FEEDBACK_ID,
     "user_id": USER_ID,
     "username": USERNAME,
     "feedback": SOME_WORDS,

@@ -57,6 +57,7 @@
     },
     "messages": [
         {
+            "_id": MESSAGE_ID
             "sender": USERNAME，
             "to": USERNAME,
             "subject": SOME_WORDS,
