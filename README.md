@@ -19,6 +19,7 @@ password: admin
 - Displays time and weather based on users' location
 - Internal chat room feature (instructions to use below)
 - Stores user's preferred spotify playlist
+- Stored user preferences, account information and user feedback in MongoDB
 
 ## User Features
 ### In the Homepage, users are able to:
