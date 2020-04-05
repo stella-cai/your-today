@@ -26,8 +26,9 @@
         "email": SOME_EMAIL_ADDRESS,
         "password": SOME_HASHED_STRING,
         "firstname": SOME_WORDS,
-        "lastname": SOME_WORDS
+        "lastname": SOME_WORDS,
         "birthday": TIMESTAMP,
+        "playlist": SOME_URL,
         "securityQuestions": [
             {
                 "question": SOME_WORDS,
@@ -57,8 +58,8 @@
     },
     "messages": [
         {
-            "_id": MESSAGE_ID
-            "sender": USERNAME，
+            "_id": MESSAGE_ID,
+            "sender": USERNAME,
             "to": USERNAME,
             "subject": SOME_WORDS,
             "content": SOME_WORDS,
