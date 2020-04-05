@@ -67,10 +67,7 @@ export default function All(props) {
         let item = { id: all[index]._id, user: all[index].username, reason: input.value }
         removeFromScreen(index, setAll, all)
         addToScreen(setFrozen, frozen, item)
-        console.log(item)
-        log(id)
-        log(input.value)
-        Middleware.freezeUser(id, username, input.value)
+        Middleware.freezeUser(id, username, input.value ? input.value: " ")
     }
 
     return (
