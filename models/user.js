@@ -85,8 +85,7 @@ const UserSchema = new mongoose.Schema({
   },
 
   playlist: {
-    type: String,
-    default: "https://open.spotify.com/playlist/0vvXsWCC9xrXsKd4FyS8kM"
+    type: String
   },
 
   securityQuestions: [SecurityQuestionsSchema],

@@ -75,7 +75,7 @@ export default function MediaControlCard(props) {
   console.log(music)
   if (!music){
     console.log("this happens")
-    setMusic('https://open.spotify.com/embed/playlist/37i9dQZF1DX8NTLI2TtZa6')
+    setMusic('https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM')
   }
 
   var a = ""
