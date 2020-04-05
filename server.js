@@ -31,8 +31,8 @@ app.use('/todo', todoRouter)
 const linkRouter = require('./routes/linkRouter')
 app.use('/link', linkRouter)
 
-// const musicRouter = require('./routes/musicRouter')
-// app.use('/music', musicRouter)
+const musicRouter = require('./routes/musicRouter')
+app.use('/music', musicRouter)
 
 const settingsRouter = require('./routes/settingsRouter')
 app.use('/settings', settingsRouter)

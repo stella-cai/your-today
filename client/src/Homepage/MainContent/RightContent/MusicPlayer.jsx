@@ -69,10 +69,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function MediaControlCard(props) {
   const classes = useStyles();
-  const searchKey = props.music;
-  const setSearchKey = props.setMusic;
-  if (!searchKey){
-    setSearchKey('https://open.spotify.com/embed/playlist/37i9dQZF1DX8NTLI2TtZa6')
+  const music = props.music;
+  const setMusic = props.setMusic;
+  console.log("music")
+  console.log(music)
+  if (!music){
+    console.log("this happens")
+    setMusic('https://open.spotify.com/embed/playlist/37i9dQZF1DX8NTLI2TtZa6')
   }
 
   var a = ""
@@ -81,12 +84,12 @@ export default function MediaControlCard(props) {
     e.preventDefault();
     var temp = a.split("/")
     temp = temp[0] + "//" + temp[2] + "/embed/playlist/" + temp[4]
-    if(temp != searchKey){
+    if(temp != music){
       console.log("resetting playlist")
-      setSearchKey(temp)
+      setMusic(temp)
     }
-    // Middleware.updatePlaylist(temp)
-    console.log(searchKey)
+    Middleware.updatePlaylist(temp)
+    console.log(music)
   }
 
   const searchTextChangeHandler = (e) => {
@@ -96,24 +99,17 @@ export default function MediaControlCard(props) {
     <div id="spotify" className={classes.root}>
       <div id="playlistInputContainer">
         <Paper component="form" className={classes.inputBox}>
-          {/* <TextField id="input" variant="outlined"
-            placeholder="Spotify Playlist URL"
-            onChange={searchTextChangeHandler}
-        >
-         </TextField> */}
+
           <InputBase className={classes.input} placeholder="  Spotify Playlist URL" onChange={searchTextChangeHandler} />
           <Divider className={classes.divider} orientation="vertical" />
           <Button type="submit" className={classes.button} aria-label="search" onClick={searchButtonClickHandler}>
             Go
           </Button>
-          {/* <IconButton id="button" type="submit"  aria-label="search" onClick={searchButtonClickHandler}>
-           submit
-        </IconButton> */}
         </Paper>
       </div>
       <div>
       <Box className={classes.player}>
-        <iframe src={searchKey} className={classes.frame} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src={music} className={classes.frame} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </Box>
       </div>
     </div>
