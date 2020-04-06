@@ -42,8 +42,8 @@ credentialsRouter.get("/check-loggedin", (req, res) => {
             req.session.user = user
             Message.find({to: req.session.user.username}, function(err, messages) {
                 req.session.messages = messages
+                res.send({ currentUser: req.session.user, messages: req.session.messages})
             })
-            res.send({ currentUser: req.session.user, messages: req.session.messages})
 
         })
         .catch(error => {
